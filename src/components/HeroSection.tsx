@@ -1,0 +1,137 @@
+import React from "react";
+import { ArrowRight, CheckCircle2, TrendingUp, IndianRupee, Sparkles } from "lucide-react";
+
+interface HeroSectionProps {
+  onStartClick: () => void;
+  onExploreSample: () => void;
+}
+
+export const HeroSection: React.FC<HeroSectionProps> = ({
+  onStartClick,
+  onExploreSample,
+}) => {
+  return (
+    <section className="relative overflow-hidden bg-gradient-to-b from-[#F5F8F1] via-[#FBFBF7] to-[#FBFBF7] pt-8 pb-14 border-b border-[#E6EDE0]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          {/* Left Column: Mission & Value Proposition */}
+          <div className="lg:col-span-7 space-y-6">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#E5EFE6] border border-[#C6DDD0] text-xs font-semibold text-[#1E5D38]">
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>Smart Rural Entrepreneurship Advisory</span>
+            </div>
+
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-[#142C1D] tracking-tight leading-tight">
+              Hyper-local business feasibility & concessional financing for rural India.
+            </h1>
+
+            <p className="text-base sm:text-lg text-[#47574A] leading-relaxed max-w-2xl font-sans">
+              VEYA helps rural micro-entrepreneurs, self-help groups (SHGs), and district credit officers evaluate venture viability using official Census data, local purchasing power analysis, and 100% deterministic government loan routing.
+            </p>
+
+            {/* Value Highlights */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
+              <div className="bg-white/80 rounded-xl p-3.5 border border-[#DFE7D8] shadow-2xs">
+                <div className="w-7 h-7 rounded-lg bg-[#EAF5EC] text-[#1E5D38] flex items-center justify-center font-bold text-xs mb-2">
+                  01
+                </div>
+                <h4 className="text-xs font-bold text-[#183120]">Dual Scores</h4>
+                <p className="text-[11px] text-[#556457] mt-0.5">
+                  Go/No-Go Viability and Evidence Credibility calculated independently.
+                </p>
+              </div>
+
+              <div className="bg-white/80 rounded-xl p-3.5 border border-[#DFE7D8] shadow-2xs">
+                <div className="w-7 h-7 rounded-lg bg-[#EAF5EC] text-[#1E5D38] flex items-center justify-center font-bold text-xs mb-2">
+                  02
+                </div>
+                <h4 className="text-xs font-bold text-[#183120]">90% Govt Loan</h4>
+                <p className="text-[11px] text-[#556457] mt-0.5">
+                  Concessional 6.5% - 8.0% interest with 3 to 6-month repayment grace.
+                </p>
+              </div>
+
+              <div className="bg-white/80 rounded-xl p-3.5 border border-[#DFE7D8] shadow-2xs">
+                <div className="w-7 h-7 rounded-lg bg-[#EAF5EC] text-[#1E5D38] flex items-center justify-center font-bold text-xs mb-2">
+                  03
+                </div>
+                <h4 className="text-xs font-bold text-[#183120]">Local Purchasing Power</h4>
+                <p className="text-[11px] text-[#556457] mt-0.5">
+                  Real APMC price benchmarks and reachable household demand modeling.
+                </p>
+              </div>
+            </div>
+
+            {/* CTAs */}
+            <div className="flex flex-wrap items-center gap-3 pt-2">
+              <button
+                onClick={onStartClick}
+                className="px-6 py-3 rounded-xl bg-[#1E5D38] hover:bg-[#154629] text-white text-sm font-semibold flex items-center gap-2 shadow-md shadow-[#1E5D38]/20 transition-all hover:scale-[1.01]"
+              >
+                <span>Assess Your Business Idea</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
+
+              <button
+                onClick={onExploreSample}
+                className="px-5 py-3 rounded-xl bg-white hover:bg-[#F3F6ED] text-[#203726] border border-[#CFD9CA] text-sm font-semibold transition-colors"
+              >
+                Load Sample Dairy Analysis
+              </button>
+            </div>
+          </div>
+
+          {/* Right Column: Visual Frame matching Sample Art Direction */}
+          <div className="lg:col-span-5 relative flex justify-center">
+            <div className="relative w-full max-w-md">
+              {/* Illustration Container */}
+              <div className="relative rounded-3xl overflow-hidden border-4 border-white shadow-xl bg-[#E8EFE3] aspect-4/3 sm:aspect-square flex items-center justify-center">
+                <img
+                  src="/src/assets/images/veya_hero_illustration_1789662958962.jpg"
+                  alt="Rural Indian Entrepreneur with VEYA Business Insights"
+                  className="w-full h-full object-cover"
+                  loading="eager"
+                />
+
+                {/* Floating Insight Pill 1 */}
+                <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-md px-3 py-2 rounded-2xl shadow-md border border-[#E0E7D9] flex items-center gap-2">
+                  <div className="w-6 h-6 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center">
+                    <CheckCircle2 className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <p className="text-[10px] text-gray-500 font-medium">Model Verdict</p>
+                    <p className="text-xs font-bold text-emerald-800">Recommended (82/100)</p>
+                  </div>
+                </div>
+
+                {/* Floating Insight Pill 2 */}
+                <div className="absolute bottom-4 right-4 bg-white/95 backdrop-blur-md px-3.5 py-2.5 rounded-2xl shadow-md border border-[#E0E7D9] flex items-center gap-2.5">
+                  <div className="w-7 h-7 rounded-full bg-amber-100 text-amber-800 flex items-center justify-center">
+                    <IndianRupee className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <p className="text-[10px] text-gray-500 font-medium">Concessional Loan</p>
+                    <p className="text-xs font-bold text-[#142C1D]">₹9,00,000 @ 8% p.a.</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Three Pill Speech Bubbles matching Sample Concept */}
+              <div className="flex justify-between items-center px-4 mt-4 text-[11px] font-semibold text-[#274630]">
+                <span className="bg-[#EBF3E8] border border-[#CDE1CF] px-2.5 py-1 rounded-full shadow-2xs">
+                  🌱 Better Insights
+                </span>
+                <span className="bg-[#EBF3E8] border border-[#CDE1CF] px-2.5 py-1 rounded-full shadow-2xs">
+                  🎯 Smarter Decisions
+                </span>
+                <span className="bg-[#EBF3E8] border border-[#CDE1CF] px-2.5 py-1 rounded-full shadow-2xs">
+                  🤝 Stronger Villages
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};

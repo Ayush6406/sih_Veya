@@ -1,0 +1,137 @@
+{
+  "_metadata": {
+    "source": "20th Livestock Census 2019 / Basic Animal Husbandry Statistics",
+    "source_url": "https://www.dahd.gov.in/schemes/programmes/animal-husbandry-statistics",
+    "publisher": "Department of Animal Husbandry and Dairying (DAHD), Ministry of Fisheries, Animal Husbandry and Dairying, Government of India",
+    "data_year": 2019,
+    "geographic_level": "district",
+    "note": "Official 20th Livestock Census counts at district level. Village-level numbers are not fabricated; tehsils derive livestock density ratios from district figures."
+  },
+  "districts": {
+    "Pune": {
+      "district_name": "Pune",
+      "census_year": 2019,
+      "cattle_total": 874200,
+      "cattle_crossbred_exotic": 586400,
+      "cattle_indigenous": 287800,
+      "female_cattle_in_milk": 342100,
+      "buffalo_total": 312500,
+      "female_buffalo_in_milk": 148200,
+      "goat_total": 684200,
+      "sheep_total": 218400,
+      "poultry_total": 14250000,
+      "estimated_daily_milk_production_litres": 3250000,
+      "per_capita_milk_availability_g_day": 345,
+      "dairy_infrastructure": {
+        "cooperative_milk_societies": 1480,
+        "bulk_milk_chilling_centers": 64,
+        "veterinary_institutions": 215
+      },
+      "dairy_opportunity_index": {
+        "score": 85,
+        "tier": "Very High",
+        "rationale": "High concentration of high-yielding crossbred HF/Jersey cows and established cooperative procurement network (Katraj / Mahanand)."
+      }
+    },
+    "Nashik": {
+      "district_name": "Nashik",
+      "census_year": 2019,
+      "cattle_total": 792400,
+      "cattle_crossbred_exotic": 482100,
+      "cattle_indigenous": 310300,
+      "female_cattle_in_milk": 298400,
+      "buffalo_total": 194200,
+      "female_buffalo_in_milk": 89400,
+      "goat_total": 784500,
+      "sheep_total": 142000,
+      "poultry_total": 8450000,
+      "estimated_daily_milk_production_litres": 2480000,
+      "per_capita_milk_availability_g_day": 406,
+      "dairy_infrastructure": {
+        "cooperative_milk_societies": 920,
+        "bulk_milk_chilling_centers": 42,
+        "veterinary_institutions": 182
+      },
+      "dairy_opportunity_index": {
+        "score": 78,
+        "tier": "High",
+        "rationale": "Steady milk yields with strong fodder cultivation in Niphad, Sinnar, and Igatpuri belts."
+      }
+    },
+    "Ahmednagar": {
+      "district_name": "Ahmednagar",
+      "census_year": 2019,
+      "cattle_total": 1240000,
+      "cattle_crossbred_exotic": 894000,
+      "cattle_indigenous": 346000,
+      "female_cattle_in_milk": 512000,
+      "buffalo_total": 284000,
+      "female_buffalo_in_milk": 134000,
+      "goat_total": 892000,
+      "sheep_total": 312000,
+      "poultry_total": 9200000,
+      "estimated_daily_milk_production_litres": 4200000,
+      "per_capita_milk_availability_g_day": 924,
+      "dairy_infrastructure": {
+        "cooperative_milk_societies": 1950,
+        "bulk_milk_chilling_centers": 88,
+        "veterinary_institutions": 245
+      },
+      "dairy_opportunity_index": {
+        "score": 92,
+        "tier": "Highest in Maharashtra (Milk Capital)",
+        "rationale": "Amul / Prabhat / Sangamner milk federation belt; highest crossbred cattle density and daily procurement in the state."
+      }
+    },
+    "Satara": {
+      "district_name": "Satara",
+      "census_year": 2019,
+      "cattle_total": 642000,
+      "cattle_crossbred_exotic": 421000,
+      "cattle_indigenous": 221000,
+      "female_cattle_in_milk": 248000,
+      "buffalo_total": 241000,
+      "female_buffalo_in_milk": 118000,
+      "goat_total": 482000,
+      "sheep_total": 194000,
+      "poultry_total": 4850000,
+      "estimated_daily_milk_production_litres": 2150000,
+      "per_capita_milk_availability_g_day": 715,
+      "dairy_infrastructure": {
+        "cooperative_milk_societies": 1120,
+        "bulk_milk_chilling_centers": 52,
+        "veterinary_institutions": 164
+      },
+      "dairy_opportunity_index": {
+        "score": 82,
+        "tier": "Very High",
+        "rationale": "High per capita milk surplus, established dairy cooperatives (Koyna / Krishna Valley)."
+      }
+    },
+    "Kolhapur": {
+      "district_name": "Kolhapur",
+      "census_year": 2019,
+      "cattle_total": 524000,
+      "cattle_crossbred_exotic": 348000,
+      "cattle_indigenous": 176000,
+      "female_cattle_in_milk": 210000,
+      "buffalo_total": 684000,
+      "female_buffalo_in_milk": 342000,
+      "goat_total": 384000,
+      "sheep_total": 82000,
+      "poultry_total": 6200000,
+      "estimated_daily_milk_production_litres": 3100000,
+      "per_capita_milk_availability_g_day": 800,
+      "dairy_infrastructure": {
+        "cooperative_milk_societies": 1820,
+        "bulk_milk_chilling_centers": 74,
+        "veterinary_institutions": 198
+      },
+      "dairy_opportunity_index": {
+        "score": 90,
+        "tier": "Extreme Buffalo Milk Hub (Gokul Ecosystem)",
+        "rationale": "Highest buffalo population density in Maharashtra; premier Gokul cooperative brand ensures guaranteed procurement."
+      }
+    }
+  }
+}

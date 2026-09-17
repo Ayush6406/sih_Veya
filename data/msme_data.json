@@ -1,0 +1,139 @@
+{
+  "_metadata": {
+    "source": "Udyam Registration Portal - District-wise MSME Data",
+    "source_url": "https://www.dashboard.msme.gov.in/udyam_dist_wise.aspx",
+    "publisher": "Ministry of Micro, Small and Medium Enterprises, Government of India",
+    "reporting_period": "2023-24",
+    "geographic_level": "district",
+    "data_nature": "Official MSME Registrations",
+    "critical_distinction": "Udyam registrations represent the formal MSME business environment density and formalization indicator in the district, NOT the exact number of localized direct village competitors."
+  },
+  "districts": {
+    "Pune": {
+      "district_name": "Pune",
+      "reporting_period": "2023-24",
+      "micro_enterprises": 384500,
+      "small_enterprises": 21800,
+      "medium_enterprises": 1850,
+      "total_msmes": 408150,
+      "manufacturing_msmes": 118400,
+      "services_msmes": 289750,
+      "msme_concentration_index": "Very Dense (Industrial & Agro-Commercial Hub)",
+      "block_sector_estimates": {
+        "Junnar": {
+          "total_tehsil_msmes": 3420,
+          "estimated_micro_enterprises": 3280,
+          "category_density_indicator": {
+            "Dairy": { "registered_units_indicator": 21, "concentration_band": "Moderate", "interpretation": "Active cooperative & private chilling dairy units operating within tehsil." },
+            "Textile": { "registered_units_indicator": 14, "concentration_band": "Low-Moderate", "interpretation": "Boutiques and uniform stitching clusters near town centers." },
+            "Grocery Retail": { "registered_units_indicator": 42, "concentration_band": "Moderate-Dense", "interpretation": "Registered FMCG & wholesale kirana traders in market yards." },
+            "Food Processing": { "registered_units_indicator": 11, "concentration_band": "Moderate", "interpretation": "Tomato, spice, and flour mills leveraging local agro arrivals." },
+            "Small Manufacturing": { "registered_units_indicator": 8, "concentration_band": "Low", "interpretation": "Fly-ash and fabrication workshops supplying rural construction." }
+          }
+        },
+        "Ambegaon": {
+          "total_tehsil_msmes": 2150,
+          "category_density_indicator": {
+            "Dairy": { "registered_units_indicator": 18, "concentration_band": "Moderate", "interpretation": "Milk collection and livestock feed supply network." },
+            "Textile": { "registered_units_indicator": 9, "concentration_band": "Low", "interpretation": "Tailoring and ready-wear shops in Manchar and Ghodegaon." },
+            "Grocery Retail": { "registered_units_indicator": 28, "concentration_band": "Moderate", "interpretation": "Retail kirana in weekly bazaar villages." },
+            "Food Processing": { "registered_units_indicator": 8, "concentration_band": "Low-Moderate", "interpretation": "Agro-milling and jaggery processing units." },
+            "Small Manufacturing": { "registered_units_indicator": 6, "concentration_band": "Low", "interpretation": "Agri implement fabrication and repair." }
+          }
+        }
+      }
+    },
+    "Nashik": {
+      "district_name": "Nashik",
+      "reporting_period": "2023-24",
+      "micro_enterprises": 195400,
+      "small_enterprises": 11200,
+      "medium_enterprises": 940,
+      "total_msmes": 207540,
+      "manufacturing_msmes": 68400,
+      "services_msmes": 139140,
+      "msme_concentration_index": "Dense (Agro-Export & Engineering Hub)",
+      "block_sector_estimates": {
+        "Niphad": {
+          "total_tehsil_msmes": 4100,
+          "category_density_indicator": {
+            "Dairy": { "registered_units_indicator": 19, "concentration_band": "Moderate", "interpretation": "Village collection centers and chilling supply points." },
+            "Textile": { "registered_units_indicator": 12, "concentration_band": "Low", "interpretation": "Tailoring boutiques and readymade shops in Lasalgaon." },
+            "Grocery Retail": { "registered_units_indicator": 46, "concentration_band": "Moderate-Dense", "interpretation": "High retail transaction volume around APMC yards." },
+            "Food Processing": { "registered_units_indicator": 18, "concentration_band": "Moderate-High", "interpretation": "Raisin, onion dehydration, and tomato processing units." },
+            "Small Manufacturing": { "registered_units_indicator": 9, "concentration_band": "Low", "interpretation": "Crate manufacturing and agri machinery repair." }
+          }
+        }
+      }
+    },
+    "Ahmednagar": {
+      "district_name": "Ahmednagar",
+      "reporting_period": "2023-24",
+      "micro_enterprises": 142100,
+      "small_enterprises": 7400,
+      "medium_enterprises": 580,
+      "total_msmes": 150080,
+      "manufacturing_msmes": 49200,
+      "services_msmes": 100880,
+      "msme_concentration_index": "Moderate-Dense (Dairy & Sugar Cooperative Belt)",
+      "block_sector_estimates": {
+        "Sangamner": {
+          "total_tehsil_msmes": 3890,
+          "category_density_indicator": {
+            "Dairy": { "registered_units_indicator": 24, "concentration_band": "Dense", "interpretation": "Strong cooperative dairy corridor with established procurement." },
+            "Textile": { "registered_units_indicator": 15, "concentration_band": "Moderate", "interpretation": "Garment stitching and cloth merchant network." },
+            "Grocery Retail": { "registered_units_indicator": 44, "concentration_band": "Moderate-Dense", "interpretation": "Steady rural grocery trade." },
+            "Food Processing": { "registered_units_indicator": 14, "concentration_band": "Moderate", "interpretation": "Milk by-products, flour mills, and spice processing." },
+            "Small Manufacturing": { "registered_units_indicator": 10, "concentration_band": "Low", "interpretation": "Welding workshops, cement poles, and pipe manufacturing." }
+          }
+        }
+      }
+    },
+    "Satara": {
+      "district_name": "Satara",
+      "reporting_period": "2023-24",
+      "micro_enterprises": 98400,
+      "small_enterprises": 5200,
+      "medium_enterprises": 410,
+      "total_msmes": 104010,
+      "manufacturing_msmes": 34100,
+      "services_msmes": 69910,
+      "msme_concentration_index": "Moderate (Agro-Tourism & Precision Engineering)",
+      "block_sector_estimates": {
+        "Karad": {
+          "total_tehsil_msmes": 3950,
+          "category_density_indicator": {
+            "Dairy": { "registered_units_indicator": 17, "concentration_band": "Moderate", "interpretation": "Cattle rearing and dairy booths across Krishna river basin." },
+            "Textile": { "registered_units_indicator": 16, "concentration_band": "Moderate", "interpretation": "Traditional tailoring and school uniform contractors." },
+            "Grocery Retail": { "registered_units_indicator": 39, "concentration_band": "Moderate", "interpretation": "Established grocery stores in Karad and Malkapur." },
+            "Food Processing": { "registered_units_indicator": 12, "concentration_band": "Moderate", "interpretation": "Turmeric, ginger, and sugarcane processing units." },
+            "Small Manufacturing": { "registered_units_indicator": 11, "concentration_band": "Low-Moderate", "interpretation": "Foundry jobwork and farm equipment fabricators." }
+          }
+        }
+      }
+    },
+    "Kolhapur": {
+      "district_name": "Kolhapur",
+      "reporting_period": "2023-24",
+      "micro_enterprises": 156800,
+      "small_enterprises": 9800,
+      "medium_enterprises": 820,
+      "total_msmes": 167420,
+      "manufacturing_msmes": 58400,
+      "services_msmes": 109020,
+      "msme_concentration_index": "Dense (Textile, Foundry & Dairy Belt)",
+      "block_sector_estimates": {
+        "Shirol": {
+          "total_tehsil_msmes": 4250,
+          "category_density_indicator": {
+            "Dairy": { "registered_units_indicator": 22, "concentration_band": "Dense", "interpretation": "High-yield buffalo milk collection network (Gokul cooperative ecosystem)." },
+            "Textile": { "registered_units_indicator": 35, "concentration_band": "Very Dense", "interpretation": "Ichalkaranji powerloom textile and sizing ecosystem." },
+            "Grocery Retail": { "registered_units_indicator": 41, "concentration_band": "Moderate", "interpretation": "Kirana merchants serving peri-urban textile workforce." },
+            "Food Processing": { "registered_units_indicator": 15, "concentration_band": "Moderate", "interpretation": "Jaggery (gur) production and spice processing." },
+            "Small Manufacturing": { "registered_units_indicator": 14, "concentration_band": "Moderate", "interpretation": "Foundry ancillary and loom component repair workshops." }
+          }
+        }
+      }
+    }
+  }
+}

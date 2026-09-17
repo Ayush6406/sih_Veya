@@ -1,0 +1,108 @@
+{
+  "_metadata": {
+    "source": "OpenStreetMap (Overpass API) / District Administrative & Rural Infrastructure Atlas",
+    "source_url": "https://overpass-turbo.eu/",
+    "license": "Open Data Commons Open Database License (ODbL) / Government of Maharashtra Department of Rural Development",
+    "extraction_date": "2024-03-20",
+    "geographic_level": "tehsil_and_village_cluster",
+    "purpose_in_veya": "Empirical infrastructure anchor counts used to calculate footfall, institutional demand, raw material sourcing, and localized competitive density."
+  },
+  "clusters": {
+    "Junnar": {
+      "cluster_name": "Otur - Junnar Rural Cluster",
+      "district": "Pune",
+      "infrastructure_anchors": {
+        "schools_and_colleges": {
+          "count": 48,
+          "source": "Zilla Parishad & UDISE+ / OSM amenity=school,amenity=college",
+          "demand_impact": "Generates steady, recurring institutional demand for 24,000+ student uniform pairs, sports kits, notebooks, and stationary."
+        },
+        "cooperative_dairy_societies": {
+          "count": 32,
+          "source": "Pune Zilla Sahakari Dudh Utpadak Sangh / OSM amenity=dairy",
+          "demand_impact": "Direct village-level milk collection and testing booths ensuring 100% daily off-take for local dairy farmers."
+        },
+        "weekly_haats_bazaars": {
+          "count": 6,
+          "source": "MSAMB Weekly Haats Directory / Junnar Taluka APMC",
+          "demand_impact": "Massive weekly footfall surge on bazaar days (Otur: Sunday, Junnar: Friday, Narayangaon: Thursday)."
+        },
+        "grocery_kirana_outlets": {
+          "count": 78,
+          "source": "OSM shop=convenience,shop=supermarket & Gram Panchayat Trade Registers",
+          "demand_impact": "Baseline retail grocery density serving an estimated 16,300 households across the 6-village cluster."
+        },
+        "bank_branches_and_csp": {
+          "count": 18,
+          "source": "SLBC Maharashtra Banking Directory / OSM amenity=bank",
+          "demand_impact": "High institutional financial accessibility with Bank of Maharashtra, SBI, and PDCC Bank branches in 5km radius."
+        },
+        "bus_stands_and_transport_nodes": {
+          "count": 8,
+          "source": "MSRTC Depot Records & OSM amenity=bus_station",
+          "demand_impact": "Key commuter and farmer transit points enabling daily dispatches to Pune, Kalyan, and Mumbai."
+        }
+      }
+    },
+    "Ambegaon": {
+      "cluster_name": "Manchar - Ghodegaon Cluster",
+      "district": "Pune",
+      "infrastructure_anchors": {
+        "schools_and_colleges": { "count": 36, "demand_impact": "School uniform and educational material demand across 10,100 households." },
+        "cooperative_dairy_societies": { "count": 26, "demand_impact": "Cooperative milk chilling and collection network." },
+        "weekly_haats_bazaars": { "count": 4, "demand_impact": "Manchar Sunday market generates major trade volume." },
+        "grocery_kirana_outlets": { "count": 52, "demand_impact": "Kirana retail network serving peri-urban and agrarian hamlets." },
+        "bank_branches_and_csp": { "count": 14, "demand_impact": "Formal credit access via nationalized and district co-op branches." },
+        "bus_stands_and_transport_nodes": { "count": 5, "demand_impact": "MSRTC hub at Manchar on Pune-Nashik highway." }
+      }
+    },
+    "Niphad": {
+      "cluster_name": "Lasalgaon - Niphad Cluster",
+      "district": "Nashik",
+      "infrastructure_anchors": {
+        "schools_and_colleges": { "count": 42, "demand_impact": "Uniform stitching and stationery demand across 15,200 households." },
+        "cooperative_dairy_societies": { "count": 28, "demand_impact": "Milk collection and chilling centers." },
+        "weekly_haats_bazaars": { "count": 5, "demand_impact": "Lasalgaon major onion market yard brings thousands of daily farm traders." },
+        "grocery_kirana_outlets": { "count": 68, "demand_impact": "Retail kirana serving farm families and APMC workers." },
+        "bank_branches_and_csp": { "count": 16, "demand_impact": "APMC banking liquidity and agricultural loan branches." },
+        "bus_stands_and_transport_nodes": { "count": 6, "demand_impact": "Railway station and MSRTC bus depots." }
+      }
+    },
+    "Sangamner": {
+      "cluster_name": "Sangamner Rural Cluster",
+      "district": "Ahmednagar",
+      "infrastructure_anchors": {
+        "schools_and_colleges": { "count": 46, "demand_impact": "High student enrollment from surrounding cooperative sugar belt." },
+        "cooperative_dairy_societies": { "count": 38, "demand_impact": "Sangamner cooperative dairy collection centers." },
+        "weekly_haats_bazaars": { "count": 5, "demand_impact": "High-volume weekly trading bazaars." },
+        "grocery_kirana_outlets": { "count": 72, "demand_impact": "Dense retail network with high daily turnover." },
+        "bank_branches_and_csp": { "count": 17, "demand_impact": "Cooperative and nationalized bank branch network." },
+        "bus_stands_and_transport_nodes": { "count": 7, "demand_impact": "Major transit hub on Nashik-Pune expressway." }
+      }
+    },
+    "Karad": {
+      "cluster_name": "Karad - Malkapur Cluster",
+      "district": "Satara",
+      "infrastructure_anchors": {
+        "schools_and_colleges": { "count": 54, "demand_impact": "Educational hub with prominent colleges and ZP schools." },
+        "cooperative_dairy_societies": { "count": 30, "demand_impact": "Koyna and Krishna valley milk procurement." },
+        "weekly_haats_bazaars": { "count": 6, "demand_impact": "Karad APMC and weekly agricultural markets." },
+        "grocery_kirana_outlets": { "count": 84, "demand_impact": "Urban-rural fringe grocery and provisions trade." },
+        "bank_branches_and_csp": { "count": 22, "demand_impact": "Comprehensive banking services and cooperative credit." },
+        "bus_stands_and_transport_nodes": { "count": 9, "demand_impact": "NH-48 highway junction and MSRTC division depot." }
+      }
+    },
+    "Shirol": {
+      "cluster_name": "Shirol - Jaysingpur Cluster",
+      "district": "Kolhapur",
+      "infrastructure_anchors": {
+        "schools_and_colleges": { "count": 45, "demand_impact": "Substantial uniform and school supply needs." },
+        "cooperative_dairy_societies": { "count": 34, "demand_impact": "Gokul cooperative primary milk societies." },
+        "weekly_haats_bazaars": { "count": 5, "demand_impact": "Jaysingpur APMC market and tobacco/gur trading." },
+        "grocery_kirana_outlets": { "count": 76, "demand_impact": "Active grocery trade catering to industrial and agro labor." },
+        "bank_branches_and_csp": { "count": 20, "demand_impact": "Bank of India, KDCC, and nationalized branches." },
+        "bus_stands_and_transport_nodes": { "count": 8, "demand_impact": "Transit hub connecting to Kolhapur and Sangli." }
+      }
+    }
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "document_description": {
+    "title_statement": {
+      "idno": "ORGI_PPT_2011_36",
+      "title": "Rural Urban Distribution of Population"
+    },
+    "rights": "Office of the Registrar General and Census Commissioner, India (ORGI)",
+    "type": "Primary Census Abstract (PCA)",
+    "date_published": "2011",
+    "series": "Census of India 2011 - Provisional Population Totals",
+    "ref_country": ["India"],
+    "languages": ["English", "Hindi"]
+  },
+  "tags": [
+    { "tag": "Census-2011" },
+    { "tag": "Demographics" },
+    { "tag": "Rural Population" },
+    { "tag": "Maharashtra" },
+    { "tag": "Pune" },
+    { "tag": "Junnar" }
+  ],
+  "resources": [
+    {
+      "resource_name": "PCA_District_521_Pune.csv",
+      "format": "CSV",
+      "description": "Primary Census Abstract for Pune District (Rural/Urban Breakup)"
+    },
+    {
+      "resource_name": "Village_Directory_Junnar_Tehsil.json",
+      "format": "JSON",
+      "description": "Block and village cluster level household and literacy aggregates"
+    }
+  ],
+  "demographic_profile": {
+    "state_code": "27",
+    "state_name": "Maharashtra",
+    "district_code": "521",
+    "district_name": "Pune",
+    "sub_district_code": "04192",
+    "sub_district_name": "Junnar",
+    "village_cluster": "Otur - Junnar Rural Cluster",
+    "pincode": "410502",
+    "total_population": 82400,
+    "male_population": 42100,
+    "female_population": 40300,
+    "total_households": 16300,
+    "rural_literacy_rate": 78.4,
+    "male_literacy_rate": 84.8,
+    "female_literacy_rate": 71.2,
+    "sc_st_population_share_percent": 22.8,
+    "agricultural_worker_share_percent": 68.4,
+    "non_agricultural_worker_share_percent": 31.6
+  }
+}

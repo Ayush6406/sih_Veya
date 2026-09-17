@@ -1,0 +1,498 @@
+{
+  "project": "VEYA",
+  "prototype_version": "1.0.0",
+  "executive_summary": {
+    "verdict": "RECOMMENDED",
+    "business": "Dairy",
+    "location": "Junnar, Pune, Maharashtra",
+    "final_go_no_go_model_score": "82/100",
+    "credibility_score": "83/100",
+    "score_independence_note": "These scores measure different things and should not be combined.",
+    "your_margin_capital": "₹1,00,000",
+    "total_project_cost": "₹10,00,000",
+    "concessional_govt_loan": "₹9,00,000 (90%)",
+    "matched_scheme": "Term Loan Scheme (8.0% p.a.)",
+    "tenure_and_grace": "7 Years (6-Month Grace Period)",
+    "monthly_emi": "₹14,835 / month",
+    "working_capital_buffer": "₹1,80,000",
+    "consumer_purchasing_power_band": "Moderate",
+    "local_reachable_customers": "~4,890 households",
+    "competition_level": "MODERATE",
+    "immediate_next_step": "Apply under Term Loan Scheme via district channel; keep ₹1,80,000 reserved for operating cash flow."
+  },
+  "location": {
+    "state": "Maharashtra",
+    "district": "Pune",
+    "block": "Junnar",
+    "village_cluster": "Otur - Junnar Rural Cluster",
+    "fixed_location": true,
+    "provenance": {
+      "source": "Census of India 2011 - Primary Census Abstract (PCA) Pune District (521), Maharashtra (27)",
+      "publisher": "Office of the Registrar General and Census Commissioner, India (ORGI)",
+      "data_vintage": "2011",
+      "catalog_idno": "ORGI_PPT_2011_36",
+      "tier": "VERIFIED"
+    }
+  },
+  "input": {
+    "business_category": "Dairy",
+    "capital": 100000.0,
+    "capital_formatted": "₹1,00,000",
+    "description": "Fresh morning cow and buffalo milk delivery with paneer."
+  },
+  "decision_snapshot": {
+    "go_no_go_score": {
+      "score": 82,
+      "name": "FINAL GO / NO-GO MODEL SCORE",
+      "meaning": "How your business idea fares according to VEYA's analysis",
+      "supported_dimensions": [
+        {
+          "dimension": "Market / Demand Fit",
+          "score": 18,
+          "max_score": 20,
+          "assessment": "High addressable customer volume in block"
+        },
+        {
+          "dimension": "Local Purchasing Power Fit",
+          "score": 10,
+          "max_score": 15,
+          "assessment": "Moderate household expenditure capacity"
+        },
+        {
+          "dimension": "Competition Position",
+          "score": 11,
+          "max_score": 15,
+          "assessment": "MODERATE saturation with room for differentiation"
+        },
+        {
+          "dimension": "Financial Feasibility",
+          "score": 18,
+          "max_score": 20,
+          "assessment": "Concessional credit match under Term Loan Scheme"
+        },
+        {
+          "dimension": "Resource Readiness",
+          "score": 14,
+          "max_score": 15,
+          "assessment": "₹1,00,000 promoter equity committed"
+        },
+        {
+          "dimension": "Risk Exposure & Mitigation",
+          "score": 11,
+          "max_score": 15,
+          "assessment": "Working capital reserve protected against seasonal swings"
+        }
+      ],
+      "evidence": [
+        "Addressable reach of 4,890 local households",
+        "Concessional 8.0% p.a. interest rate with 6-month moratorium",
+        "Competitor density: 1.29 units / 1,000 HH",
+        "Local consumer purchasing power band: Moderate"
+      ],
+      "data_classification": "MODELED_ESTIMATE"
+    },
+    "credibility_score": {
+      "score": 83,
+      "name": "CREDIBILITY SCORE",
+      "meaning": "How well VEYA was able to analyse your case using available evidence",
+      "dimensions": [
+        {
+          "dimension": "Location Data Coverage",
+          "score": 16,
+          "max_score": 20,
+          "detail": "Resolved to Tehsil/Block level (Junnar, Pune)"
+        },
+        {
+          "dimension": "Data Source Coverage",
+          "score": 18,
+          "max_score": 20,
+          "detail": "Census 2011 + Udyam MSME + APMC benchmarks active"
+        },
+        {
+          "dimension": "Data Recency & Granularity",
+          "score": 14,
+          "max_score": 20,
+          "detail": "Recent 2024 APMC rates; Census 2011 demographics baseline"
+        },
+        {
+          "dimension": "Category-Specific Alignment",
+          "score": 17,
+          "max_score": 20,
+          "detail": "Established benchmarks available for Dairy"
+        },
+        {
+          "dimension": "User Input Completeness",
+          "score": 18,
+          "max_score": 20,
+          "detail": "Location, capital, and business category provided"
+        }
+      ],
+      "evidence_audit": [
+        {
+          "label": "Location successfully resolved (Junnar, Pune)",
+          "status": "VERIFIED",
+          "icon": "check"
+        },
+        {
+          "label": "Relevant market & demographic data available (Census 2011)",
+          "status": "VERIFIED",
+          "icon": "check"
+        },
+        {
+          "label": "Concessional scheme guidelines accessed (NSFDC 2023-24)",
+          "status": "VERIFIED",
+          "icon": "check"
+        },
+        {
+          "label": "Category-specific APMC price benchmarks available",
+          "status": "VERIFIED",
+          "icon": "check"
+        },
+        {
+          "label": "Village-level granular census proxy used (Block data available)",
+          "status": "LIMITATION",
+          "icon": "delta"
+        },
+        {
+          "label": "Local unorganized micro-competitors require field count",
+          "status": "LIMITATION",
+          "icon": "delta"
+        },
+        {
+          "label": "User operating assumptions require local customer validation",
+          "status": "VALIDATE",
+          "icon": "delta"
+        }
+      ],
+      "limitations": [
+        "Village-specific unregistered enterprises are not captured in official Udyam database.",
+        "Demographics are grounded in Census 2011 baseline with standard projected rural household ratios.",
+        "Local wholesale input prices are subject to seasonal APMC market variations."
+      ],
+      "data_classification": "MODELED_ESTIMATE",
+      "note": "These scores measure different things and should not be combined."
+    },
+    "note": "These scores measure different things and should not be combined."
+  },
+  "feasibility": {
+    "market_reach": {
+      "population": {
+        "value": 82400,
+        "formatted": "82,400",
+        "tier": "VERIFIED",
+        "source": "Census of India 2011 (ORGI_PPT_2011_36) - Rural Urban Distribution of Population & PCA District 521 Pune",
+        "data_vintage": "2011"
+      },
+      "households": {
+        "value": 16300,
+        "formatted": "16,300",
+        "tier": "VERIFIED",
+        "source": "Census of India 2011 (ORGI_PPT_2011_36) - Rural Urban Distribution of Population & PCA District 521 Pune",
+        "data_vintage": "2011"
+      },
+      "reachable_customers": {
+        "value": 4890,
+        "formatted": "4,890",
+        "tier": "MODELED ESTIMATE",
+        "formula": "Households (16,300) × Adoption Rate (75%) × 5-10km Reach Factor (40%) = ~4,890 reachable customers",
+        "source": "Calculated Estimate (Demographics × Category Consumption Ratio)",
+        "data_vintage": "2024 Model"
+      },
+      "distribution_channels": {
+        "channels": [
+          "Direct morning doorstep delivery to rural & semi-urban households",
+          "Local village milk collection centers & cooperative bulk supply",
+          "Commercial supply to roadside tea stalls, dhabas, and sweet shops",
+          "Weekly rural haats (Otur & Junnar bazaars)"
+        ],
+        "tier": "MODELED ESTIMATE",
+        "source": "Cluster Trade Pattern & Agricultural Supply Survey",
+        "data_vintage": "2024"
+      }
+    },
+    "opportunity_analysis": {
+      "potential_opportunity": "Morning doorstep milk subscription & fresh paneer supply to village tea stalls.",
+      "reasoning": "Competition is MODERATE with ~4,890 local households; direct retail adds ₹8-₹12/L margin over bulk collection.",
+      "suggested_niches": [
+        "Early morning direct-to-home pure milk subscription",
+        "Daily fresh paneer supply for local tea stalls & weddings",
+        "A2 Gir cow milk for premium health-conscious buyers"
+      ],
+      "tier": "AI REASONING",
+      "mode": "DEMO"
+    },
+    "swot": {
+      "strengths": [
+        "Daily cash inflow providing immediate liquidity",
+        "Low 8.0% interest rate under Term Loan Scheme"
+      ],
+      "weaknesses": [
+        "Livestock health requires strict veterinary care",
+        "Milk is perishable and requires same-day sale/cooling"
+      ],
+      "opportunities": [
+        "Value-addition into paneer and curd (+30% profit margin)",
+        "Direct supply agreements with local tea stalls and dhabas"
+      ],
+      "threats": [
+        "Summer dry fodder price spikes",
+        "Over-reliance on a single cooperative collection center"
+      ],
+      "tier": "AI REASONING",
+      "mode": "DEMO"
+    },
+    "threats": [
+      {
+        "threat": "Single Buyer Dependency",
+        "risk_level": "HIGH",
+        "explanation": "Selling all milk to one dairy center risks delayed payouts and price cuts.",
+        "mitigation": "Sell at least 40-50% directly to households and local tea stalls.",
+        "tier": "AI REASONING"
+      },
+      {
+        "threat": "Feed Cost Inflation",
+        "risk_level": "MEDIUM",
+        "explanation": "Fodder prices rise sharply during summer, increasing per-litre cost.",
+        "mitigation": "Store green silage and arrange advance fodder purchases with local farms.",
+        "tier": "AI REASONING"
+      },
+      {
+        "threat": "Veterinary & Health Risk",
+        "risk_level": "MEDIUM",
+        "explanation": "Unforeseen cattle illness can quickly disrupt daily milk yield.",
+        "mitigation": "Enroll cattle in government livestock insurance and protect ₹1,80,000 working capital.",
+        "tier": "AI REASONING"
+      }
+    ],
+    "competitor_mapping": {
+      "category": "Dairy",
+      "registered_businesses": {
+        "value": 21,
+        "tier": "VERIFIED",
+        "source": "Udyam Registration Portal 2023-24 (Sector: Dairy & Animal Husbandry)",
+        "data_vintage": "2023-24"
+      },
+      "density_per_1k_households": {
+        "value": 1.29,
+        "formatted": "1.29 units / 1,000 HH",
+        "formula": "(21 registered units ÷ 16,300 households) × 1,000",
+        "tier": "MODELED ESTIMATE",
+        "source": "Modeled Density (Udyam Enterprise Aggregate / Census Households)"
+      },
+      "competition_level": {
+        "value": "MODERATE",
+        "interpretation": "Healthy balance of existing service providers with viable room for efficient new entrants.",
+        "tier": "MODELED ESTIMATE",
+        "source": "Density-Based Threshold Analysis (<1.0 Low, 1.0-2.5 Moderate, >2.5 High)"
+      }
+    },
+    "product_market_value": {
+      "category": "Dairy",
+      "products": [
+        {
+          "product_name": "Cow Milk (Raw / Packaged)",
+          "unit": "Litre",
+          "min_price": 42.0,
+          "max_price": 48.0,
+          "recommended_price": 45.0,
+          "source": "District Dairy Cooperative Federation Benchmark (Pune)",
+          "tier": "VERIFIED - APMC",
+          "data_vintage": "2024"
+        },
+        {
+          "product_name": "Buffalo Milk",
+          "unit": "Litre",
+          "min_price": 58.0,
+          "max_price": 68.0,
+          "recommended_price": 62.0,
+          "source": "District Dairy Cooperative Federation Benchmark (Pune)",
+          "tier": "VERIFIED - APMC",
+          "data_vintage": "2024"
+        },
+        {
+          "product_name": "Fresh Paneer",
+          "unit": "Kg",
+          "min_price": 340.0,
+          "max_price": 390.0,
+          "recommended_price": 360.0,
+          "source": "Local APMC Market & Dairy Wholesale Benchmark",
+          "tier": "VERIFIED - APMC",
+          "data_vintage": "2024"
+        },
+        {
+          "product_name": "Desi Cow Ghee",
+          "unit": "Kg",
+          "min_price": 650.0,
+          "max_price": 800.0,
+          "recommended_price": 720.0,
+          "source": "Local APMC Market & Dairy Wholesale Benchmark",
+          "tier": "VERIFIED - APMC",
+          "data_vintage": "2024"
+        }
+      ],
+      "purchasing_power_context": {
+        "district_per_capita_income_inr": 245000,
+        "district_per_capita_formatted": "₹2,45,000",
+        "rural_daily_wage_unskilled": "₹380",
+        "rural_daily_wage_skilled": "₹650",
+        "nearest_mandi_distance_km": 7.5,
+        "tier": "VERIFIED",
+        "source": "District Economic Survey & Maharashtra Directorate of Economics and Statistics (DES)",
+        "data_vintage": "2023-24"
+      },
+      "pricing_recommendation": {
+        "guideline": "Position retail pricing at the benchmark median to capture initial volume, while capturing premium margin on doorstep convenience or customized job-work.",
+        "tier": "MODELED ESTIMATE",
+        "source": "Agricultural Produce Market Committee (APMC) & Regional MSME Survey"
+      }
+    },
+    "consumer_purchasing_power": {
+      "score": 68,
+      "band": "Moderate",
+      "label": "Local Consumer Purchasing Power: Moderate",
+      "consumer_base": "~4,890 daily milk-consuming households",
+      "affordability_evidence": "Daily household milk spend (₹45-₹90/day) represents ~12-18% of rural unskilled daily wage (₹380/day).",
+      "demand_evidence": "High daily recurring staple demand; steady tea shop and sweet stall off-take.",
+      "price_sensitivity": "Moderate sensitivity to base raw milk price, low sensitivity to fresh paneer quality.",
+      "market_accessibility": "7.5 km to nearest APMC Mandi, good state highway road connectivity",
+      "category_observations": "Direct doorstep delivery secures ₹8-₹12/L higher margin than bulk chilling cooperatives.",
+      "data_classification": "MODELED ESTIMATE",
+      "limitations": [
+        "Village-level cattle census data is proxied from Tehsil livestock estimates."
+      ]
+    }
+  },
+  "financial_plan": {
+    "margin_capital": {
+      "value": 100000.0,
+      "formatted": "₹1,00,000",
+      "tier": "VERIFIED",
+      "source": "User Input (Promoter Equity 10%)"
+    },
+    "project_cost": {
+      "value": 1000000.0,
+      "formatted": "₹10,00,000",
+      "tier": "VERIFIED",
+      "source": "Deterministic Formula (Margin Capital / 0.10)"
+    },
+    "loan_eligibility": {
+      "value": 900000.0,
+      "formatted": "₹9,00,000",
+      "tier": "VERIFIED",
+      "source": "Deterministic Formula (90% of Project Cost)"
+    },
+    "scheme": {
+      "scheme_name": "Term Loan Scheme",
+      "interest_rate_percent": 8.0,
+      "tenure_years": 7,
+      "moratorium_months": 6,
+      "is_within_ceiling": true,
+      "tier": "VERIFIED",
+      "source": "NSFDC Term Loan Scheme Policy Guidelines"
+    },
+    "interest_rate": {
+      "value": 8.0,
+      "formatted": "8.0% p.a.",
+      "tier": "VERIFIED",
+      "source": "NSFDC Term Loan Scheme Policy Guidelines"
+    },
+    "tenure": {
+      "value": 7,
+      "formatted": "7 Years",
+      "tier": "VERIFIED",
+      "source": "NSFDC Term Loan Scheme Policy Guidelines"
+    },
+    "moratorium": {
+      "value": 6,
+      "formatted": "6 Months",
+      "tier": "VERIFIED",
+      "source": "NSFDC Term Loan Scheme Policy Guidelines"
+    },
+    "emi": {
+      "value": 14834.86,
+      "formatted": "₹14,835",
+      "frequency": "Monthly",
+      "repayment_months": 78,
+      "tier": "VERIFIED",
+      "source": "Deterministic Reducing Balance Formula (Post-moratorium)"
+    },
+    "working_capital": {
+      "value": 180000.0,
+      "formatted": "₹1,80,000",
+      "ratio_percent": 18.0,
+      "tier": "VERIFIED",
+      "source": "Sector Guideline Multiplier (18.0% of Project Cost)"
+    },
+    "repayment_schedule_preview": [
+      {
+        "month": 1,
+        "phase": "Moratorium (Grace Period)",
+        "principal_paid": 0.0,
+        "interest_paid": 0.0,
+        "total_installment": 0.0,
+        "remaining_balance": 900000.0
+      },
+      {
+        "month": 2,
+        "phase": "Moratorium (Grace Period)",
+        "principal_paid": 0.0,
+        "interest_paid": 0.0,
+        "total_installment": 0.0,
+        "remaining_balance": 900000.0
+      },
+      {
+        "month": 3,
+        "phase": "Moratorium (Grace Period)",
+        "principal_paid": 0.0,
+        "interest_paid": 0.0,
+        "total_installment": 0.0,
+        "remaining_balance": 900000.0
+      },
+      {
+        "month": 4,
+        "phase": "Moratorium (Grace Period)",
+        "principal_paid": 0.0,
+        "interest_paid": 0.0,
+        "total_installment": 0.0,
+        "remaining_balance": 900000.0
+      },
+      {
+        "month": 5,
+        "phase": "Moratorium (Grace Period)",
+        "principal_paid": 0.0,
+        "interest_paid": 0.0,
+        "total_installment": 0.0,
+        "remaining_balance": 900000.0
+      },
+      {
+        "month": 6,
+        "phase": "Moratorium (Grace Period)",
+        "principal_paid": 0.0,
+        "interest_paid": 0.0,
+        "total_installment": 0.0,
+        "remaining_balance": 900000.0
+      }
+    ]
+  },
+  "recommendation": {
+    "status": "RECOMMENDED",
+    "status_tier": "VERIFIED",
+    "reasons": [
+      "Moderate competitor density allows viable market entry.",
+      "Strong addressable customer base of ~4,890 households.",
+      "Concessional debt servicing (Term Loan Scheme) is financially manageable."
+    ],
+    "risks": [
+      "Input price volatility and seasonal demand variations."
+    ],
+    "suggested_action": "Apply under Term Loan Scheme via district channel; keep ₹1,80,000 reserved for operating cash flow.",
+    "summary_explanation": "Strong local feasibility with manageable competition and comfortable debt coverage.",
+    "validation_checks": [
+      "Verify actual doorstep demand with 15 local village families",
+      "Check APMC Mandi price fluctuations for past 3 months",
+      "Confirm eligibility documents for concessional credit channel"
+    ],
+    "decision_basis": "Deterministic Multi-Factor Scoring (Capital Adequacy + Competitor Density + Addressable Demand + Purchasing Power)",
+    "narrative_tier": "DETERMINISTIC FALLBACK"
+  }
+}

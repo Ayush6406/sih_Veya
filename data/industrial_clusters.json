@@ -1,0 +1,100 @@
+{
+  "_metadata": {
+    "source": "Year-wise Clusters Approved under MSI-CDP (2015-16 to 2024-25)",
+    "source_url": "https://www.data.gov.in/resource/year-wise-clusters-approved-under-msicdp-2015-16-2024-25",
+    "publisher": "Directorate of Industries, Government of Maharashtra",
+    "reporting_period": "2015-16 to 2024-25",
+    "geographic_level": "district_and_cluster_location",
+    "purpose_in_veya": "Identifies localized industrial and artisan ecosystems, common facility centers (CFCs), and manufacturing support infrastructure."
+  },
+  "clusters": [
+    {
+      "cluster_id": "MSICDP-PUN-01",
+      "district": "Pune",
+      "cluster_name": "Junnar Agro & Food Processing Cluster",
+      "cluster_type": "Micro Enterprise Cluster",
+      "industry": "Food Processing (Tomato, Vegetables, Spices)",
+      "location": "Narayangaon & Junnar",
+      "approval_year": 2018,
+      "status": "Operational / Common Facility Center Functional",
+      "benefits": "Cold storage testing, grading, dehydration, and packaging support for local food entrepreneurs."
+    },
+    {
+      "cluster_id": "MSICDP-PUN-02",
+      "district": "Pune",
+      "cluster_name": "Khed - Bhosari Engineering & Fabrication Cluster",
+      "cluster_type": "Small Enterprise Cluster",
+      "industry": "Small Manufacturing (Fabrication, Welding, Tooling)",
+      "location": "Khed / Chakan Outskirts",
+      "approval_year": 2019,
+      "status": "Operational",
+      "benefits": "Testing laboratory, heat treatment, advanced tooling access."
+    },
+    {
+      "cluster_id": "MSICDP-NAS-01",
+      "district": "Nashik",
+      "cluster_name": "Niphad Grape & Raisin Processing Cluster",
+      "cluster_type": "Micro & Small Cluster",
+      "industry": "Food Processing (Raisins, Dehydrated Agro)",
+      "location": "Niphad / Pimpalgaon Baswant",
+      "approval_year": 2017,
+      "status": "Operational",
+      "benefits": "Modern solar drying yards, sorting & grading machinery."
+    },
+    {
+      "cluster_id": "MSICDP-NAS-02",
+      "district": "Nashik",
+      "cluster_name": "Yeola Paithani Saree & Handloom Cluster",
+      "cluster_type": "Artisan & Handloom Cluster",
+      "industry": "Textile (Handloom & Powerloom Sarees, Zari)",
+      "location": "Yeola",
+      "approval_year": 2016,
+      "status": "Operational",
+      "benefits": "Design studio, computerized jacquard cards, raw silk yarn bank."
+    },
+    {
+      "cluster_id": "MSICDP-AHM-01",
+      "district": "Ahmednagar",
+      "cluster_name": "Sangamner Milk & Agro-Processing Cluster",
+      "cluster_type": "Micro & Small Cluster",
+      "industry": "Dairy & Food Processing",
+      "location": "Sangamner",
+      "approval_year": 2018,
+      "status": "Operational",
+      "benefits": "Bulk chilling, testing, value-added milk product packaging."
+    },
+    {
+      "cluster_id": "MSICDP-SAT-01",
+      "district": "Satara",
+      "cluster_name": "Karad Agro & Spices Cluster",
+      "cluster_type": "Micro Cluster",
+      "industry": "Food Processing (Turmeric & Ginger Polishing)",
+      "location": "Karad / Malkapur",
+      "approval_year": 2020,
+      "status": "Under Implementation",
+      "benefits": "Turmeric steaming, polishing, and moisture control center."
+    },
+    {
+      "cluster_id": "MSICDP-KOL-01",
+      "district": "Kolhapur",
+      "cluster_name": "Ichalkaranji Textile & Garment Cluster",
+      "cluster_type": "Major Textile Cluster",
+      "industry": "Textile (Weaving, Sizing, Garment Tailoring)",
+      "location": "Ichalkaranji / Hatkanangle",
+      "approval_year": 2015,
+      "status": "Operational",
+      "benefits": "Yarn testing, sizing, automated cutting and embroidery facilities."
+    },
+    {
+      "cluster_id": "MSICDP-KOL-02",
+      "district": "Kolhapur",
+      "cluster_name": "Shiroli Foundry & Engineering Cluster",
+      "cluster_type": "Industrial Cluster",
+      "industry": "Small Manufacturing (Castings, Agri Implements)",
+      "location": "Shiroli",
+      "approval_year": 2016,
+      "status": "Operational",
+      "benefits": "Pattern making, sand reclamation, metallurgy testing."
+    }
+  ]
+}

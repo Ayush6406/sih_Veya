@@ -1,0 +1,134 @@
+{
+  "_metadata": {
+    "source": "Reserve Bank of India (RBI) Database on Indian Economy (DBIE) - Branch Banking Statistics",
+    "source_url": "https://data.rbi.org.in/",
+    "publisher": "Department of Statistics and Information Management, Reserve Bank of India",
+    "reporting_date": "March 2024",
+    "geographic_level": "district",
+    "note": "Banking network indicators, branch presence, and Credit-Deposit (CD) ratios across Maharashtra districts. No fake coordinate distances are invented."
+  },
+  "districts": {
+    "Pune": {
+      "district_name": "Pune",
+      "reporting_date": "March 2024",
+      "scheduled_commercial_banks": 1845,
+      "regional_rural_banks_mgb": 78,
+      "district_central_cooperative_bank_pdcc": 294,
+      "primary_agricultural_credit_societies": 1280,
+      "total_bank_branches": 2217,
+      "banking_density_branches_per_100k_pop": 23.5,
+      "credit_deposit_ratio_percent": 84.6,
+      "lead_bank": "Bank of Maharashtra",
+      "financial_accessibility_index": 88,
+      "financial_accessibility_tier": "High Financial Infrastructure",
+      "rural_block_presence": {
+        "Junnar": {
+          "commercial_branches": 38,
+          "cooperative_branches": 24,
+          "rrb_branches": 8,
+          "banking_touchpoints_total": 70,
+          "lead_banks_active": ["Bank of Maharashtra", "State Bank of India", "Pune District Central Co-op Bank (PDCC)"]
+        },
+        "Ambegaon": {
+          "commercial_branches": 22,
+          "cooperative_branches": 18,
+          "rrb_branches": 5,
+          "banking_touchpoints_total": 45,
+          "lead_banks_active": ["Bank of Maharashtra", "State Bank of India", "PDCC Bank"]
+        }
+      }
+    },
+    "Nashik": {
+      "district_name": "Nashik",
+      "reporting_date": "March 2024",
+      "scheduled_commercial_banks": 890,
+      "regional_rural_banks_mgb": 64,
+      "district_central_cooperative_bank_pdcc": 215,
+      "primary_agricultural_credit_societies": 1120,
+      "total_bank_branches": 1169,
+      "banking_density_branches_per_100k_pop": 19.1,
+      "credit_deposit_ratio_percent": 76.2,
+      "lead_bank": "Bank of Maharashtra",
+      "financial_accessibility_index": 80,
+      "financial_accessibility_tier": "Strong Financial Infrastructure",
+      "rural_block_presence": {
+        "Niphad": {
+          "commercial_branches": 32,
+          "cooperative_branches": 22,
+          "rrb_branches": 7,
+          "banking_touchpoints_total": 61,
+          "lead_banks_active": ["Bank of Maharashtra", "State Bank of India", "NDCC Bank"]
+        }
+      }
+    },
+    "Ahmednagar": {
+      "district_name": "Ahmednagar",
+      "reporting_date": "March 2024",
+      "scheduled_commercial_banks": 720,
+      "regional_rural_banks_mgb": 58,
+      "district_central_cooperative_bank_pdcc": 286,
+      "primary_agricultural_credit_societies": 1340,
+      "total_bank_branches": 1064,
+      "banking_density_branches_per_100k_pop": 23.4,
+      "credit_deposit_ratio_percent": 74.5,
+      "lead_bank": "Central Bank of India",
+      "financial_accessibility_index": 79,
+      "financial_accessibility_tier": "Strong Cooperative & Commercial Network",
+      "rural_block_presence": {
+        "Sangamner": {
+          "commercial_branches": 30,
+          "cooperative_branches": 26,
+          "rrb_branches": 6,
+          "banking_touchpoints_total": 62,
+          "lead_banks_active": ["Central Bank of India", "State Bank of India", "ADCC Bank"]
+        }
+      }
+    },
+    "Satara": {
+      "district_name": "Satara",
+      "reporting_date": "March 2024",
+      "scheduled_commercial_banks": 540,
+      "regional_rural_banks_mgb": 42,
+      "district_central_cooperative_bank_pdcc": 298,
+      "primary_agricultural_credit_societies": 980,
+      "total_bank_branches": 880,
+      "banking_density_branches_per_100k_pop": 29.3,
+      "credit_deposit_ratio_percent": 72.8,
+      "lead_bank": "Bank of Maharashtra",
+      "financial_accessibility_index": 84,
+      "financial_accessibility_tier": "High Banking Density",
+      "rural_block_presence": {
+        "Karad": {
+          "commercial_branches": 36,
+          "cooperative_branches": 32,
+          "rrb_branches": 5,
+          "banking_touchpoints_total": 73,
+          "lead_banks_active": ["Bank of Maharashtra", "State Bank of India", "Satara DCC Bank"]
+        }
+      }
+    },
+    "Kolhapur": {
+      "district_name": "Kolhapur",
+      "reporting_date": "March 2024",
+      "scheduled_commercial_banks": 680,
+      "regional_rural_banks_mgb": 45,
+      "district_central_cooperative_bank_pdcc": 312,
+      "primary_agricultural_credit_societies": 1780,
+      "total_bank_branches": 1037,
+      "banking_density_branches_per_100k_pop": 26.8,
+      "credit_deposit_ratio_percent": 82.1,
+      "lead_bank": "Bank of India",
+      "financial_accessibility_index": 86,
+      "financial_accessibility_tier": "High Cooperative & Commercial Penetration",
+      "rural_block_presence": {
+        "Shirol": {
+          "commercial_branches": 28,
+          "cooperative_branches": 25,
+          "rrb_branches": 4,
+          "banking_touchpoints_total": 57,
+          "lead_banks_active": ["Bank of India", "State Bank of India", "KDCC Bank"]
+        }
+      }
+    }
+  }
+}

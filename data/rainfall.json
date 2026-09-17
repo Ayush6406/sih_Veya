@@ -1,0 +1,74 @@
+{
+  "_metadata": {
+    "source": "India Meteorological Department (IMD) / Mahavedh (Maha-Agri Weather Network)",
+    "source_url": "https://mahavedh.maharashtra.gov.in/",
+    "publisher": "India Meteorological Department & Department of Agriculture, Government of Maharashtra",
+    "data_year": 2023,
+    "reporting_period": "Southwest Monsoon & Annual Summary 2023",
+    "geographic_level": "district",
+    "units": "Millimeters (mm)",
+    "purpose_in_veya": "Used to compute climate risk index, water security for agro-processing & dairy fodder, and seasonal purchasing power volatility."
+  },
+  "districts": {
+    "Pune": {
+      "district_name": "Pune",
+      "year": 2023,
+      "annual_normal_mm": 912.4,
+      "annual_actual_mm": 845.2,
+      "departure_percent": -7.4,
+      "rainfall_category": "Normal (-19% to +19%)",
+      "monsoon_performance": "Adequate Kharif rainfall, good canal and dam storage (Khadakwasla, Kukadi, Manikdoh systems).",
+      "climate_risk_index": "Low to Moderate",
+      "water_security_for_agro": "High - Sustained dam irrigation in Junnar/Ambegaon blocks supporting perennial vegetable cycles.",
+      "purchasing_power_cyclicality": "Steady post-harvest liquidity peaks in October-December and March-April."
+    },
+    "Nashik": {
+      "district_name": "Nashik",
+      "year": 2023,
+      "annual_normal_mm": 1034.5,
+      "annual_actual_mm": 892.0,
+      "departure_percent": -13.8,
+      "rainfall_category": "Normal",
+      "monsoon_performance": "Favorable in Western Ghat blocks, deficit in eastern blocks (Yeola, Nandgaon); Gangapur & Darna reservoirs adequately filled.",
+      "climate_risk_index": "Moderate",
+      "water_security_for_agro": "Moderate to High - Groundwater recharge adequate for horticultural vineyards and onion storage.",
+      "purchasing_power_cyclicality": "High onion arrival liquidity in January-May."
+    },
+    "Ahmednagar": {
+      "district_name": "Ahmednagar",
+      "year": 2023,
+      "annual_normal_mm": 580.2,
+      "annual_actual_mm": 472.6,
+      "departure_percent": -18.5,
+      "rainfall_category": "Normal (Lower boundary of normal band / Rain-shadow zone)",
+      "monsoon_performance": "Dry spells in August; Pravara & Mula canal systems buffered the shortage in canal-irrigated zones.",
+      "climate_risk_index": "Moderate to High (Rain-shadow vulnerability)",
+      "water_security_for_agro": "Moderate in Sangamner/Rahuri; requires water conservation techniques like drip irrigation.",
+      "purchasing_power_cyclicality": "Sugarcane and milk procurement provide steady bi-weekly cash flow despite erratic rainfall."
+    },
+    "Satara": {
+      "district_name": "Satara",
+      "year": 2023,
+      "annual_normal_mm": 962.8,
+      "annual_actual_mm": 904.5,
+      "departure_percent": -6.1,
+      "rainfall_category": "Normal",
+      "monsoon_performance": "Heavy precipitation in Mahabaleshwar/Patan catchment; Koyna dam filled to 95% capacity.",
+      "climate_risk_index": "Low",
+      "water_security_for_agro": "Very High along Krishna and Koyna river basins; strong year-round agro and dairy production.",
+      "purchasing_power_cyclicality": "Stable year-round cash flow with turmeric/ginger harvesting boost in January-March."
+    },
+    "Kolhapur": {
+      "district_name": "Kolhapur",
+      "year": 2023,
+      "annual_normal_mm": 1784.0,
+      "annual_actual_mm": 1710.2,
+      "departure_percent": -4.1,
+      "rainfall_category": "Normal",
+      "monsoon_performance": "Robust monsoon recharge across Panchganga basin; Radhanagari & Warna dams near full capacity.",
+      "climate_risk_index": "Very Low (Excess flood risk in low-lying riverbeds in July-August)",
+      "water_security_for_agro": "Excellent - perennial water availability for sugarcane, paddy, and fodder cultivation.",
+      "purchasing_power_cyclicality": "High cash velocity driven by weekly cooperative dairy disbursements and sugarcane FRP installments."
+    }
+  }
+}

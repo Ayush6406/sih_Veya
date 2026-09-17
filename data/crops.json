@@ -1,0 +1,97 @@
+{
+  "_metadata": {
+    "source": "District-wise Season-wise Crop Production Statistics",
+    "source_url": "https://www.data.gov.in/catalog/district-wise-season-wise-crop-production-statistics-0",
+    "publisher": "Directorate of Economics and Statistics, Ministry of Agriculture & Farmers Welfare / Commissionerate of Agriculture, Maharashtra",
+    "data_year": "2022-23 (Final) & 2023-24 (Advanced Estimates)",
+    "geographic_level": "district",
+    "units": {
+      "area": "Hectares (ha)",
+      "production": "Tonnes (MT)",
+      "yield": "Kilograms per Hectare (kg/ha)"
+    },
+    "purpose_in_veya": "Used to compute local agricultural raw material availability, crop specialization, and input linkage scores for Food Processing, Dairy fodder, and Textile ventures."
+  },
+  "districts": {
+    "Pune": {
+      "district_name": "Pune",
+      "reporting_year": "2023-24",
+      "major_crops": [
+        { "crop": "Sugarcane", "season": "Kharif/Annual", "area_ha": 142000, "production_tonnes": 12450000, "yield_kg_ha": 87676, "agro_linkage": "Fodder for dairy cattle, bagasse for bio-energy" },
+        { "crop": "Soybean", "season": "Kharif", "area_ha": 86500, "production_tonnes": 142000, "yield_kg_ha": 1641, "agro_linkage": "Edible oil milling and cattle feed cake" },
+        { "crop": "Tomato", "season": "Kharif/Rabi", "area_ha": 38400, "production_tonnes": 720000, "yield_kg_ha": 18750, "agro_linkage": "Tomato puree, paste, and sauce processing (Narayangaon/Junnar hub)" },
+        { "crop": "Onion", "season": "Kharif/Late Kharif/Rabi", "area_ha": 48200, "production_tonnes": 890000, "yield_kg_ha": 18464, "agro_linkage": "Dehydration, paste, wholesale storage" },
+        { "crop": "Bajra (Pearl Millet)", "season": "Kharif", "area_ha": 58400, "production_tonnes": 68500, "yield_kg_ha": 1172, "agro_linkage": "Multi-grain flour and traditional rural bakery" },
+        { "crop": "Wheat", "season": "Rabi", "area_ha": 64200, "production_tonnes": 148000, "yield_kg_ha": 2305, "agro_linkage": "Atta flour milling and bakery supply" },
+        { "crop": "Gram (Chana)", "season": "Rabi", "area_ha": 52100, "production_tonnes": 48200, "yield_kg_ha": 925, "agro_linkage": "Besan flour milling and snack manufacturing" }
+      ],
+      "crop_specialization_index": {
+        "horticulture_vegetables": "Very High (Junnar, Ambegaon, Khed)",
+        "sugarcane_fodder": "High (Baramati, Indapur, Daund)",
+        "oilseeds_pulses": "Moderate"
+      }
+    },
+    "Nashik": {
+      "district_name": "Nashik",
+      "reporting_year": "2023-24",
+      "major_crops": [
+        { "crop": "Onion", "season": "Kharif/Rabi/Rangada", "area_ha": 184000, "production_tonnes": 3450000, "yield_kg_ha": 18750, "agro_linkage": "Lasalgaon wholesale trade, dehydration powder, cold storage" },
+        { "crop": "Grapes", "season": "Annual", "area_ha": 56000, "production_tonnes": 1120000, "yield_kg_ha": 20000, "agro_linkage": "Raisin processing (Niphad), wine, export packaging" },
+        { "crop": "Tomato", "season": "Kharif/Rabi", "area_ha": 42500, "production_tonnes": 840000, "yield_kg_ha": 19764, "agro_linkage": "Puree pouches, ketchup, canning" },
+        { "crop": "Soybean", "season": "Kharif", "area_ha": 124000, "production_tonnes": 210000, "yield_kg_ha": 1693, "agro_linkage": "Soy meal, animal nutrition" },
+        { "crop": "Maize", "season": "Kharif", "area_ha": 168000, "production_tonnes": 485000, "yield_kg_ha": 2886, "agro_linkage": "Starch manufacturing, poultry and cattle feed" }
+      ],
+      "crop_specialization_index": {
+        "horticulture_vegetables": "Extreme (Lasalgaon, Niphad, Dindori)",
+        "sugarcane_fodder": "Moderate",
+        "oilseeds_pulses": "High"
+      }
+    },
+    "Ahmednagar": {
+      "district_name": "Ahmednagar",
+      "reporting_year": "2023-24",
+      "major_crops": [
+        { "crop": "Sugarcane", "season": "Annual", "area_ha": 168000, "production_tonnes": 14200000, "yield_kg_ha": 84523, "agro_linkage": "Cooperative sugar mills, dairy green fodder" },
+        { "crop": "Cotton", "season": "Kharif", "area_ha": 142000, "production_tonnes": 68400, "yield_kg_ha": 481, "agro_linkage": "Ginning, pressing, cotton seed oil, textile spinning" },
+        { "crop": "Soybean", "season": "Kharif", "area_ha": 138000, "production_tonnes": 224000, "yield_kg_ha": 1623, "agro_linkage": "Solvent extraction, cattle feed" },
+        { "crop": "Onion", "season": "Kharif/Rabi", "area_ha": 84000, "production_tonnes": 1450000, "yield_kg_ha": 17261, "agro_linkage": "Wholesale trade, grading, packing" },
+        { "crop": "Pomegranate", "season": "Ambe/Mrig Bahar", "area_ha": 28400, "production_tonnes": 312000, "yield_kg_ha": 10985, "agro_linkage": "Juice, arils, export packaging (Sangamner, Rahata)" }
+      ],
+      "crop_specialization_index": {
+        "horticulture_vegetables": "High",
+        "sugarcane_fodder": "Very High",
+        "oilseeds_pulses": "High"
+      }
+    },
+    "Satara": {
+      "district_name": "Satara",
+      "reporting_year": "2023-24",
+      "major_crops": [
+        { "crop": "Sugarcane", "season": "Annual", "area_ha": 118000, "production_tonnes": 10800000, "yield_kg_ha": 91525, "agro_linkage": "Dairy fodder, sugar by-products" },
+        { "crop": "Soybean", "season": "Kharif", "area_ha": 94000, "production_tonnes": 168000, "yield_kg_ha": 1787, "agro_linkage": "Edible oil and cattle feed" },
+        { "crop": "Turmeric", "season": "Kharif", "area_ha": 12500, "production_tonnes": 84000, "yield_kg_ha": 6720, "agro_linkage": "Turmeric polishing, grinding, curcumin extraction" },
+        { "crop": "Ginger", "season": "Kharif", "area_ha": 14200, "production_tonnes": 198000, "yield_kg_ha": 13943, "agro_linkage": "Dry ginger (sonth), ginger paste, candy" }
+      ],
+      "crop_specialization_index": {
+        "horticulture_vegetables": "High (Spices & Fruits)",
+        "sugarcane_fodder": "Very High",
+        "oilseeds_pulses": "Moderate"
+      }
+    },
+    "Kolhapur": {
+      "district_name": "Kolhapur",
+      "reporting_year": "2023-24",
+      "major_crops": [
+        { "crop": "Sugarcane", "season": "Annual", "area_ha": 162000, "production_tonnes": 16500000, "yield_kg_ha": 101851, "agro_linkage": "Highest cane yield in state, organic jaggery (Kolhapuri Gur)" },
+        { "crop": "Paddy (Rice)", "season": "Kharif", "area_ha": 104000, "production_tonnes": 298000, "yield_kg_ha": 2865, "agro_linkage": "Rice milling, poha (flattened rice), husk fuel" },
+        { "crop": "Soybean", "season": "Kharif", "area_ha": 62000, "production_tonnes": 118000, "yield_kg_ha": 1903, "agro_linkage": "Cattle feed, soy milk" },
+        { "crop": "Groundnut", "season": "Kharif", "area_ha": 34000, "production_tonnes": 54000, "yield_kg_ha": 1588, "agro_linkage": "Cold-press peanut oil, chikki manufacturing" }
+      ],
+      "crop_specialization_index": {
+        "horticulture_vegetables": "Moderate",
+        "sugarcane_fodder": "Extreme (Top cane and jaggery cluster in India)",
+        "oilseeds_pulses": "Moderate"
+      }
+    }
+  }
+}

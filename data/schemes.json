@@ -1,0 +1,172 @@
+{
+  "_metadata": {
+    "source": "Official Central & State Government Scheme Operational Guidelines",
+    "sources": [
+      { "scheme": "PMEGP", "url": "https://www.kviconline.gov.in/pmegp/pmegpweb/index.jsp", "ministry": "Ministry of MSME, Govt of India / KVIC" },
+      { "scheme": "CMEGP", "url": "https://cmegp.gov.in/", "ministry": "Industries Department, Government of Maharashtra" },
+      { "scheme": "PMFME", "url": "https://pmfme.mofpi.gov.in/", "ministry": "Ministry of Food Processing Industries (MoFPI), Govt of India" },
+      { "scheme": "PM Vishwakarma", "url": "https://pmvishwakarma.gov.in/", "ministry": "Ministry of MSME & Ministry of Skill Development, Govt of India" },
+      { "scheme": "MUDRA (PMMY)", "url": "https://www.mudra.org.in/", "ministry": "Department of Financial Services, Ministry of Finance, Govt of India" }
+    ],
+    "guidelines_version": "2024 Guidelines",
+    "note": "Subsidies, project cost ceilings, promoter contribution requirements, and category eligibility are aligned strictly with official operational manuals."
+  },
+  "schemes": [
+    {
+      "id": "pmegp",
+      "scheme_code": "PMEGP",
+      "scheme_name": "Prime Minister's Employment Generation Programme",
+      "sponsoring_agency": "Khadi and Village Industries Commission (KVIC), Ministry of MSME, Govt of India",
+      "implementing_agency_state": "KVIB / District Industries Centre (DIC) Maharashtra",
+      "target_beneficiaries": "Rural and urban micro-entrepreneurs, unemployed youth, SHGs, special categories",
+      "max_project_cost": {
+        "manufacturing": 5000000,
+        "services": 2000000
+      },
+      "promoter_contribution_percent": {
+        "general": 10,
+        "special_categories": 5
+      },
+      "margin_money_subsidy_percent": {
+        "rural_special_categories": 35,
+        "rural_general": 25,
+        "urban_special_categories": 25,
+        "urban_general": 15
+      },
+      "interest_subvention_percent": 0.0,
+      "lock_in_period_years": 3,
+      "eligible_business_categories": ["Dairy", "Textile", "Food Processing", "Small Manufacturing"],
+      "eligibility_criteria": {
+        "min_age": 18,
+        "min_education": "8th Pass for manufacturing projects above ₹10 Lakhs and service projects above ₹5 Lakhs",
+        "family_restriction": "Only one person from one family is eligible"
+      },
+      "official_guidelines_reference": "Operational Guidelines for Prime Minister's Employment Generation Programme (PMEGP) Revised 2022-2026, Ministry of MSME."
+    },
+    {
+      "id": "cmegp",
+      "scheme_code": "CMEGP",
+      "scheme_name": "Chief Minister Employment Generation Programme (Maharashtra)",
+      "sponsoring_agency": "Industries Department, Government of Maharashtra",
+      "implementing_agency_state": "Directorate of Industries, Maharashtra & District Industries Centres (DIC)",
+      "target_beneficiaries": "Domiciled youth of Maharashtra establishing new micro-enterprises in manufacturing or service sectors",
+      "max_project_cost": {
+        "manufacturing": 5000000,
+        "services": 2000000
+      },
+      "promoter_contribution_percent": {
+        "general": 10,
+        "special_categories": 5
+      },
+      "margin_money_subsidy_percent": {
+        "rural_special_categories": 35,
+        "rural_general": 25,
+        "urban_special_categories": 25,
+        "urban_general": 15
+      },
+      "interest_subvention_percent": 0.0,
+      "eligible_business_categories": ["Dairy", "Textile", "Food Processing", "Small Manufacturing", "Grocery Retail"],
+      "eligibility_criteria": {
+        "min_age": 18,
+        "max_age": 45,
+        "domicile": "Must be permanent resident / domicile of Maharashtra State",
+        "min_education": "7th standard pass for project cost up to ₹10 Lakhs; 10th standard pass for above ₹10 Lakhs"
+      },
+      "official_guidelines_reference": "Government Resolution (GR) Industries Department, Government of Maharashtra No. CMEGP-2019/C.R. 29/Ind-7."
+    },
+    {
+      "id": "pmfme",
+      "scheme_code": "PMFME",
+      "scheme_name": "PM Formalisation of Micro Food Processing Enterprises Scheme",
+      "sponsoring_agency": "Ministry of Food Processing Industries (MoFPI), Government of India",
+      "implementing_agency_state": "Maharashtra State Agricultural Marketing Board (MSAMB) & Dept of Agriculture, Maharashtra",
+      "target_beneficiaries": "Individual micro food processors, FPOs, SHGs, and Producer Cooperatives under ODOP (One District One Product)",
+      "max_project_cost": {
+        "manufacturing": 3000000,
+        "services": 1500000
+      },
+      "promoter_contribution_percent": {
+        "general": 10,
+        "special_categories": 10
+      },
+      "margin_money_subsidy_percent": {
+        "standard": 35,
+        "max_subsidy_cap_inr": 1000000
+      },
+      "interest_subvention_percent": 0.0,
+      "eligible_business_categories": ["Food Processing", "Dairy"],
+      "eligibility_criteria": {
+        "min_age": 18,
+        "ownership": "Sole proprietorship, partnership, or FPO engaged in food processing",
+        "odop_preference": "Projects under One District One Product (ODOP) receive priority processing"
+      },
+      "official_guidelines_reference": "Operational Guidelines for PM Formalisation of Micro Food Processing Enterprises (PMFME) Scheme, MoFPI."
+    },
+    {
+      "id": "pm_vishwakarma",
+      "scheme_code": "PM-VISHWAKARMA",
+      "scheme_name": "PM Vishwakarma Scheme",
+      "sponsoring_agency": "Ministry of MSME & Ministry of Skill Development and Entrepreneurship (MSDE), Govt of India",
+      "implementing_agency_state": "District Industries Centre & Common Service Centres (CSC)",
+      "target_beneficiaries": "Traditional artisans and craftspeople working with hands and tools across 18 designated trades (including Tailors / Darzi, Blacksmiths, Potters)",
+      "max_project_cost": {
+        "tranche_1": 100000,
+        "tranche_2": 200000,
+        "total_credit_support": 300000
+      },
+      "promoter_contribution_percent": {
+        "general": 0,
+        "special_categories": 0
+      },
+      "margin_money_subsidy_percent": {
+        "toolkit_incentive_inr": 15000,
+        "digital_transaction_incentive": "₹1 per transaction up to 100 transactions/month"
+      },
+      "interest_subvention_percent": 8.0,
+      "effective_concessional_interest_rate_percent": 5.0,
+      "collateral_requirement": "Collateral-free enterprise credit guarantee provided by Govt of India",
+      "eligible_business_categories": ["Textile", "Small Manufacturing"],
+      "eligible_trades": ["Darzi (Tailor)", "Blacksmith (Lohar)", "Carpenter (Suthar)", "Mason (Rajmistri)", "Basket/Mat maker"],
+      "eligibility_criteria": {
+        "min_age": 18,
+        "occupation": "Must be engaged in one of the 18 recognized traditional artisanal trades",
+        "family_restriction": "One member per family"
+      },
+      "official_guidelines_reference": "PM Vishwakarma Operational Guidelines, Ministry of MSME, Govt of India (September 2023)."
+    },
+    {
+      "id": "mudra",
+      "scheme_code": "MUDRA (PMMY)",
+      "scheme_name": "Pradhan Mantri Mudra Yojana",
+      "sponsoring_agency": "Department of Financial Services, Ministry of Finance, Government of India",
+      "implementing_agency_state": "Commercial Banks, Regional Rural Banks (RRBs), Small Finance Banks, and NBFCs",
+      "target_beneficiaries": "Non-corporate, non-farm small and micro enterprises seeking micro-credit",
+      "tiers": {
+        "shishu": { "loan_limit_inr": 50000, "suitable_for": "Initial micro setup, tools purchase" },
+        "kishore": { "loan_limit_inr": 500000, "suitable_for": "Working capital and machinery upgrade" },
+        "tarun": { "loan_limit_inr": 1000000, "suitable_for": "Expansion of established profitable micro-units" }
+      },
+      "max_project_cost": {
+        "manufacturing": 1000000,
+        "services": 1000000
+      },
+      "promoter_contribution_percent": {
+        "shishu": 0,
+        "kishore_tarun": 10
+      },
+      "margin_money_subsidy_percent": {
+        "subsidy": 0,
+        "credit_guarantee": "100% Credit Guarantee under CGFMU (Credit Guarantee Fund for Micro Units)"
+      },
+      "interest_subvention_percent": 0.0,
+      "collateral_requirement": "Strictly collateral-free under RBI and DFS directives",
+      "eligible_business_categories": ["Dairy", "Textile", "Grocery Retail", "Food Processing", "Small Manufacturing"],
+      "eligibility_criteria": {
+        "min_age": 18,
+        "cibil_track": "Satisfactory credit history, non-defaulter with any commercial or cooperative bank",
+        "target_sector": "Micro manufacturing, trading, retail or service establishment"
+      },
+      "official_guidelines_reference": "Operational Guidelines for Pradhan Mantri Mudra Yojana (PMMY), Micro Units Development and Refinance Agency Ltd (MUDRA)."
+    }
+  ]
+}

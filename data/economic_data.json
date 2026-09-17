@@ -1,0 +1,131 @@
+{
+  "_metadata": {
+    "source": "District Domestic Product of Maharashtra 2011-12 to 2023-24",
+    "source_url": "https://www.mahades.maharashtra.gov.in/files/report/DDP%20Final%20Pub_2025_New.pdf",
+    "publisher": "Directorate of Economics and Statistics (DES), Planning Department, Government of Maharashtra",
+    "publication_year": 2024,
+    "base_year": "2011-12",
+    "reporting_year": "2023-24 (First Revised Estimates / Current Prices)",
+    "geographic_level": "district",
+    "currency": "INR (₹)",
+    "note": "District domestic product, per capita income, and sectoral contribution shares at current prices."
+  },
+  "state_benchmarks": {
+    "state_name": "Maharashtra",
+    "gross_state_domestic_product_cr_inr": 4044251,
+    "per_capita_income_inr": 252389,
+    "agriculture_allied_share_percent": 12.1,
+    "industry_manufacturing_share_percent": 30.6,
+    "services_share_percent": 57.3
+  },
+  "districts": {
+    "Pune": {
+      "district_name": "Pune",
+      "year": "2023-24",
+      "gross_district_domestic_product_cr_inr": 448210,
+      "net_district_domestic_product_cr_inr": 398450,
+      "per_capita_income_inr": 316742,
+      "agriculture_contribution_percent": 6.8,
+      "manufacturing_contribution_percent": 38.4,
+      "services_contribution_percent": 54.8,
+      "per_capita_income_tier": "High (Above State Avg)",
+      "economic_vitality_score": 88
+    },
+    "Nashik": {
+      "district_name": "Nashik",
+      "year": "2023-24",
+      "gross_district_domestic_product_cr_inr": 182400,
+      "net_district_domestic_product_cr_inr": 162100,
+      "per_capita_income_inr": 228450,
+      "agriculture_contribution_percent": 16.4,
+      "manufacturing_contribution_percent": 32.1,
+      "services_contribution_percent": 51.5,
+      "per_capita_income_tier": "Moderate",
+      "economic_vitality_score": 75
+    },
+    "Ahmednagar": {
+      "district_name": "Ahmednagar",
+      "year": "2023-24",
+      "gross_district_domestic_product_cr_inr": 124800,
+      "net_district_domestic_product_cr_inr": 110900,
+      "per_capita_income_inr": 209870,
+      "agriculture_contribution_percent": 21.2,
+      "manufacturing_contribution_percent": 27.5,
+      "services_contribution_percent": 51.3,
+      "per_capita_income_tier": "Moderate",
+      "economic_vitality_score": 70
+    },
+    "Satara": {
+      "district_name": "Satara",
+      "year": "2023-24",
+      "gross_district_domestic_product_cr_inr": 95400,
+      "net_district_domestic_product_cr_inr": 84900,
+      "per_capita_income_inr": 241600,
+      "agriculture_contribution_percent": 17.8,
+      "manufacturing_contribution_percent": 31.2,
+      "services_contribution_percent": 51.0,
+      "per_capita_income_tier": "Moderate to High",
+      "economic_vitality_score": 76
+    },
+    "Kolhapur": {
+      "district_name": "Kolhapur",
+      "year": "2023-24",
+      "gross_district_domestic_product_cr_inr": 134200,
+      "net_district_domestic_product_cr_inr": 119800,
+      "per_capita_income_inr": 264300,
+      "agriculture_contribution_percent": 15.2,
+      "manufacturing_contribution_percent": 34.6,
+      "services_contribution_percent": 50.2,
+      "per_capita_income_tier": "High (Above State Avg)",
+      "economic_vitality_score": 82
+    },
+    "Solapur": {
+      "district_name": "Solapur",
+      "year": "2023-24",
+      "gross_district_domestic_product_cr_inr": 109800,
+      "net_district_domestic_product_cr_inr": 97400,
+      "per_capita_income_inr": 196200,
+      "agriculture_contribution_percent": 19.5,
+      "manufacturing_contribution_percent": 26.8,
+      "services_contribution_percent": 53.7,
+      "per_capita_income_tier": "Moderate",
+      "economic_vitality_score": 67
+    },
+    "Chhatrapati Sambhajinagar": {
+      "district_name": "Chhatrapati Sambhajinagar",
+      "year": "2023-24",
+      "gross_district_domestic_product_cr_inr": 118400,
+      "net_district_domestic_product_cr_inr": 105200,
+      "per_capita_income_inr": 234100,
+      "agriculture_contribution_percent": 14.1,
+      "manufacturing_contribution_percent": 35.8,
+      "services_contribution_percent": 50.1,
+      "per_capita_income_tier": "Moderate",
+      "economic_vitality_score": 74
+    },
+    "Amravati": {
+      "district_name": "Amravati",
+      "year": "2023-24",
+      "gross_district_domestic_product_cr_inr": 72100,
+      "net_district_domestic_product_cr_inr": 64100,
+      "per_capita_income_inr": 188400,
+      "agriculture_contribution_percent": 23.4,
+      "manufacturing_contribution_percent": 22.1,
+      "services_contribution_percent": 54.5,
+      "per_capita_income_tier": "Emerging",
+      "economic_vitality_score": 64
+    },
+    "Nagpur": {
+      "district_name": "Nagpur",
+      "year": "2023-24",
+      "gross_district_domestic_product_cr_inr": 196800,
+      "net_district_domestic_product_cr_inr": 174900,
+      "per_capita_income_inr": 298200,
+      "agriculture_contribution_percent": 8.5,
+      "manufacturing_contribution_percent": 31.4,
+      "services_contribution_percent": 60.1,
+      "per_capita_income_tier": "High",
+      "economic_vitality_score": 84
+    }
+  }
+}

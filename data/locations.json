@@ -1,0 +1,554 @@
+{
+  "_metadata": {
+    "source": "Local Government Directory (LGD) - Ministry of Panchayati Raj, Government of India",
+    "source_url": "https://lgdirectory.gov.in/demo/downloadDirectory.do",
+    "data_year": 2024,
+    "state_name": "Maharashtra",
+    "state_code": "27",
+    "state_lgd_code": 27,
+    "geographic_level": "administrative_hierarchy",
+    "description": "Standardized administrative hierarchy for Maharashtra covering districts, sub-districts (tehsils/blocks), and villages with official LGD and Census codes."
+  },
+  "states": [
+    {
+      "state_id": "MH",
+      "state_name": "Maharashtra",
+      "state_code": "27",
+      "state_lgd_code": 27,
+      "districts": [
+        {
+          "district_id": "MH-PUN",
+          "district_name": "Pune",
+          "district_lgd_code": 491,
+          "census_2011_code": "521",
+          "headquarters": "Pune",
+          "division": "Pune",
+          "sub_districts": [
+            {
+              "sub_district_id": "MH-PUN-JUN",
+              "sub_district_name": "Junnar",
+              "sub_district_lgd_code": 4192,
+              "census_2011_code": "04192",
+              "villages": [
+                {
+                  "village_id": "MH-PUN-JUN-555621",
+                  "village_name": "Otur",
+                  "village_lgd_code": 555621,
+                  "census_2011_code": "555621",
+                  "pincode": "410502",
+                  "panchayat_name": "Otur Gram Panchayat",
+                  "nearest_apmc": "Junnar / Otur Sub-Market Yard"
+                },
+                {
+                  "village_id": "MH-PUN-JUN-555642",
+                  "village_name": "Narayangaon",
+                  "village_lgd_code": 555642,
+                  "census_2011_code": "555642",
+                  "pincode": "410504",
+                  "panchayat_name": "Narayangaon Gram Panchayat",
+                  "nearest_apmc": "Narayangaon APMC"
+                },
+                {
+                  "village_id": "MH-PUN-JUN-555610",
+                  "village_name": "Junnar Rural",
+                  "village_lgd_code": 555610,
+                  "census_2011_code": "555610",
+                  "pincode": "410502",
+                  "panchayat_name": "Junnar Rural Cluster",
+                  "nearest_apmc": "Junnar APMC"
+                },
+                {
+                  "village_id": "MH-PUN-JUN-555633",
+                  "village_name": "Alephata",
+                  "village_lgd_code": 555633,
+                  "census_2011_code": "555633",
+                  "pincode": "412411",
+                  "panchayat_name": "Ale Gram Panchayat",
+                  "nearest_apmc": "Alephata Sub-Market"
+                },
+                {
+                  "village_id": "MH-PUN-JUN-555605",
+                  "village_name": "Dingore",
+                  "village_lgd_code": 555605,
+                  "census_2011_code": "555605",
+                  "pincode": "410502",
+                  "panchayat_name": "Dingore Gram Panchayat",
+                  "nearest_apmc": "Otur Sub-Market Yard"
+                }
+              ]
+            },
+            {
+              "sub_district_id": "MH-PUN-AMB",
+              "sub_district_name": "Ambegaon",
+              "sub_district_lgd_code": 4191,
+              "census_2011_code": "04191",
+              "villages": [
+                {
+                  "village_id": "MH-PUN-AMB-555734",
+                  "village_name": "Manchar",
+                  "village_lgd_code": 555734,
+                  "census_2011_code": "555734",
+                  "pincode": "410503",
+                  "panchayat_name": "Manchar Gram Panchayat",
+                  "nearest_apmc": "Manchar APMC"
+                },
+                {
+                  "village_id": "MH-PUN-AMB-555710",
+                  "village_name": "Ghodegaon",
+                  "village_lgd_code": 555710,
+                  "census_2011_code": "555710",
+                  "pincode": "412408",
+                  "panchayat_name": "Ghodegaon Gram Panchayat",
+                  "nearest_apmc": "Ghodegaon Sub-Market"
+                }
+              ]
+            },
+            {
+              "sub_district_id": "MH-PUN-KHD",
+              "sub_district_name": "Khed (Rajgurunagar)",
+              "sub_district_lgd_code": 4193,
+              "census_2011_code": "04193",
+              "villages": [
+                {
+                  "village_id": "MH-PUN-KHD-555801",
+                  "village_name": "Rajgurunagar (Khed Rural)",
+                  "village_lgd_code": 555801,
+                  "census_2011_code": "555801",
+                  "pincode": "410505",
+                  "panchayat_name": "Khed Rural Panchayat",
+                  "nearest_apmc": "Khed APMC"
+                },
+                {
+                  "village_id": "MH-PUN-KHD-555812",
+                  "village_name": "Chakan Rural",
+                  "village_lgd_code": 555812,
+                  "census_2011_code": "555812",
+                  "pincode": "410501",
+                  "panchayat_name": "Chakan Outskirts Panchayat",
+                  "nearest_apmc": "Chakan APMC"
+                }
+              ]
+            },
+            {
+              "sub_district_id": "MH-PUN-BAR",
+              "sub_district_name": "Baramati",
+              "sub_district_lgd_code": 4200,
+              "census_2011_code": "04200",
+              "villages": [
+                {
+                  "village_id": "MH-PUN-BAR-556410",
+                  "village_name": "Malegaon Budruk",
+                  "village_lgd_code": 556410,
+                  "census_2011_code": "556410",
+                  "pincode": "413115",
+                  "panchayat_name": "Malegaon Bk Gram Panchayat",
+                  "nearest_apmc": "Baramati APMC"
+                },
+                {
+                  "village_id": "MH-PUN-BAR-556401",
+                  "village_name": "Baramati Rural",
+                  "village_lgd_code": 556401,
+                  "census_2011_code": "556401",
+                  "pincode": "413102",
+                  "panchayat_name": "Baramati Rural Cluster",
+                  "nearest_apmc": "Baramati APMC"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "district_id": "MH-NAS",
+          "district_name": "Nashik",
+          "district_lgd_code": 488,
+          "census_2011_code": "516",
+          "headquarters": "Nashik",
+          "division": "Nashik",
+          "sub_districts": [
+            {
+              "sub_district_id": "MH-NAS-NIP",
+              "sub_district_name": "Niphad",
+              "sub_district_lgd_code": 4157,
+              "census_2011_code": "04157",
+              "villages": [
+                {
+                  "village_id": "MH-NAS-NIP-551230",
+                  "village_name": "Lasalgaon",
+                  "village_lgd_code": 551230,
+                  "census_2011_code": "551230",
+                  "pincode": "422306",
+                  "panchayat_name": "Lasalgaon Gram Panchayat",
+                  "nearest_apmc": "Lasalgaon APMC (Asia's Largest Onion Market)"
+                },
+                {
+                  "village_id": "MH-NAS-NIP-551210",
+                  "village_name": "Pimpalgaon Baswant",
+                  "village_lgd_code": 551210,
+                  "census_2011_code": "551210",
+                  "pincode": "422209",
+                  "panchayat_name": "Pimpalgaon Baswant Gram Panchayat",
+                  "nearest_apmc": "Pimpalgaon APMC"
+                },
+                {
+                  "village_id": "MH-NAS-NIP-551201",
+                  "village_name": "Niphad Rural",
+                  "village_lgd_code": 551201,
+                  "census_2011_code": "551201",
+                  "pincode": "422303",
+                  "panchayat_name": "Niphad Cluster",
+                  "nearest_apmc": "Niphad APMC"
+                }
+              ]
+            },
+            {
+              "sub_district_id": "MH-NAS-SIN",
+              "sub_district_name": "Sinnar",
+              "sub_district_lgd_code": 4158,
+              "census_2011_code": "04158",
+              "villages": [
+                {
+                  "village_id": "MH-NAS-SIN-551340",
+                  "village_name": "Sinnar Rural",
+                  "village_lgd_code": 551340,
+                  "census_2011_code": "551340",
+                  "pincode": "422103",
+                  "panchayat_name": "Sinnar Rural Panchayat",
+                  "nearest_apmc": "Sinnar APMC"
+                },
+                {
+                  "village_id": "MH-NAS-SIN-551355",
+                  "village_name": "Musalgaon",
+                  "village_lgd_code": 551355,
+                  "census_2011_code": "551355",
+                  "pincode": "422112",
+                  "panchayat_name": "Musalgaon Gram Panchayat",
+                  "nearest_apmc": "Sinnar APMC"
+                }
+              ]
+            },
+            {
+              "sub_district_id": "MH-NAS-DIN",
+              "sub_district_name": "Dindori",
+              "sub_district_lgd_code": 4155,
+              "census_2011_code": "04155",
+              "villages": [
+                {
+                  "village_id": "MH-NAS-DIN-551020",
+                  "village_name": "Dindori Rural",
+                  "village_lgd_code": 551020,
+                  "census_2011_code": "551020",
+                  "pincode": "422202",
+                  "panchayat_name": "Dindori Gram Panchayat",
+                  "nearest_apmc": "Dindori APMC"
+                },
+                {
+                  "village_id": "MH-NAS-DIN-551045",
+                  "village_name": "Vani",
+                  "village_lgd_code": 551045,
+                  "census_2011_code": "551045",
+                  "pincode": "422215",
+                  "panchayat_name": "Vani Gram Panchayat",
+                  "nearest_apmc": "Vani Sub-Market"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "district_id": "MH-AHM",
+          "district_name": "Ahmednagar (Ahilyanagar)",
+          "district_lgd_code": 489,
+          "census_2011_code": "522",
+          "headquarters": "Ahmednagar",
+          "division": "Nashik",
+          "sub_districts": [
+            {
+              "sub_district_id": "MH-AHM-SNG",
+              "sub_district_name": "Sangamner",
+              "sub_district_lgd_code": 4166,
+              "census_2011_code": "04166",
+              "villages": [
+                {
+                  "village_id": "MH-AHM-SNG-552101",
+                  "village_name": "Sangamner Rural",
+                  "village_lgd_code": 552101,
+                  "census_2011_code": "552101",
+                  "pincode": "422605",
+                  "panchayat_name": "Sangamner Rural Cluster",
+                  "nearest_apmc": "Sangamner APMC"
+                },
+                {
+                  "village_id": "MH-AHM-SNG-552120",
+                  "village_name": "Ghulewadi",
+                  "village_lgd_code": 552120,
+                  "census_2011_code": "552120",
+                  "pincode": "422608",
+                  "panchayat_name": "Ghulewadi Gram Panchayat",
+                  "nearest_apmc": "Sangamner APMC"
+                }
+              ]
+            },
+            {
+              "sub_district_id": "MH-AHM-RAH",
+              "sub_district_name": "Rahata",
+              "sub_district_lgd_code": 4168,
+              "census_2011_code": "04168",
+              "villages": [
+                {
+                  "village_id": "MH-AHM-RAH-552310",
+                  "village_name": "Shirdi Rural",
+                  "village_lgd_code": 552310,
+                  "census_2011_code": "552310",
+                  "pincode": "423109",
+                  "panchayat_name": "Shirdi Rural Cluster",
+                  "nearest_apmc": "Rahata APMC"
+                },
+                {
+                  "village_id": "MH-AHM-RAH-552301",
+                  "village_name": "Rahata Rural",
+                  "village_lgd_code": 552301,
+                  "census_2011_code": "552301",
+                  "pincode": "423107",
+                  "panchayat_name": "Rahata Panchayat",
+                  "nearest_apmc": "Rahata APMC"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "district_id": "MH-SAT",
+          "district_name": "Satara",
+          "district_lgd_code": 494,
+          "census_2011_code": "527",
+          "headquarters": "Satara",
+          "division": "Pune",
+          "sub_districts": [
+            {
+              "sub_district_id": "MH-SAT-KRD",
+              "sub_district_name": "Karad",
+              "sub_district_lgd_code": 4235,
+              "census_2011_code": "04235",
+              "villages": [
+                {
+                  "village_id": "MH-SAT-KRD-561210",
+                  "village_name": "Malkapur Rural",
+                  "village_lgd_code": 561210,
+                  "census_2011_code": "561210",
+                  "pincode": "415539",
+                  "panchayat_name": "Malkapur Panchayat",
+                  "nearest_apmc": "Karad APMC"
+                },
+                {
+                  "village_id": "MH-SAT-KRD-561201",
+                  "village_name": "Karad Rural",
+                  "village_lgd_code": 561201,
+                  "census_2011_code": "561201",
+                  "pincode": "415110",
+                  "panchayat_name": "Karad Cluster",
+                  "nearest_apmc": "Karad APMC"
+                }
+              ]
+            },
+            {
+              "sub_district_id": "MH-SAT-PHL",
+              "sub_district_name": "Phaltan",
+              "sub_district_lgd_code": 4232,
+              "census_2011_code": "04232",
+              "villages": [
+                {
+                  "village_id": "MH-SAT-PHL-560901",
+                  "village_name": "Phaltan Rural",
+                  "village_lgd_code": 560901,
+                  "census_2011_code": "560901",
+                  "pincode": "415523",
+                  "panchayat_name": "Phaltan Rural Cluster",
+                  "nearest_apmc": "Phaltan APMC"
+                },
+                {
+                  "village_id": "MH-SAT-PHL-560925",
+                  "village_name": "Lonand",
+                  "village_lgd_code": 560925,
+                  "census_2011_code": "560925",
+                  "pincode": "415521",
+                  "panchayat_name": "Lonand Gram Panchayat",
+                  "nearest_apmc": "Lonand Sub-Market"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "district_id": "MH-KOL",
+          "district_name": "Kolhapur",
+          "district_lgd_code": 480,
+          "census_2011_code": "530",
+          "headquarters": "Kolhapur",
+          "division": "Pune",
+          "sub_districts": [
+            {
+              "sub_district_id": "MH-KOL-SHR",
+              "sub_district_name": "Shirol",
+              "sub_district_lgd_code": 4078,
+              "census_2011_code": "04078",
+              "villages": [
+                {
+                  "village_id": "MH-KOL-SHR-566810",
+                  "village_name": "Jaysingpur Rural",
+                  "village_lgd_code": 566810,
+                  "census_2011_code": "566810",
+                  "pincode": "416101",
+                  "panchayat_name": "Jaysingpur Outskirts",
+                  "nearest_apmc": "Jaysingpur APMC"
+                },
+                {
+                  "village_id": "MH-KOL-SHR-566801",
+                  "village_name": "Shirol Rural",
+                  "village_lgd_code": 566801,
+                  "census_2011_code": "566801",
+                  "pincode": "416103",
+                  "panchayat_name": "Shirol Panchayat",
+                  "nearest_apmc": "Shirol Sub-Market"
+                }
+              ]
+            },
+            {
+              "sub_district_id": "MH-KOL-HAT",
+              "sub_district_name": "Hatkanangle",
+              "sub_district_lgd_code": 4077,
+              "census_2011_code": "04077",
+              "villages": [
+                {
+                  "village_id": "MH-KOL-HAT-566620",
+                  "village_name": "Ichalkaranji Rural",
+                  "village_lgd_code": 566620,
+                  "census_2011_code": "566620",
+                  "pincode": "416115",
+                  "panchayat_name": "Ichalkaranji Outskirts",
+                  "nearest_apmc": "Ichalkaranji APMC"
+                },
+                {
+                  "village_id": "MH-KOL-HAT-566640",
+                  "village_name": "Hupari",
+                  "village_lgd_code": 566640,
+                  "census_2011_code": "566640",
+                  "pincode": "416203",
+                  "panchayat_name": "Hupari Gram Panchayat",
+                  "nearest_apmc": "Hupari Silver & Trade Market"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "district_id": "MH-SOL",
+          "district_name": "Solapur",
+          "district_lgd_code": 497,
+          "census_2011_code": "526",
+          "headquarters": "Solapur",
+          "division": "Pune",
+          "sub_districts": [
+            {
+              "sub_district_id": "MH-SOL-PAN",
+              "sub_district_name": "Pandharpur",
+              "sub_district_lgd_code": 4260,
+              "census_2011_code": "04260",
+              "villages": [
+                {
+                  "village_id": "MH-SOL-PAN-563501",
+                  "village_name": "Pandharpur Rural",
+                  "village_lgd_code": 563501,
+                  "census_2011_code": "563501",
+                  "pincode": "413304",
+                  "panchayat_name": "Pandharpur Rural Cluster",
+                  "nearest_apmc": "Pandharpur APMC"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "district_id": "MH-CSN",
+          "district_name": "Chhatrapati Sambhajinagar",
+          "district_lgd_code": 470,
+          "census_2011_code": "515",
+          "headquarters": "Chhatrapati Sambhajinagar",
+          "division": "Aurangabad",
+          "sub_districts": [
+            {
+              "sub_district_id": "MH-CSN-PAI",
+              "sub_district_name": "Paithan",
+              "sub_district_lgd_code": 3975,
+              "census_2011_code": "03975",
+              "villages": [
+                {
+                  "village_id": "MH-CSN-PAI-546201",
+                  "village_name": "Paithan Rural",
+                  "village_lgd_code": 546201,
+                  "census_2011_code": "546201",
+                  "pincode": "431107",
+                  "panchayat_name": "Paithan Rural Cluster",
+                  "nearest_apmc": "Paithan APMC"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "district_id": "MH-AMR",
+          "district_name": "Amravati",
+          "district_lgd_code": 468,
+          "census_2011_code": "503",
+          "headquarters": "Amravati",
+          "division": "Amravati",
+          "sub_districts": [
+            {
+              "sub_district_id": "MH-AMR-ACH",
+              "sub_district_name": "Achalpur",
+              "sub_district_lgd_code": 3955,
+              "census_2011_code": "03955",
+              "villages": [
+                {
+                  "village_id": "MH-AMR-ACH-531201",
+                  "village_name": "Achalpur Rural",
+                  "village_lgd_code": 531201,
+                  "census_2011_code": "531201",
+                  "pincode": "444806",
+                  "panchayat_name": "Achalpur Rural Cluster",
+                  "nearest_apmc": "Achalpur APMC"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "district_id": "MH-NAG",
+          "district_name": "Nagpur",
+          "district_lgd_code": 486,
+          "census_2011_code": "505",
+          "headquarters": "Nagpur",
+          "division": "Nagpur",
+          "sub_districts": [
+            {
+              "sub_district_id": "MH-NAG-KAT",
+              "sub_district_name": "Katol",
+              "sub_district_lgd_code": 4140,
+              "census_2011_code": "04140",
+              "villages": [
+                {
+                  "village_id": "MH-NAG-KAT-535101",
+                  "village_name": "Katol Rural",
+                  "village_lgd_code": 535101,
+                  "census_2011_code": "535101",
+                  "pincode": "441302",
+                  "panchayat_name": "Katol Rural Cluster",
+                  "nearest_apmc": "Katol Orange APMC"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "name": "VEYA — Rural Business Advisory Assistant",
+  "description": "AI-driven hyper-local business feasibility, consumer purchasing power analysis, deterministic concessional financing, and dual Go/No-Go & Credibility scoring for rural micro-entrepreneurs.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
