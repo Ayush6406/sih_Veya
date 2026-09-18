@@ -1,5 +1,6 @@
 import React from "react";
 import { Database, ShieldCheck, HelpCircle, ArrowRight } from "lucide-react";
+import { VeyaLogo } from "./VeyaLogo";
 
 interface NavbarProps {
   onNewAssessment: () => void;
@@ -17,19 +18,9 @@ export const Navbar: React.FC<NavbarProps> = ({
   return (
     <header className="sticky top-0 z-40 bg-[#FBFBF7]/90 backdrop-blur-md border-b border-[#E2E8D8]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-6">
-        {/* Brand Logo & Tagline */}
-        <div className="flex items-center gap-3 cursor-pointer shrink-0" onClick={onNewAssessment}>
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#1E5D38] to-[#144327] flex items-center justify-center text-white shadow-sm shadow-[#1E5D38]/20">
-            <span className="text-xl font-bold font-serif">V</span>
-          </div>
-          <div>
-            <span className="text-xl font-serif font-bold text-[#193826] tracking-tight block">
-              VEYA
-            </span>
-            <p className="text-xs text-[#5D6B5F] hidden sm:block">
-              Venture Evaluation & Yield Advisory
-            </p>
-          </div>
+        {/* Brand Logo */}
+        <div className="flex items-center cursor-pointer shrink-0" onClick={onNewAssessment}>
+          <VeyaLogo size="md" />
         </div>
 
         {/* Actions */}

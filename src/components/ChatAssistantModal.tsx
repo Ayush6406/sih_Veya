@@ -95,8 +95,8 @@ export const ChatAssistantModal: React.FC<ChatAssistantModalProps> = ({
       {/* Header */}
       <div className="bg-gradient-to-r from-[#1E5D38] to-[#154628] text-white p-4 flex items-center justify-between">
         <div className="flex items-center gap-2.5">
-          <div className="w-8 h-8 rounded-xl bg-white/20 flex items-center justify-center font-serif font-bold text-sm">
-            V
+          <div className="w-8 h-8 rounded-xl bg-white flex items-center justify-center p-1 shadow-xs shrink-0">
+            <img src="/veya-icon.svg" alt="VEYA" className="w-6 h-6 object-contain" />
           </div>
           <div>
             <h3 className="text-sm font-bold flex items-center gap-1.5">

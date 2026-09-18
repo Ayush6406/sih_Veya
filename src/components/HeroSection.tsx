@@ -87,28 +87,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                   className="w-full h-full object-cover"
                   loading="eager"
                 />
-
-                {/* Floating Insight Pill 1 */}
-                <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-md px-3 py-2 rounded-2xl shadow-md border border-[#E0E7D9] flex items-center gap-2">
-                  <div className="w-6 h-6 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center">
-                    <CheckCircle2 className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <p className="text-[10px] text-gray-500 font-medium">Model Verdict</p>
-                    <p className="text-xs font-bold text-emerald-800">Recommended (82/100)</p>
-                  </div>
-                </div>
-
-                {/* Floating Insight Pill 2 */}
-                <div className="absolute bottom-4 right-4 bg-white/95 backdrop-blur-md px-3.5 py-2.5 rounded-2xl shadow-md border border-[#E0E7D9] flex items-center gap-2.5">
-                  <div className="w-7 h-7 rounded-full bg-amber-100 text-amber-800 flex items-center justify-center">
-                    <IndianRupee className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <p className="text-[10px] text-gray-500 font-medium">Concessional Loan</p>
-                    <p className="text-xs font-bold text-[#142C1D]">₹9,00,000 @ 8% p.a.</p>
-                  </div>
-                </div>
               </div>
 
               {/* Three Pill Speech Bubbles matching Sample Concept */}

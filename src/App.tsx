@@ -27,6 +27,7 @@ import { AIReasoningModule } from "./components/AIReasoningModule";
 import { WhatIfSimulatorModal } from "./components/WhatIfSimulatorModal";
 import { ChatAssistantModal } from "./components/ChatAssistantModal";
 import { ExportReportModal } from "./components/ExportReportModal";
+import { VeyaLogo } from "./components/VeyaLogo";
 
 import { AssessmentReport, BusinessCategory, LocationData } from "./types";
 
@@ -272,9 +273,9 @@ export default function App() {
       {/* Footer */}
       <footer className="bg-white border-t border-[#E2E8D8] py-8 text-xs text-[#586B5A]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-2">
-            <span className="font-serif font-bold text-[#142C1D] text-sm">VEYA</span>
-            <span>— Venture Evaluation & Yield Advisory</span>
+          <div className="flex items-center gap-3">
+            <VeyaLogo size="sm" />
+            <span className="text-[#657767]">— Venture Evaluation Yield Analysis</span>
           </div>
 
           <div className="flex items-center gap-6">

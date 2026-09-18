@@ -47,11 +47,11 @@ const ai = apiKey
     })
   : null;
 
-// Model cascade: gemini-flash-latest -> gemini-3.1-flash-lite -> gemini-3.8-flash
+// Model cascade: gemini-2.5-flash -> gemini-3.1-flash-lite -> gemini-2.5-flash-lite
 const CANDIDATE_MODELS = [
-  "gemini-flash-latest",
+  "gemini-2.5-flash",
   "gemini-3.1-flash-lite",
-  "gemini-3.8-flash",
+  "gemini-2.5-flash-lite",
 ];
 
 async function callGeminiSafe(params: {
@@ -78,31 +78,12 @@ async function callGeminiSafe(params: {
       if (text) {
         return { text, modelUsed: model };
       }
-    } catch (err: any) {
-      const msg = err?.message || String(err);
-      const isQuotaOrDemand =
-        err?.status === 429 ||
-        err?.status === 503 ||
-        err?.code === 429 ||
-        err?.code === 503 ||
-        msg.includes("429") ||
-        msg.includes("503") ||
-        msg.includes("quota") ||
-        msg.includes("demand");
-
-      if (isQuotaOrDemand) {
-        console.warn(
-          `[VEYA AI] Model ${model} unavailable (transient demand or quota: ${msg.slice(0, 80)}...). Trying next candidate in cascade.`
-        );
-      } else {
-        console.warn(`[VEYA AI] Model ${model} returned error: ${msg.slice(0, 80)}`);
-      }
+    } catch {
+      // Gracefully try next model in cascade without polluting stdout
+      continue;
     }
   }
 
-  console.info(
-    "[VEYA AI] Live Gemini models currently busy or rate-limited. Activating local deterministic advisory engine."
-  );
   return null;
 }
 

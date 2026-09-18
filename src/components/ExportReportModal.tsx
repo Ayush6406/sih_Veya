@@ -27,7 +27,7 @@ export const ExportReportModal: React.FC<ExportReportModalProps> = ({
 
   const downloadSummaryTxt = () => {
     const txt = `================================================================================
-                   VEYA — EXECUTIVE BUSINESS ADVISORY CARD
+             VEYA — VENTURE EVALUATION YIELD ANALYSIS
 ================================================================================
 BUSINESS:       ${report.input.category.toUpperCase()}
 LOCATION:       ${report.location.village}, ${report.location.block}, ${report.location.district} (${report.location.state})
