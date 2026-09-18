@@ -14,7 +14,7 @@ export const VeyaLogo: React.FC<VeyaLogoProps> = ({
   return (
     <div className={`inline-flex items-center select-none ${className}`}>
       <img
-        src="/veya-logo.svg"
+        src="/veya-logo.png"
         alt="VEYA"
         className={`${heightClass} w-auto object-contain shrink-0`}
         loading="eager"
