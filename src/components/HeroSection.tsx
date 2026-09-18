@@ -16,47 +16,42 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
           {/* Left Column: Mission & Value Proposition */}
           <div className="lg:col-span-7 space-y-6">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#E5EFE6] border border-[#C6DDD0] text-xs font-semibold text-[#1E5D38]">
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>Smart Rural Entrepreneurship Advisory</span>
-            </div>
-
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-[#142C1D] tracking-tight leading-tight">
               Hyper-local business feasibility & concessional financing for rural India.
             </h1>
 
-            <p className="text-base sm:text-lg text-[#47574A] leading-relaxed max-w-2xl font-sans">
-              VEYA helps rural micro-entrepreneurs, self-help groups (SHGs), and district credit officers evaluate venture viability using official Census data, local purchasing power analysis, and 100% deterministic government loan routing.
+            <p className="text-base sm:text-lg text-[#374B3B] leading-relaxed max-w-2xl font-sans font-medium">
+              VEYA tells a rural entrepreneur exactly what they need before they borrow — not just whether the idea sounds good.
             </p>
 
             {/* Value Highlights */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
-              <div className="bg-white/80 rounded-xl p-3.5 border border-[#DFE7D8] shadow-2xs">
-                <div className="w-7 h-7 rounded-lg bg-[#EAF5EC] text-[#1E5D38] flex items-center justify-center font-bold text-xs mb-2">
-                  01
+              <div className="bg-white/90 rounded-2xl p-4 border border-[#DFE7D8] shadow-2xs">
+                <div className="w-8 h-8 rounded-lg bg-[#EAF5EC] text-[#1E5D38] flex items-center justify-center mb-2.5">
+                  <CheckCircle2 className="w-4 h-4" />
                 </div>
                 <h4 className="text-xs font-bold text-[#183120]">Dual Scores</h4>
-                <p className="text-[11px] text-[#556457] mt-0.5">
-                  Go/No-Go Viability and Evidence Credibility calculated independently.
+                <p className="text-[11px] text-[#556457] mt-1 leading-relaxed">
+                  Independent Go/No-Go Feasibility and Evidence Credibility indices.
                 </p>
               </div>
 
-              <div className="bg-white/80 rounded-xl p-3.5 border border-[#DFE7D8] shadow-2xs">
-                <div className="w-7 h-7 rounded-lg bg-[#EAF5EC] text-[#1E5D38] flex items-center justify-center font-bold text-xs mb-2">
-                  02
+              <div className="bg-white/90 rounded-2xl p-4 border border-[#DFE7D8] shadow-2xs">
+                <div className="w-8 h-8 rounded-lg bg-[#EAF5EC] text-[#1E5D38] flex items-center justify-center mb-2.5">
+                  <IndianRupee className="w-4 h-4" />
                 </div>
-                <h4 className="text-xs font-bold text-[#183120]">90% Govt Loan</h4>
-                <p className="text-[11px] text-[#556457] mt-0.5">
-                  Concessional 6.5% - 8.0% interest with 3 to 6-month repayment grace.
+                <h4 className="text-xs font-bold text-[#183120]">90% Concessional Loan</h4>
+                <p className="text-[11px] text-[#556457] mt-1 leading-relaxed">
+                  Official 6.5% - 8.0% interest schemes with 3 to 6-month repayment grace.
                 </p>
               </div>
 
-              <div className="bg-white/80 rounded-xl p-3.5 border border-[#DFE7D8] shadow-2xs">
-                <div className="w-7 h-7 rounded-lg bg-[#EAF5EC] text-[#1E5D38] flex items-center justify-center font-bold text-xs mb-2">
-                  03
+              <div className="bg-white/90 rounded-2xl p-4 border border-[#DFE7D8] shadow-2xs">
+                <div className="w-8 h-8 rounded-lg bg-[#EAF5EC] text-[#1E5D38] flex items-center justify-center mb-2.5">
+                  <TrendingUp className="w-4 h-4" />
                 </div>
                 <h4 className="text-xs font-bold text-[#183120]">Local Purchasing Power</h4>
-                <p className="text-[11px] text-[#556457] mt-0.5">
+                <p className="text-[11px] text-[#556457] mt-1 leading-relaxed">
                   Real APMC price benchmarks and reachable household demand modeling.
                 </p>
               </div>

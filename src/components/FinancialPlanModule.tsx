@@ -40,8 +40,8 @@ export const FinancialPlanModule: React.FC<FinancialPlanModuleProps> = ({ financ
               <ShieldCheck className="w-4 h-4" />
               <span>Concessional Financing Model</span>
             </span>
-            <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-[#EBF3E8] text-[#1E5D38] border border-[#CDE1CF]">
-              100% DETERMINISTIC ENGINE
+            <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md bg-blue-50 text-blue-800 border border-blue-200">
+              Modeled Estimate · Deterministic
             </span>
           </div>
 
@@ -77,15 +77,15 @@ export const FinancialPlanModule: React.FC<FinancialPlanModuleProps> = ({ financ
             <span className="text-[10px] uppercase font-bold text-[#677969]">
               Your Margin Capital
             </span>
-            <span className="text-[9px] uppercase font-bold px-1.5 py-0.2 rounded bg-emerald-100 text-emerald-800">
-              10% EQUITY
+            <span className="text-[9px] uppercase font-bold px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-800 border border-emerald-200">
+              Verified
             </span>
           </div>
           <span className="text-xl font-bold text-[#142C1D] block">
             {margin_capital.formatted}
           </span>
           <span className="text-[10px] text-[#69796C] block">
-            Promoter Contribution [VERIFIED]
+            10% Promoter Contribution
           </span>
         </div>
 
@@ -95,15 +95,15 @@ export const FinancialPlanModule: React.FC<FinancialPlanModuleProps> = ({ financ
             <span className="text-[10px] uppercase font-bold text-[#677969]">
               Total Project Cost
             </span>
-            <span className="text-[9px] uppercase font-bold px-1.5 py-0.2 rounded bg-blue-100 text-blue-800">
-              100% OUTLAY
+            <span className="text-[9px] uppercase font-bold px-1.5 py-0.5 rounded bg-blue-50 text-blue-800 border border-blue-200">
+              Modeled Estimate
             </span>
           </div>
           <span className="text-xl font-bold text-[#142C1D] block">
             {project_cost.formatted}
           </span>
           <span className="text-[10px] text-[#69796C] block">
-            Formula: Capital ÷ 0.10 [VERIFIED]
+            Formula: Margin ÷ 0.10
           </span>
         </div>
 
@@ -113,15 +113,15 @@ export const FinancialPlanModule: React.FC<FinancialPlanModuleProps> = ({ financ
             <span className="text-[10px] uppercase font-bold text-[#677969]">
               Concessional Loan
             </span>
-            <span className="text-[9px] uppercase font-bold px-1.5 py-0.2 rounded bg-emerald-100 text-emerald-800">
-              90% CREDIT
+            <span className="text-[9px] uppercase font-bold px-1.5 py-0.5 rounded bg-blue-50 text-blue-800 border border-blue-200">
+              Modeled Estimate
             </span>
           </div>
           <span className="text-xl font-bold text-[#1E5D38] block">
             {loan_eligibility.formatted}
           </span>
           <span className="text-[10px] text-emerald-700 block">
-            Govt Concessional Facility [VERIFIED]
+            90% Credit Facility
           </span>
         </div>
 
@@ -131,25 +131,30 @@ export const FinancialPlanModule: React.FC<FinancialPlanModuleProps> = ({ financ
             <span className="text-[10px] uppercase font-bold text-[#677969]">
               Monthly Installment
             </span>
-            <span className="text-[9px] uppercase font-bold px-1.5 py-0.2 rounded bg-purple-100 text-purple-800">
-              POST-GRACE
+            <span className="text-[9px] uppercase font-bold px-1.5 py-0.5 rounded bg-blue-50 text-blue-800 border border-blue-200">
+              Modeled Estimate
             </span>
           </div>
           <span className="text-xl font-bold text-[#142C1D] block">
             {emi.formatted}
           </span>
           <span className="text-[10px] text-[#69796C] block">
-            Reducing Balance Formula [VERIFIED]
+            Post-grace amortized
           </span>
         </div>
       </div>
 
       {/* Concessional Scheme Terms Callout */}
       <div className="bg-[#F6FAF4] border border-[#D5E6D4] rounded-2xl p-4 sm:p-5">
-        <h4 className="text-xs font-bold uppercase tracking-wider text-[#1B4D2B] mb-3 flex items-center gap-1.5">
-          <Layers className="w-4 h-4 text-[#1E5D38]" />
-          <span>Detailed Loan Terms & Grace Period Policy</span>
-        </h4>
+        <div className="flex items-center justify-between mb-3">
+          <h4 className="text-xs font-bold uppercase tracking-wider text-[#1B4D2B] flex items-center gap-1.5">
+            <Layers className="w-4 h-4 text-[#1E5D38]" />
+            <span>Detailed Loan Terms & Grace Period Policy</span>
+          </h4>
+          <span className="text-[9px] uppercase font-bold px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-800 border border-emerald-200">
+            Verified Scheme Norms
+          </span>
+        </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs">
           <div>

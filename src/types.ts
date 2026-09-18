@@ -24,7 +24,7 @@ export interface DimensionScore {
 
 export interface EvidenceAuditItem {
   label: string;
-  status: "VERIFIED" | "LIMITATION" | "VALIDATE";
+  status: "VERIFIED" | "LIMITATION" | "VALIDATE" | "UNVERIFIED";
   icon: string;
 }
 

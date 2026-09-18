@@ -62,9 +62,14 @@ export const DecisionSnapshotCard: React.FC<DecisionSnapshotCardProps> = ({ snap
                 <ShieldCheck className="w-4 h-4" />
                 <span>Card 1: Business Viability</span>
               </span>
-              <span className={`text-xs font-bold px-2.5 py-0.5 rounded-full border ${goNoGoBadgeClass}`}>
-                {go_no_go.score >= 75 ? "High Feasibility" : go_no_go.score >= 60 ? "Viable with Care" : "Elevated Risk"}
-              </span>
+              <div className="flex items-center gap-1.5">
+                <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md bg-blue-50 text-blue-800 border border-blue-200">
+                  Modeled Estimate
+                </span>
+                <span className={`text-xs font-bold px-2.5 py-0.5 rounded-full border ${goNoGoBadgeClass}`}>
+                  {go_no_go.score >= 75 ? "High Feasibility" : go_no_go.score >= 60 ? "Viable with Care" : "Elevated Risk"}
+                </span>
+              </div>
             </div>
 
             <h3 className="text-lg font-serif font-bold text-[#142C1D] mt-2">
@@ -138,9 +143,14 @@ export const DecisionSnapshotCard: React.FC<DecisionSnapshotCardProps> = ({ snap
                 <Layers className="w-4 h-4" />
                 <span>Card 2: Evidence Reliability</span>
               </span>
-              <span className={`text-xs font-bold px-2.5 py-0.5 rounded-full border ${credibilityBadgeClass}`}>
-                {credibility.score >= 75 ? "Strong Evidence" : "Moderate Coverage"}
-              </span>
+              <div className="flex items-center gap-1.5">
+                <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-800 border border-emerald-200">
+                  Verified Audit
+                </span>
+                <span className={`text-xs font-bold px-2.5 py-0.5 rounded-full border ${credibilityBadgeClass}`}>
+                  {credibility.score >= 75 ? "Strong Evidence" : "Moderate Coverage"}
+                </span>
+              </div>
             </div>
 
             <h3 className="text-lg font-serif font-bold text-[#152744] mt-2">

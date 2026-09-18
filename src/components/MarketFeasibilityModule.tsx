@@ -31,8 +31,8 @@ export const MarketFeasibilityModule: React.FC<MarketFeasibilityModuleProps> = (
               <Users className="w-4 h-4" />
               <span>Demographic & Competition Audit</span>
             </span>
-            <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-[#EBF3E8] text-[#1E5D38] border border-[#CDE1CF]">
-              CENSUS 2011 + UDYAM
+            <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-800 border border-emerald-200">
+              Verified · Census 2011 + Udyam
             </span>
           </div>
 
@@ -54,8 +54,8 @@ export const MarketFeasibilityModule: React.FC<MarketFeasibilityModuleProps> = (
               <Users className="w-4 h-4 text-[#1E5D38]" />
               <span>Reachable Customer Base</span>
             </span>
-            <span className="text-[9px] uppercase font-bold px-1.5 py-0.2 rounded bg-[#EAF5EC] text-[#1E5D38]">
-              MODELED ESTIMATE
+            <span className="text-[10px] uppercase font-bold px-2 py-0.5 rounded-md bg-blue-50 text-blue-800 border border-blue-200">
+              Modeled Estimate
             </span>
           </div>
 
@@ -100,9 +100,14 @@ export const MarketFeasibilityModule: React.FC<MarketFeasibilityModuleProps> = (
 
           <div className="grid grid-cols-2 gap-3 pt-1">
             <div className="bg-white p-3 rounded-xl border border-[#E0EBDD]">
-              <span className="text-[10px] text-[#637565] block uppercase font-semibold">
-                Registered Enterprises
-              </span>
+              <div className="flex items-center justify-between">
+                <span className="text-[10px] text-[#637565] block uppercase font-semibold">
+                  Registered Enterprises
+                </span>
+                <span className="text-[9px] uppercase font-bold px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-800 border border-emerald-200">
+                  Verified
+                </span>
+              </div>
               <span className="text-2xl font-bold text-[#142C1D]">
                 {competitor_mapping.registered_businesses.value}
               </span>
@@ -112,9 +117,14 @@ export const MarketFeasibilityModule: React.FC<MarketFeasibilityModuleProps> = (
             </div>
 
             <div className="bg-white p-3 rounded-xl border border-[#E0EBDD]">
-              <span className="text-[10px] text-[#637565] block uppercase font-semibold">
-                Competitor Density
-              </span>
+              <div className="flex items-center justify-between">
+                <span className="text-[10px] text-[#637565] block uppercase font-semibold">
+                  Competitor Density
+                </span>
+                <span className="text-[9px] uppercase font-bold px-1.5 py-0.5 rounded bg-blue-50 text-blue-800 border border-blue-200">
+                  Modeled Estimate
+                </span>
+              </div>
               <span className="text-2xl font-bold text-[#1E5D38]">
                 {competitor_mapping.density_per_1k_households.formatted}
               </span>
@@ -137,8 +147,8 @@ export const MarketFeasibilityModule: React.FC<MarketFeasibilityModuleProps> = (
             <Tag className="w-4 h-4 text-[#1E5D38]" />
             <span>Official APMC & Local Market Price Benchmarks</span>
           </div>
-          <span className="text-[10px] uppercase font-bold text-[#1E5D38] bg-[#E8F4E7] px-2.5 py-0.5 rounded-full border border-[#C6DECA]">
-            AGMARKNET / e-NAM · Snapshot: 15-Mar-2024
+          <span className="text-[10px] uppercase font-bold text-emerald-800 bg-emerald-50 px-2.5 py-0.5 rounded-md border border-emerald-200">
+            Verified · AGMARKNET / e-NAM (15-Mar-2024)
           </span>
         </div>
 

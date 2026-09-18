@@ -61,13 +61,13 @@ export const RecommendationBanner: React.FC<RecommendationBannerProps> = ({
 
         {/* Provenance Tags */}
         <div className="flex flex-wrap items-center gap-2 text-[11px]">
-          <span className="px-2.5 py-1 rounded-full bg-white border border-[#CCD8C8] text-[#1D3B25] font-semibold flex items-center gap-1 shadow-2xs">
-            <Sparkles className="w-3.5 h-3.5 text-amber-500" />
-            <span>AI REASONING · GEMINI</span>
+          <span className="px-2.5 py-1 rounded-md bg-amber-50 border border-amber-200 text-amber-900 font-bold flex items-center gap-1">
+            <Sparkles className="w-3.5 h-3.5 text-amber-600" />
+            <span>AI Reasoning</span>
           </span>
-          <span className="px-2.5 py-1 rounded-full bg-white border border-[#CCD8C8] text-[#1D3B25] font-semibold flex items-center gap-1 shadow-2xs">
-            <ShieldCheck className="w-3.5 h-3.5 text-[#1E5D38]" />
-            <span>QUANTITATIVE ENGINE CHECK · BACKEND</span>
+          <span className="px-2.5 py-1 rounded-md bg-blue-50 border border-blue-200 text-blue-900 font-bold flex items-center gap-1">
+            <ShieldCheck className="w-3.5 h-3.5 text-blue-600" />
+            <span>Modeled Estimate</span>
           </span>
         </div>
       </div>

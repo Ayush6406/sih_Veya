@@ -25,8 +25,8 @@ export const AIReasoningModule: React.FC<AIReasoningModuleProps> = ({
               <Sparkles className="w-4 h-4" />
               <span>Grounded Qualitative Intelligence</span>
             </span>
-            <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-amber-50 text-amber-800 border border-amber-200">
-              {narrativeTier}
+            <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md bg-amber-50 text-amber-800 border border-amber-200">
+              AI Reasoning · {narrativeTier}
             </span>
           </div>
 
@@ -81,9 +81,14 @@ export const AIReasoningModule: React.FC<AIReasoningModuleProps> = ({
 
       {/* 2x2 SWOT Quadrant */}
       <div>
-        <h3 className="text-xs font-bold uppercase tracking-wider text-[#1F3D27] mb-3">
-          2×2 Rural Strategic SWOT Matrix
-        </h3>
+        <div className="flex items-center justify-between mb-3">
+          <h3 className="text-xs font-bold uppercase tracking-wider text-[#1F3D27]">
+            2×2 Rural Strategic SWOT Matrix
+          </h3>
+          <span className="text-[9px] uppercase font-bold px-1.5 py-0.5 rounded bg-amber-50 text-amber-800 border border-amber-200">
+            AI Reasoning
+          </span>
+        </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
           {/* Strengths */}

@@ -45,8 +45,8 @@ export const PurchasingPowerModule: React.FC<PurchasingPowerModuleProps> = ({
               <TrendingUp className="w-4 h-4" />
               <span>Hyper-Local Market Capacity</span>
             </span>
-            <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-[#EBF3E8] text-[#1E5D38] border border-[#CDE1CF]">
-              MODELED ESTIMATE
+            <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md bg-blue-50 text-blue-800 border border-blue-200">
+              Modeled Estimate
             </span>
           </div>
 
@@ -134,8 +134,11 @@ export const PurchasingPowerModule: React.FC<PurchasingPowerModuleProps> = ({
       {districtContext && (
         <div className="bg-[#EDF5EC] rounded-2xl p-4 border border-[#CFE1CE] text-xs">
           <div className="flex items-center justify-between pb-2 border-b border-[#D8E6D7] mb-2.5">
-            <span className="font-bold text-[#184827] uppercase tracking-wider text-[11px]">
-              District Economic Baseline (Census 2011 & State DES Data)
+            <span className="font-bold text-[#184827] uppercase tracking-wider text-[11px] flex items-center gap-1.5">
+              <span>District Economic Baseline</span>
+              <span className="text-[9px] uppercase font-bold px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-800 border border-emerald-200">
+                Verified
+              </span>
             </span>
             <span className="text-[10px] text-[#556958] font-medium">DES Maharashtra 2023-24 DDP Indicators</span>
           </div>
