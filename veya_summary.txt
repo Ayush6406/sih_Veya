@@ -13,8 +13,17 @@ VEYA DUAL INDEPENDENT SCORES:
   [Note: These scores measure different things and should not be combined]
 --------------------------------------------------------------------------------
 LOCAL CONSUMER PURCHASING POWER:
-• Purchasing Power Band:          Moderate [MODELED ESTIMATE]
-• Affordability Evidence:         Daily household milk spend (₹45-₹90/day) represents ~12-18% of rural unskilled daily wage (₹380/day).
+• Purchasing Power Band:          Moderate (72/100) [ESTIMATE]
+• Target Consumer Base:           Local farm-owning households, peri-urban commuters, and daily dairy tea-stall vendors [AI]
+• Affordability Evidence:         Daily household milk spend (₹45-₹90/day) represents ~12-18% of rural unskilled daily wage (₹380/day) [ESTIMATE]
+• Demand Frequency:               Daily repeat morning and evening consumption cycles [ESTIMATE]
+• Price Sensitivity:              Moderate elasticity; branded pasteurized packets face pushback, but farm-fresh unadulterated milk holds strong pricing power [AI]
+• Market Accessibility:           High density within 5-8km radius connecting 12 village hamlets [ESTIMATE]
+• Key Sector Observation:         Direct doorstep delivery bypasses commission agents and captures ₹8-₹12/L higher margin [AI]
+• District Baseline (DDP Income): ₹2,84,500/year [VERIFIED]
+• Rural Daily Wage (Unskilled):   ₹380 / day [VERIFIED]
+• Rural Daily Wage (Skilled):     ₹650 / day [VERIFIED]
+• Nearest APMC Mandi:             14 km [VERIFIED]
 --------------------------------------------------------------------------------
 FINANCIAL STRUCTURING (100% Deterministic Concessional Scheme)
 • Your Margin Capital (10%):      ₹1,00,000 [VERIFIED]

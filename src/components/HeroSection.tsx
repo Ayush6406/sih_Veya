@@ -88,19 +88,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                   loading="eager"
                 />
               </div>
-
-              {/* Three Pill Speech Bubbles matching Sample Concept */}
-              <div className="flex justify-between items-center px-4 mt-4 text-[11px] font-semibold text-[#274630]">
-                <span className="bg-[#EBF3E8] border border-[#CDE1CF] px-2.5 py-1 rounded-full shadow-2xs">
-                  🌱 Better Insights
-                </span>
-                <span className="bg-[#EBF3E8] border border-[#CDE1CF] px-2.5 py-1 rounded-full shadow-2xs">
-                  🎯 Smarter Decisions
-                </span>
-                <span className="bg-[#EBF3E8] border border-[#CDE1CF] px-2.5 py-1 rounded-full shadow-2xs">
-                  🤝 Stronger Villages
-                </span>
-              </div>
             </div>
           </div>
         </div>

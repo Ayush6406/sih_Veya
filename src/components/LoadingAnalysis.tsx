@@ -7,12 +7,12 @@ interface LoadingAnalysisProps {
 }
 
 const STEPS = [
-  "Resolving official Census 2011 demographics for block...",
+  "Resolving official Maharashtra state demographics for block...",
   "Running 100% deterministic concessional financial engine...",
   "Auditing competition density & addressable customer reach...",
   "Evaluating local consumer purchasing power & APMC price benchmarks...",
   "Calculating Final Go/No-Go Score & Independent Credibility Score...",
-  "Synthesizing qualitative AI SWOT & operational threat mitigations...",
+  "Synthesizing qualitative SWOT & operational threat mitigations...",
 ];
 
 export const LoadingAnalysis: React.FC<LoadingAnalysisProps> = ({ category, location }) => {
@@ -35,7 +35,7 @@ export const LoadingAnalysis: React.FC<LoadingAnalysisProps> = ({ category, loca
         VEYA is evaluating your {category} proposal
       </h3>
       <p className="text-xs text-[#526455] mt-1">
-        Synthesizing demographic data, concessional scheme logic, and Gemini reasoning for {location}...
+        Synthesizing Maharashtra state demographic data, concessional scheme logic, and market intelligence for {location}...
       </p>
 
       {/* Steps List */}

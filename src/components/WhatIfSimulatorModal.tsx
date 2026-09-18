@@ -237,16 +237,6 @@ export const WhatIfSimulatorModal: React.FC<WhatIfSimulatorModalProps> = ({
                   {simulation.new_financials.scheme.scheme_name}
                 </span>
               </div>
-
-              {/* Score Independence Explanation Notice */}
-              <div className="bg-[#FFFDF6] border border-[#E9DAC0] rounded-2xl p-4 text-xs text-[#544627] space-y-1">
-                <span className="font-bold text-[#3B3015] uppercase tracking-wider text-[10px] block">
-                  Score Independence Guarantee
-                </span>
-                <p className="leading-relaxed">
-                  {simulation.score_independence_explanation}
-                </p>
-              </div>
             </div>
           ) : null}
         </div>

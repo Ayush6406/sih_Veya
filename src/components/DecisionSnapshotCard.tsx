@@ -131,6 +131,27 @@ export const DecisionSnapshotCard: React.FC<DecisionSnapshotCardProps> = ({ snap
               </div>
             )}
           </div>
+
+          {/* In-Card Score Indicator & Short Concise Meaning Notice */}
+          <div className="mt-4 pt-3.5 border-t border-[#E8EFE5]">
+            <div className="flex items-start gap-2.5 p-3 rounded-2xl bg-[#F6FAF5] border border-[#DCEDDA]">
+              <div className="mt-1 relative flex items-center justify-center shrink-0">
+                <span className="w-2.5 h-2.5 rounded-full bg-emerald-600" />
+                <span className="absolute w-4 h-4 rounded-full bg-emerald-400 opacity-40 animate-ping" />
+              </div>
+              <div className="text-[11px] leading-relaxed text-[#2B4231]">
+                <div className="flex items-center gap-1.5 font-bold text-[#142C1D]">
+                  <span>Commercial Feasibility & Risk Measure</span>
+                  <span className="text-[9px] uppercase px-1.5 py-0.2 rounded bg-emerald-100 text-emerald-800 border border-emerald-200">
+                    Input-Sensitive
+                  </span>
+                </div>
+                <p className="mt-0.5 text-[#3D5643]">
+                  Evaluates whether this business can physically and financially succeed locally. Highly sensitive to promoter operational claims and costs. <em>Does not reflect data coverage completeness.</em>
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* ================= CARD 2: CREDIBILITY SCORE ================= */}
@@ -223,20 +244,27 @@ export const DecisionSnapshotCard: React.FC<DecisionSnapshotCardProps> = ({ snap
               </div>
             )}
           </div>
-        </div>
-      </div>
 
-      {/* Prominent Score Independence Banner Mandate */}
-      <div className="bg-[#FFFDF6] border-2 border-[#EADAB2] rounded-2xl p-4 flex items-start gap-3 shadow-2xs">
-        <Info className="w-5 h-5 text-amber-700 shrink-0 mt-0.5" />
-        <div className="text-xs text-[#524422]">
-          <h4 className="font-bold text-[#3B3014] uppercase tracking-wide text-[11px]">
-            Score Independence Notice:
-          </h4>
-          <p className="mt-0.5 leading-relaxed">
-            <strong>These scores measure different things and should not be combined.</strong>{" "}
-            The <em>Final Go/No-Go Model Score</em> reflects whether the business idea is viable under modeled market conditions. The <em>Credibility Score</em> reflects how much solid evidence was available to VEYA during analysis. A high Credibility Score does not guarantee profit, and a low Credibility Score simply means local field counts should be double-checked.
-          </p>
+          {/* In-Card Score Indicator & Short Concise Meaning Notice */}
+          <div className="mt-4 pt-3.5 border-t border-[#E5ECF6]">
+            <div className="flex items-start gap-2.5 p-3 rounded-2xl bg-[#F4F7FC] border border-[#DAE4F5]">
+              <div className="mt-1 relative flex items-center justify-center shrink-0">
+                <span className="w-2.5 h-2.5 rounded-full bg-blue-600" />
+                <span className="absolute w-4 h-4 rounded-full bg-blue-400 opacity-40 animate-ping" />
+              </div>
+              <div className="text-[11px] leading-relaxed text-[#1D3254]">
+                <div className="flex items-center gap-1.5 font-bold text-[#152744]">
+                  <span>Evidence Rigor & Ground-Truth Belief</span>
+                  <span className="text-[9px] uppercase px-1.5 py-0.2 rounded bg-blue-100 text-blue-800 border border-blue-200">
+                    Source-Verified
+                  </span>
+                </div>
+                <p className="mt-0.5 text-[#3D4F6A]">
+                  Measures the quantity and verification strength of official government records backing this case. <em>A high score confirms data authenticity, not guaranteed profitability.</em>
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

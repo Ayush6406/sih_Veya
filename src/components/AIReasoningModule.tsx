@@ -25,16 +25,13 @@ export const AIReasoningModule: React.FC<AIReasoningModuleProps> = ({
               <Sparkles className="w-4 h-4" />
               <span>Grounded Qualitative Intelligence</span>
             </span>
-            <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md bg-amber-50 text-amber-800 border border-amber-200">
-              AI Reasoning · {narrativeTier}
-            </span>
           </div>
 
           <h2 className="text-xl sm:text-2xl font-serif font-bold text-[#142C1D] mt-1">
-            AI Opportunity Analysis & Threat Mitigations
+            Opportunity Analysis & Threat Mitigations
           </h2>
           <p className="text-xs text-[#526354] mt-0.5">
-            Gemini synthesized qualitative strategy grounded strictly in verified APMC numbers and Census demographics.
+            Qualitative strategic insights grounded strictly in verified APMC numbers and Maharashtra state demographics.
           </p>
         </div>
       </div>
@@ -85,9 +82,6 @@ export const AIReasoningModule: React.FC<AIReasoningModuleProps> = ({
           <h3 className="text-xs font-bold uppercase tracking-wider text-[#1F3D27]">
             2×2 Rural Strategic SWOT Matrix
           </h3>
-          <span className="text-[9px] uppercase font-bold px-1.5 py-0.5 rounded bg-amber-50 text-amber-800 border border-amber-200">
-            AI Reasoning
-          </span>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">

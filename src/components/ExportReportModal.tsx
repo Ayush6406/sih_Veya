@@ -35,15 +35,23 @@ FINAL VERDICT:  ${report.recommendation.status}
 --------------------------------------------------------------------------------
 VEYA DUAL INDEPENDENT SCORES:
 • Final Go / No-Go Model Score:   ${report.decision_snapshot.go_no_go.score} / 100
-  (How your business idea fares according to VEYA's analysis)
+  (${report.decision_snapshot.go_no_go.meaning})
 • Credibility Score:             ${report.decision_snapshot.credibility.score} / 100
-  (How well VEYA was able to analyse your case using available evidence)
-  [Note: These scores measure different things and should not be combined]
+  (${report.decision_snapshot.credibility.meaning})
+  [Scores are independent: Go/No-Go measures commercial viability; Credibility measures evidence rigor]
 --------------------------------------------------------------------------------
 LOCAL CONSUMER PURCHASING POWER:
-• Purchasing Power Band:          ${report.hyper_local.consumer_purchasing_power.band} [MODELED ESTIMATE]
-• Target Consumer Base:           ${report.hyper_local.consumer_purchasing_power.consumer_base}
-• Affordability Evidence:         ${report.hyper_local.consumer_purchasing_power.affordability_evidence}
+• Purchasing Power Band:          ${report.hyper_local.consumer_purchasing_power.band} (${report.hyper_local.consumer_purchasing_power.score}/100) [ESTIMATE]
+• Target Consumer Base:           ${report.hyper_local.consumer_purchasing_power.consumer_base} [AI]
+• Affordability Evidence:         ${report.hyper_local.consumer_purchasing_power.affordability_evidence} [ESTIMATE]
+• Demand Frequency:               ${report.hyper_local.consumer_purchasing_power.demand_evidence} [ESTIMATE]
+• Price Sensitivity:              ${report.hyper_local.consumer_purchasing_power.price_sensitivity} [AI]
+• Market Accessibility:           ${report.hyper_local.consumer_purchasing_power.market_accessibility} [ESTIMATE]
+• Key Sector Observation:         ${report.hyper_local.consumer_purchasing_power.category_observations} [AI]
+• District Baseline (DDP Income): ${report.feasibility.product_market_value.purchasing_power_context.district_per_capita_formatted} [VERIFIED]
+• Rural Daily Wage (Unskilled):   ${report.feasibility.product_market_value.purchasing_power_context.rural_daily_wage_unskilled} / day [VERIFIED]
+• Rural Daily Wage (Skilled):     ${report.feasibility.product_market_value.purchasing_power_context.rural_daily_wage_skilled} / day [VERIFIED]
+• Nearest APMC Mandi:             ${report.feasibility.product_market_value.purchasing_power_context.nearest_mandi_distance_km} km [VERIFIED]
 --------------------------------------------------------------------------------
 FINANCIAL STRUCTURING (100% Deterministic Concessional Scheme)
 • Your Margin Capital (10%):      ${report.financial_plan.margin_capital.formatted} [VERIFIED]

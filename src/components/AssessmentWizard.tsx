@@ -17,7 +17,7 @@ import {
   ShieldCheck,
   Layers,
 } from "lucide-react";
-import { BusinessCategory } from "../types";
+import { BusinessCategory, LocationData } from "../types";
 import { MAHARASHTRA_DISTRICTS } from "../data/locationsData";
 
 interface AssessmentWizardProps {
@@ -35,6 +35,13 @@ interface AssessmentWizardProps {
     description: string;
   }) => void;
   isLoading: boolean;
+  savedScenario?: {
+    category: BusinessCategory;
+    capital: number;
+    location: LocationData;
+    description: string;
+  } | null;
+  resetTrigger?: number;
 }
 
 const CATEGORIES: Array<{
@@ -105,21 +112,70 @@ const CAPITAL_PRESETS = [
 export const AssessmentWizard: React.FC<AssessmentWizardProps> = ({
   onSubmit,
   isLoading,
+  savedScenario,
+  resetTrigger,
 }) => {
   const [step, setStep] = useState<1 | 2 | 3 | 4>(1);
 
+  // Force step 1 (Location) whenever resetTrigger fires
+  React.useEffect(() => {
+    if (resetTrigger && resetTrigger > 0) {
+      setStep(1);
+    }
+  }, [resetTrigger]);
+
   // Location Selector State (LGD Hierarchy)
-  const [selectedDistrictName, setSelectedDistrictName] = useState("Pune");
-  const [selectedSubDistrictName, setSelectedSubDistrictName] = useState("Junnar");
-  const [selectedVillageName, setSelectedVillageName] = useState("Otur");
-  const [pincode, setPincode] = useState("410502");
+  const [selectedDistrictName, setSelectedDistrictName] = useState(
+    savedScenario?.location?.district || "Pune"
+  );
+  const [selectedSubDistrictName, setSelectedSubDistrictName] = useState(
+    savedScenario?.location?.block || "Junnar"
+  );
+  const [selectedVillageName, setSelectedVillageName] = useState(
+    savedScenario?.location?.village || "Otur"
+  );
+  const [pincode, setPincode] = useState(
+    savedScenario?.location?.pincode || "410502"
+  );
 
   // Form State
-  const [capital, setCapital] = useState<number>(100000);
-  const [category, setCategory] = useState<BusinessCategory>("Dairy");
-  const [description, setDescription] = useState(
-    "Fresh morning cow and buffalo milk delivery to 40 nearby families with fresh paneer for village sweets."
+  const [capital, setCapital] = useState<number>(
+    savedScenario?.capital ?? 100000
   );
+  const [category, setCategory] = useState<BusinessCategory>(
+    savedScenario?.category || "Dairy"
+  );
+  const [description, setDescription] = useState(
+    savedScenario?.description ??
+      "Fresh morning cow and buffalo milk delivery to 40 nearby families with fresh paneer for village sweets."
+  );
+
+  // Sync state if savedScenario updates
+  React.useEffect(() => {
+    if (savedScenario) {
+      if (savedScenario.location?.district) {
+        setSelectedDistrictName(savedScenario.location.district);
+      }
+      if (savedScenario.location?.block) {
+        setSelectedSubDistrictName(savedScenario.location.block);
+      }
+      if (savedScenario.location?.village) {
+        setSelectedVillageName(savedScenario.location.village);
+      }
+      if (savedScenario.location?.pincode) {
+        setPincode(savedScenario.location.pincode);
+      }
+      if (typeof savedScenario.capital === "number") {
+        setCapital(savedScenario.capital);
+      }
+      if (savedScenario.category) {
+        setCategory(savedScenario.category);
+      }
+      if (typeof savedScenario.description === "string") {
+        setDescription(savedScenario.description);
+      }
+    }
+  }, [savedScenario]);
 
   // Resolve active district & sub-district
   const currentDistrict = useMemo(() => {
@@ -239,7 +295,7 @@ export const AssessmentWizard: React.FC<AssessmentWizardProps> = ({
         district: currentDistrict.name,
         state: "Maharashtra",
         pincode,
-        provenance: "Census of India 2011 Primary Census Abstract & LGD Directory",
+        provenance: "Maharashtra State Demographic Dataset & LGD Directory",
       },
       description,
     });
@@ -251,7 +307,7 @@ export const AssessmentWizard: React.FC<AssessmentWizardProps> = ({
       className="bg-white rounded-3xl border border-[#DFE7D8] shadow-lg shadow-black/5 overflow-hidden"
     >
       {/* Wizard Progress Bar */}
-      <div className="bg-[#F6F9F2] px-6 py-4 border-b border-[#E3EBDD] flex items-center justify-between">
+      <div className="bg-[#F6F9F2] px-6 py-4 border-b border-[#E3EBDD] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div className="flex items-center gap-2">
           <span className="w-6 h-6 rounded-full bg-[#1E5D38] text-white flex items-center justify-center text-xs font-bold">
             {step}
@@ -262,34 +318,56 @@ export const AssessmentWizard: React.FC<AssessmentWizardProps> = ({
             {step === 3 && "Step 3: Business Category & Plan"}
             {step === 4 && "Step 4: Review & Run Feasibility"}
           </span>
+          {savedScenario && (
+            <span className="hidden sm:inline-flex items-center gap-1 text-[10px] font-semibold text-[#1E5D38] bg-[#EAF5EC] px-2 py-0.5 rounded-full border border-[#CDE5CF]">
+              Previous scenario loaded
+            </span>
+          )}
         </div>
 
-        <div className="flex items-center gap-1.5 text-xs text-[#5D6F60]">
-          <span className={`w-2.5 h-2.5 rounded-full ${step >= 1 ? "bg-[#1E5D38]" : "bg-[#D8E2D5]"}`} />
-          <span className={`w-2.5 h-2.5 rounded-full ${step >= 2 ? "bg-[#1E5D38]" : "bg-[#D8E2D5]"}`} />
-          <span className={`w-2.5 h-2.5 rounded-full ${step >= 3 ? "bg-[#1E5D38]" : "bg-[#D8E2D5]"}`} />
-          <span className={`w-2.5 h-2.5 rounded-full ${step >= 4 ? "bg-[#1E5D38]" : "bg-[#D8E2D5]"}`} />
+        {/* Clickable Step Pills */}
+        <div className="flex items-center gap-1.5 text-xs">
+          {[
+            { num: 1, name: "Location" },
+            { num: 2, name: "Capital" },
+            { num: 3, name: "Category" },
+            { num: 4, name: "Review" },
+          ].map((item) => (
+            <button
+              key={item.num}
+              type="button"
+              onClick={() => setStep(item.num as any)}
+              className={`px-2.5 py-1 rounded-lg text-[11px] font-semibold transition-all flex items-center gap-1 ${
+                step === item.num
+                  ? "bg-[#1E5D38] text-white shadow-xs"
+                  : "bg-white/80 hover:bg-white text-[#4D6151] border border-[#D5DDD0]"
+              }`}
+            >
+              <span>{item.num}.</span>
+              <span>{item.name}</span>
+            </button>
+          ))}
         </div>
       </div>
 
       <div className="p-6 sm:p-8">
         {/* ================= STEP 1: LOCATION ================= */}
         {step === 1 && (
-          <div className="space-y-6">
+          <div id="location-step-section" className="space-y-6">
             <div>
               <div className="flex items-center gap-2 mb-1">
                 <span className="text-[10px] font-bold uppercase tracking-wider text-[#1E5D38] bg-[#EAF4E9] px-2 py-0.5 rounded-full border border-[#CCE2CC]">
                   OFFICIAL MAHARASHTRA DATASET
                 </span>
                 <span className="text-[10px] text-[#637667]">
-                  LGD Codes & Census 2011 PCA
+                  LGD Codes &amp; Maharashtra Demographics
                 </span>
               </div>
               <h2 className="text-xl sm:text-2xl font-serif font-bold text-[#142C1D]">
                 Where is your proposed business located?
               </h2>
               <p className="text-xs sm:text-sm text-[#546657] mt-1">
-                Select your District and Tehsil. VEYA automatically binds verified Census 2011 demographics, DES income indicators, and AGMARKNET APMC mandi price benchmarks.
+                Select your District and Tehsil. VEYA automatically binds verified Maharashtra state demographics, DES income indicators, and AGMARKNET APMC mandi price benchmarks.
               </p>
             </div>
 
@@ -300,6 +378,7 @@ export const AssessmentWizard: React.FC<AssessmentWizardProps> = ({
                   District (LGD Directory)
                 </label>
                 <select
+                  id="district-select"
                   value={selectedDistrictName}
                   onChange={(e) => handleDistrictChange(e.target.value)}
                   className="w-full px-3 py-2.5 text-sm font-medium rounded-xl border border-[#CCD8C8] focus:outline-none focus:border-[#1E5D38] bg-[#FAFBF8] text-[#142C1D]"
@@ -368,7 +447,7 @@ export const AssessmentWizard: React.FC<AssessmentWizardProps> = ({
                       className="w-full px-3 py-2 text-xs rounded-lg border border-amber-300 bg-white text-[#142C1D] focus:outline-none focus:border-amber-600 font-medium"
                     />
                     <p className="text-[10px] text-amber-700">
-                      Official Census 2011 & LGD code will be absent. The Credibility Score will reflect unverified location coverage.
+                      Official Maharashtra dataset &amp; LGD code will be absent. The Credibility Score will reflect unverified location coverage.
                     </p>
                   </div>
                 )}
@@ -668,7 +747,7 @@ export const AssessmentWizard: React.FC<AssessmentWizardProps> = ({
                 Confirm details before running analysis
               </h2>
               <p className="text-xs sm:text-sm text-[#546657] mt-1">
-                VEYA will combine Census 2011 demographics, DES 2023-24 economic indicators, Udyam MSME density, AGMARKNET modal prices, and Gemini AI reasoning.
+                VEYA will combine Maharashtra state demographics, DES 2023-24 economic indicators, Udyam MSME density, and AGMARKNET modal prices.
               </p>
             </div>
 
@@ -743,7 +822,7 @@ export const AssessmentWizard: React.FC<AssessmentWizardProps> = ({
                   <strong>Deterministic Financial Schedule</strong> with reducing balance EMI and grace period
                 </li>
                 <li>
-                  <strong>Official Provenance & Limitations Audit</strong> citing Census 2011, DES, Udyam & AGMARKNET
+                  <strong>Official Provenance &amp; Limitations Audit</strong> citing Maharashtra Demographic Dataset, DES, Udyam &amp; AGMARKNET
                 </li>
               </ul>
             </div>

@@ -436,6 +436,257 @@ export function computeFinancialPlan(marginCapital: number, categoryKey: string)
 }
 
 // ==========================================
+// BUSINESS DESCRIPTION AUDIT & SENSITIVITY ENGINE
+// ==========================================
+
+interface DescriptionEvaluation {
+  has_critical_flaw: boolean;
+  flaw_severity: "FATAL" | "HIGH" | "MODERATE" | "NONE";
+  penalty_points: number;
+  flaw_type?: string;
+  flaw_detail?: string;
+  concept_score: number; // 0 - 20
+  concept_assessment: string;
+  dimension_adjustments: {
+    market_fit_adjustment: number;
+    purchasing_fit_adjustment: number;
+    financial_fit_adjustment: number;
+  };
+}
+
+export function evaluateBusinessDescription(
+  description: string,
+  category: string,
+  capital: number,
+  locContext: any,
+  rawPrices: any[] = []
+): DescriptionEvaluation {
+  const text = (description || "").trim().toLowerCase();
+
+  // If blank or empty (optional field)
+  if (!text) {
+    return {
+      has_critical_flaw: false,
+      flaw_severity: "NONE",
+      penalty_points: 0,
+      concept_score: 14,
+      concept_assessment: "Standard sector baseline assumed (no custom operational notes submitted).",
+      dimension_adjustments: {
+        market_fit_adjustment: 0,
+        purchasing_fit_adjustment: 0,
+        financial_fit_adjustment: 0,
+      },
+    };
+  }
+
+  // 1. Check for Gibberish / Keyboard Mash / Trolling / Noise
+  const isRepeatedChars = /(.)\1{4,}/.test(text); // e.g. aaaaaa, 111111, .....
+  const isKeyboardMash = /(asdf|qwerty|zxcvb|hjkl|poiuy|lkjh|123456)/.test(text);
+  const jokeTrollingPatterns = [
+    /\b(fake\s*business|scam|cheat|money\s*laundering|fraud|nothing|testing\s*test|joke|haha|troll)\b/i,
+    /\b(free\s*money|money\s*printer|secret\s*trick|guaranteed\s*crore)\b/i,
+  ];
+  const isJokeTrolling = jokeTrollingPatterns.some((rx) => rx.test(text));
+
+  // Check vowel ratio if longer than 8 characters (to catch words like "dfghjklmnbvc")
+  const lettersOnly = text.replace(/[^a-z]/g, "");
+  const vowelsCount = (lettersOnly.match(/[aeiou]/g) || []).length;
+  const vowelRatio = lettersOnly.length > 8 ? vowelsCount / lettersOnly.length : 0.4;
+  const isUnpronounceable = lettersOnly.length > 8 && vowelRatio < 0.15;
+
+  if (isRepeatedChars || isKeyboardMash || isJokeTrolling || isUnpronounceable) {
+    return {
+      has_critical_flaw: true,
+      flaw_severity: "FATAL",
+      penalty_points: 55,
+      flaw_type: "GIBBERISH_OR_INVALID_INPUT",
+      flaw_detail: "Invalid or non-viable operational description detected (keyboard mash, joke, or spam). No practical rural enterprise can be founded on this submission.",
+      concept_score: 2,
+      concept_assessment: "CRITICAL FAILURE: Description lacks genuine commercial substance or operational feasibility.",
+      dimension_adjustments: {
+        market_fit_adjustment: -5,
+        purchasing_fit_adjustment: -5,
+        financial_fit_adjustment: -5,
+      },
+    };
+  }
+
+  // 2. Prohibited, Illegal, or High-Hazard Activities
+  const prohibitedPatterns = [
+    /\b(weapons?|arms|gun|ammunition|explosives?)\b/i,
+    /\b(drugs?|narcotics?|ganja|charas|opium|cocaine|weed)\b/i,
+    /\b(satta|gambling|casino|betting|lottery|matka)\b/i,
+    /\b(desi\s*daru|illicit\s*liquor|bootlegging|moonshine)\b/i,
+    /\b(smuggling|stolen\s*goods|kidnap|counterfeit)\b/i,
+  ];
+  for (const rx of prohibitedPatterns) {
+    if (rx.test(text)) {
+      return {
+        has_critical_flaw: true,
+        flaw_severity: "FATAL",
+        penalty_points: 65,
+        flaw_type: "PROHIBITED_OR_ILLEGAL_ACTIVITY",
+        flaw_detail: "Prohibited, hazardous, or illicit commercial activity detected. Rural banking schemes and statutory enterprise licenses explicitly ban this activity.",
+        concept_score: 1,
+        concept_assessment: "FATAL REJECTION: Proposed operation violates statutory micro-lending guidelines.",
+        dimension_adjustments: {
+          market_fit_adjustment: -5,
+          purchasing_fit_adjustment: -5,
+          financial_fit_adjustment: -5,
+        },
+      };
+    }
+  }
+
+  // 3. Category Contradiction / Domain Mismatch
+  const categoryMismatchRules: Record<string, RegExp[]> = {
+    Dairy: [
+      /\b(crypto|bitcoin|btc|eth|nft|blockchain|forex|day\s*trading|stock\s*options|intraday)\b/i,
+      /\b(iphone|smartphone|mobile\s*repair|cyber\s*cafe|gaming\s*parlor|software\s*dev)\b/i,
+      /\b(real\s*estate|land\s*flipping|plot\s*brokerage)\b/i,
+      /\b(coaching\s*class|tuition\s*center|beauty\s*parlor|salon)\b/i,
+      /\b(cement\s*factory|brick\s*kiln|welding\s*workshop)\b/i,
+    ],
+    Tailoring: [
+      /\b(crypto|bitcoin|forex|trading|stocks)\b/i,
+      /\b(milk\s*collection|dairy|cattle|cows?|buffalo)\b/i,
+      /\b(brick\s*making|welding|heavy\s*fabrication|mining)\b/i,
+      /\b(fertilizer\s*shop|pesticide\s*trading)\b/i,
+    ],
+    Grocery: [
+      /\b(crypto|bitcoin|forex|stock\s*market)\b/i,
+      /\b(cattle\s*breeding|livestock\s*rearing)\b/i,
+      /\b(aeroplane|car\s*showroom|luxury\s*cars|yacht)\b/i,
+      /\b(software\s*agency|crypto\s*mining)\b/i,
+    ],
+    "Food Processing": [
+      /\b(crypto|bitcoin|forex|stock\s*trading)\b/i,
+      /\b(mobile\s*phones|laptops|electronic\s*gadgets)\b/i,
+      /\b(cement|steel|heavy\s*engineering)\b/i,
+    ],
+    "Rural Manufacturing": [
+      /\b(crypto|bitcoin|forex|trading)\b/i,
+      /\b(dairy\s*farming|cow\s*shed)\b/i,
+      /\b(beauty\s*salon|haircut)\b/i,
+    ],
+  };
+
+  const mismatchList = categoryMismatchRules[category] || [];
+  for (const rx of mismatchList) {
+    if (rx.test(text)) {
+      return {
+        has_critical_flaw: true,
+        flaw_severity: "FATAL",
+        penalty_points: 50,
+        flaw_type: "CATEGORY_MISMATCH_CONTRADICTION",
+        flaw_detail: `Domain contradiction: Selected category is "${category}", but the entered operational description proposes an incompatible activity. Scheme subsidies and local equipment cannot be utilized.`,
+        concept_score: 3,
+        concept_assessment: `MISMATCH: Description does not align with ${category} equipment, supply chain, or lending norms.`,
+        dimension_adjustments: {
+          market_fit_adjustment: -5,
+          purchasing_fit_adjustment: -4,
+          financial_fit_adjustment: -5,
+        },
+      };
+    }
+  }
+
+  // 4. Practically Impossible Unit Economics, Scale, or Pricing
+  const impossibleClaims: { rx: RegExp; reason: string; penalty: number }[] = [
+    // Impossible milk pricing (> ₹100/L in rural village)
+    {
+      rx: /(?:rs\.?|inr|₹)\s*(?:[1-9]\d{2,}|[1-9][0-9])\s*(?:\/|\s*per\s*)(?:l|ltr|liter|litre)/i,
+      reason: "Proposed retail price per liter far exceeds rural household purchasing power (modal AGMARKNET benchmark is ₹45-₹60/L). Off-take will collapse to zero.",
+      penalty: 45,
+    },
+    // Impossible volume scale for micro unit (e.g. 10000+ L daily with 1-2L capital)
+    {
+      rx: /\b(?:10[0-9]{3,}|[2-9][0-9]{4,})\s*(?:liters?|ltrs?|units?|packets?)\s*(?:daily|per\s*day)\b/i,
+      reason: "Claimed production volume (10,000+ units/day) is industrially impossible at micro-enterprise promoter equity.",
+      penalty: 45,
+    },
+    // Exporting raw perishable goods to Western countries
+    {
+      rx: /\b(?:export(?:ing)?\s*(?:to\s*)?(?:usa|america|uk|london|europe|dubai|canada))\b/i,
+      reason: "Micro-rural enterprise lacks cold-chain APEDA phytosanitary export certifications; immediate logistics breakdown.",
+      penalty: 40,
+    },
+    // Absurd profit promises
+    {
+      rx: /\b(?:100%|200%|500%|1000%)\s*(?:daily|weekly|monthly)?\s*(?:profit|returns?|margin)\b/i,
+      reason: "Claimed return on capital (>100% short-term profit) violates empirical agricultural economics; represents fraudulent projection.",
+      penalty: 50,
+    },
+    {
+      rx: /\b(?:earn|earning|make)\s*(?:[1-9]\d{1,}|[1-9])\s*(?:lakh|crore)s?\s*(?:per\s*day|daily|per\s*week)\b/i,
+      reason: "Claimed revenue rate (multiple lakhs/crores daily) is mathematically detached from rural village consumer base.",
+      penalty: 50,
+    },
+    // Zero cost fantasies (animals don't eat, free raw materials)
+    {
+      rx: /\b(?:no\s*feed\s*cost|free\s*cattle\s*feed|eat\s*plastic|eat\s*garbage|zero\s*expense|zero\s*cost\s*raw\s*material)\b/i,
+      reason: "Unrealistic zero-cost operational assumptions (omitting feed, raw material, or processing overhead) guarantee bankruptcy.",
+      penalty: 45,
+    },
+    // Walking absurd distances for perishable morning delivery
+    {
+      rx: /\bwalk(?:ing)?\s*(?:[4-9]\d|[1-9]\d{2,})\s*km\b/i,
+      reason: "Walking 40+ km daily for rural distribution is physically impossible for perishable goods.",
+      penalty: 35,
+    },
+    // 100% unlimited customer credit
+    {
+      rx: /\b(?:unlimited\s*credit|free\s*for\s*(?:everyone|all)|no\s*payment\s*needed)\b/i,
+      reason: "Providing free products or unlimited credit with zero working capital collections guarantees debt default in month 1.",
+      penalty: 45,
+    },
+  ];
+
+  for (const item of impossibleClaims) {
+    if (item.rx.test(text)) {
+      return {
+        has_critical_flaw: true,
+        flaw_severity: "FATAL",
+        penalty_points: item.penalty,
+        flaw_type: "UNREALISTIC_OPERATIONAL_CLAIM",
+        flaw_detail: item.reason,
+        concept_score: 3,
+        concept_assessment: `FATAL FLAW: ${item.reason}`,
+        dimension_adjustments: {
+          market_fit_adjustment: -4,
+          purchasing_fit_adjustment: -5,
+          financial_fit_adjustment: -5,
+        },
+      };
+    }
+  }
+
+  // 5. Sound, Practical, Grounded Description
+  const hasGoodKeywords = [
+    /\b(procure|collect|fresh|morning|evening|daily|doorstep|delivery|retail|customer|local|mandi|haat|school|shop|store|quality|hygiene|packaging|tailor|stitching|flour|spices|grinding|chiller|cowshed|contract|tie-up|cooperative|b2b)\b/i,
+  ].some((rx) => rx.test(text));
+
+  const textLength = text.length;
+  const conceptScore = textLength >= 60 && hasGoodKeywords ? 19 : textLength >= 25 ? 16 : 13;
+
+  return {
+    has_critical_flaw: false,
+    flaw_severity: "NONE",
+    penalty_points: 0,
+    concept_score: conceptScore,
+    concept_assessment:
+      textLength >= 40
+        ? "Sound, realistic rural micro-plan with actionable operational grounding."
+        : "Basic operational outline; aligns with standard village commercial practices.",
+    dimension_adjustments: {
+      market_fit_adjustment: hasGoodKeywords ? 1 : 0,
+      purchasing_fit_adjustment: 0,
+      financial_fit_adjustment: hasGoodKeywords ? 1 : 0,
+    },
+  };
+}
+
+// ==========================================
 // DETERMINISTIC FEASIBILITY & DUAL SCORES
 // ==========================================
 
@@ -518,23 +769,40 @@ export function computeFeasibility(categoryKey: string, financials: any, locatio
   const capital = financials.margin_capital.value;
   const isWithinCeiling = financials.scheme.is_within_ceiling;
 
-  // SCORE A: Final Go / No-Go Model Score (0 - 100) — Commercially Driven
-  let marketFit = reachableCustomers >= 4000 ? 18 : reachableCustomers >= 2500 ? 15 : reachableCustomers >= 1200 ? 12 : 8;
-  let purchasingFit = Math.round((purchasingPowerScore / 100) * 15);
-  let compFit = compLevel === "LOW" ? 14 : compLevel === "MODERATE" ? 11 : 7;
-  let finFit = !isWithinCeiling ? 8 : capital < 14000 ? 6 : capital >= 50000 ? 18 : 14;
-  let resourceFit = capital >= 100000 ? 14 : capital >= 50000 ? 11 : 8;
-  let riskFit = rain.departure_percent < -20 ? 8 : 11; // Climate adjusted
+  // Strict Evaluation of User Entered Business Description
+  const userDescriptionText = (locationInput?.description || "").trim();
+  const descEval = evaluateBusinessDescription(userDescriptionText, categoryKey, capital, locContext, rawPrices);
 
-  const goNoGoScore = Math.min(100, Math.max(10, marketFit + purchasingFit + compFit + finFit + resourceFit + riskFit));
+  // SCORE A: Final Go / No-Go Model Score (0 - 100) — Commercially Driven & Highly Sensitive to User Input
+  let marketFit = reachableCustomers >= 4000 ? 15 : reachableCustomers >= 2500 ? 13 : reachableCustomers >= 1200 ? 10 : 7;
+  let purchasingFit = Math.round((purchasingPower.score / 100) * 15);
+  let compFit = compLevel === "LOW" ? 15 : compLevel === "MODERATE" ? 12 : 8;
+  let finFit = !isWithinCeiling ? 8 : capital < 14000 ? 5 : capital >= 50000 ? 18 : 14;
+  let resourceFit = capital >= 100000 ? 15 : capital >= 50000 ? 12 : 8;
+  let conceptFit = descEval.concept_score; // max 20
+
+  // If a critical or fatal flaw is detected in user input, drop core fits severely
+  if (descEval.has_critical_flaw) {
+    marketFit = Math.min(marketFit, 4);
+    purchasingFit = Math.min(purchasingFit, 4);
+    finFit = Math.min(finFit, 4);
+  }
+
+  const rawGoNoGo = marketFit + purchasingFit + compFit + finFit + resourceFit + conceptFit - descEval.penalty_points;
+  const goNoGoScore = Math.min(100, Math.max(12, rawGoNoGo));
 
   const goNoGoDimensions = [
-    { dimension: "Market / Demand Fit", score: marketFit, max_score: 20, assessment: `~${reachableCustomers.toLocaleString()} addressable households in cluster` },
-    { dimension: "Local Purchasing Power Fit", score: purchasingFit, max_score: 15, assessment: `${purchasingPowerBand} household expenditure capacity (${formatINR(econ.per_capita_income_inr)}/yr)` },
+    { dimension: "Market / Demand Fit", score: marketFit, max_score: 15, assessment: `~${reachableCustomers.toLocaleString()} addressable households in cluster` },
+    { dimension: "Local Purchasing Power Fit", score: purchasingFit, max_score: 15, assessment: `${purchasingPower.band} household expenditure capacity (${formatINR(econ.per_capita_income_inr)}/yr)` },
     { dimension: "Competition Position", score: compFit, max_score: 15, assessment: `${compLevel} saturation (${density.toFixed(2)} formal units / 1k HH)` },
     { dimension: "Financial Feasibility", score: finFit, max_score: 20, assessment: `Matched with ${financials.scheme.scheme_name} (${financials.scheme.interest_rate_percent}% p.a.)` },
     { dimension: "Resource Readiness", score: resourceFit, max_score: 15, assessment: `${financials.margin_capital.formatted} promoter equity committed` },
-    { dimension: "Risk Exposure & Mitigation", score: riskFit, max_score: 15, assessment: `Monsoon rainfall normal (${rain.annual_actual_mm}mm), ${bank.banking_touchpoints_total} banking touchpoints` },
+    { 
+      dimension: "AI Viability Dimension: Concept & Execution", 
+      score: conceptFit, 
+      max_score: 20, 
+      assessment: descEval.concept_assessment 
+    },
   ];
 
   // SCORE B: Credibility Score (0 - 100) — Evidence & Provenance Driven
@@ -583,7 +851,7 @@ export function computeFeasibility(categoryKey: string, financials: any, locatio
       score: sourceScore,
       max_score: 20,
       detail: hasApmcPrices && hasMsmeCluster
-        ? "Census 2011 PCA + DES 2023-24 + Udyam MSME + AGMARKNET active"
+        ? "Maharashtra State Demographics + DES 2023-24 + Udyam MSME + AGMARKNET active"
         : "Partial baseline sources active; some sector benchmarks interpolated",
     },
     {
@@ -591,7 +859,7 @@ export function computeFeasibility(categoryKey: string, financials: any, locatio
       score: recencyScore,
       max_score: 20,
       detail: hasApmcPrices
-        ? "2024 AGMARKNET prices, 2024 RBI banking, 2023-24 DES DDP; Census 2011 baseline"
+        ? "2024 AGMARKNET prices, 2024 RBI banking, 2023-24 DES DDP; Maharashtra Demographics baseline"
         : "Historical baseline active; no recent local market mandi price series",
     },
     {
@@ -618,7 +886,7 @@ export function computeFeasibility(categoryKey: string, financials: any, locatio
     isVillageVerified
       ? { label: `Village mapped to official LGD hierarchy (${locContext.village}, LGD: ${locContext.village_lgd_code})`, status: "VERIFIED", icon: "check" }
       : { label: `Location unverified in LGD directory (${locContext.village}); using block approximation`, status: "UNVERIFIED", icon: "delta" },
-    { label: `Census of India 2011 Primary Census Abstract (PCA) demographic baseline`, status: "VERIFIED", icon: "check" },
+    { label: `Maharashtra State Demographic Dataset primary administrative baseline`, status: "VERIFIED", icon: "check" },
     { label: `Directorate of Economics and Statistics (DES) Maharashtra 2023-24 Per Capita Income (${formatINR(econ.per_capita_income_inr)})`, status: "VERIFIED", icon: "check" },
     { label: `Ministry of MSME Udyam Portal 2023-24 formal enterprise density benchmark`, status: "VERIFIED", icon: "check" },
     hasApmcPrices
@@ -629,7 +897,7 @@ export function computeFeasibility(categoryKey: string, financials: any, locatio
     userNotesLen >= 15
       ? { label: `Promoter enterprise concept and operational plan documented`, status: "VERIFIED", icon: "check" }
       : { label: `Sparse / minimal enterprise description provided (<15 chars); relying on sector defaults`, status: "LIMITATION", icon: "delta" },
-    { label: "Census 2011 demographics used as baseline; current village population may be higher", status: "LIMITATION", icon: "delta" },
+    { label: "Maharashtra State Demographic Dataset used as baseline; current village population may vary", status: "LIMITATION", icon: "delta" },
     { label: "Udyam captures formal MSMEs; informal unregistered village micro-units require field verification", status: "LIMITATION", icon: "delta" },
   ];
 
@@ -638,7 +906,11 @@ export function computeFeasibility(categoryKey: string, financials: any, locatio
   const keyFactors = [];
   const majorRisks = [];
 
-  if (capital < 14000.0) {
+  if (descEval.has_critical_flaw) {
+    status = "HIGH RISK / RECONSIDER";
+    keyFactors.push(`CRITICAL CONCEPT FLAW: ${descEval.flaw_detail}`);
+    majorRisks.push("Fatal operational, logistical, or economic impossibility detected in submitted business plan.");
+  } else if (capital < 14000.0) {
     status = "HIGH RISK / RECONSIDER";
     keyFactors.push(`Margin capital of ${formatINR(capital)} produces project cost below minimum ₹1.40L threshold.`);
     majorRisks.push("Undercapitalized operations risk severe early cash flow default.");
@@ -732,18 +1004,19 @@ export function computeFeasibility(categoryKey: string, financials: any, locatio
       go_no_go: {
         score: goNoGoScore,
         name: "FINAL GO / NO-GO MODEL SCORE",
-        meaning: "How your business idea fares according to VEYA's analysis",
+        meaning: "Commercial viability, debt solvency & profit feasibility under local market realities",
         supported_dimensions: goNoGoDimensions,
         data_classification: "MODELED_ESTIMATE",
+        concept_audit: descEval,
       },
       credibility: {
         score: credibilityScore,
         name: "CREDIBILITY SCORE",
-        meaning: "How well VEYA was able to analyse your case using available evidence",
+        meaning: "Official data coverage, empirical ground-truth completeness & verification rigor",
         dimensions: credibilityDimensions,
         evidence_audit: evidenceAudit,
         limitations: [
-          "Census 2011 demographics used as baseline; current population may be higher.",
+          "Maharashtra State Demographic Dataset used as baseline; current village population may vary.",
           "Udyam captures formal MSMEs; informal unregistered village micro-units are estimated.",
           "Commodity prices are based on a static historical snapshot from AGMARKNET (15-Mar-2024).",
         ],
@@ -755,7 +1028,19 @@ export function computeFeasibility(categoryKey: string, financials: any, locatio
       status,
       key_factors: keyFactors,
       major_risks: majorRisks,
-      decision_basis: "Deterministic Multi-Factor Scoring (Capital Adequacy + Competitor Density + Addressable Demand)",
+      decision_basis: "Deterministic Multi-Factor Scoring (Capital Adequacy + Competitor Density + Addressable Demand + Operational Input Feasibility)",
+    },
+    deterministic_scores_raw: {
+      marketFit,
+      purchasingFit,
+      compFit,
+      finFit,
+      resourceFit,
+      conceptFit,
+      deterministicPenalty: descEval.penalty_points,
+      has_critical_flaw: descEval.has_critical_flaw,
+      flaw_detail: descEval.flaw_detail,
+      descEval,
     },
   };
 }
@@ -837,12 +1122,16 @@ async function generateAIReasoning(
 
   const systemInstruction = `You are VEYA, an empathetic, highly rigorous, and practical rural business feasibility advisor in India.
 You provide objective, evidence-grounded analysis for micro-entrepreneurs.
-You are given an assessment backed by official government datasets (Census 2011, DES Maharashtra 2023-24, Udyam MSME, AGMARKNET, RBI DBIE).
+You are given an assessment backed by official government datasets (Maharashtra State Demographic Dataset, DES Maharashtra 2023-24, Udyam MSME, AGMARKNET, RBI DBIE).
 RULES:
 1. Ground your answer in the user's exact village (${loc.village}), block (${loc.block}), and district (${loc.district}).
 2. The Go/No-Go Model Score (${goNoGo}/100) and Credibility Score (${cred}/100) are strictly independent.
 3. Do not invent fake statistics or contradict the deterministic financial and feasibility outputs.
-4. Output valid JSON matching the exact schema requested.`;
+4. HIGH SENSITIVITY TO USER INPUT: Scrutinize the user's business description ('User Notes') strictly against rural practical reality. If the user provided intentional or unintentional wrong/impossible stuff (e.g. impossible pricing like milk at ₹500/L, impossible volume like 10,000L/day for a micro-unit, zero feed cost, animals eating garbage/plastic, crypto/gadgets inside a dairy category, walking 80km daily, free items for everyone, or keyboard mash/spam):
+   - You MUST classify the status as 'HIGH RISK / RECONSIDER'.
+   - You MUST explicitly explain the exact operational or economic impossibility in 'summary_explanation' and 'major_risks'.
+   - NEVER provide a positive or flattering recommendation when the user input contains fundamental impossibilities.
+5. Output valid JSON matching the exact schema requested.`;
 
   const prompt = `Enterprise Category: ${category}
 Location: ${loc.village}, ${loc.block}, ${loc.district}, Maharashtra (LGD: ${loc.sub_district_lgd_code})
@@ -856,7 +1145,7 @@ Financials:
 - Working Capital Buffer: ${financials.working_capital.formatted}
 
 Demographics & Market Evidence:
-- Cluster Population: ${feasibility.market_reach.population.formatted} (Census 2011 PCA)
+- Cluster Population: ${feasibility.market_reach.population.formatted} (Maharashtra State Demographic Dataset)
 - Households: ${feasibility.market_reach.households.formatted}
 - Reachable Customers: ~${feasibility.market_reach.reachable_customers.formatted}
 - Competition Level: ${feasibility.competitor_mapping.competition_level.value} (${feasibility.competitor_mapping.density_per_1k_households.formatted} from Udyam)
@@ -998,6 +1287,18 @@ app.post("/api/assessment", async (req: Request, res: Response) => {
 
     const locContext = feasibility.location_context;
 
+    const hasFatalInputFlaw = feasibility.deterministic_recommendation.status === "HIGH RISK / RECONSIDER";
+    const finalStatus = hasFatalInputFlaw ? "HIGH RISK / RECONSIDER" : aiReasoning.status;
+    const finalReasons = hasFatalInputFlaw
+      ? [...feasibility.deterministic_recommendation.key_factors, ...(aiReasoning.key_reasons || []).slice(0, 3)]
+      : aiReasoning.key_reasons;
+    const finalRisks = hasFatalInputFlaw
+      ? [...feasibility.deterministic_recommendation.major_risks, ...(aiReasoning.major_risks || []).slice(0, 3)]
+      : aiReasoning.major_risks;
+    const finalSummary = hasFatalInputFlaw && aiReasoning.status !== "HIGH RISK / RECONSIDER"
+      ? `CRITICAL NOTICE: Operational discrepancy detected in submitted plan (${feasibility.deterministic_recommendation.key_factors[0]}). The Final Go/No-Go Model Score has dropped drastically to reflect practical rural non-feasibility.`
+      : aiReasoning.summary_explanation;
+
     // Assemble final report
     const finalReport = {
       project: "VEYA",
@@ -1026,11 +1327,11 @@ app.post("/api/assessment", async (req: Request, res: Response) => {
         note: "These scores measure different things and should not be combined.",
       },
       recommendation: {
-        status: aiReasoning.status,
+        status: finalStatus,
         status_tier: "VERIFIED",
-        summary_explanation: aiReasoning.summary_explanation,
-        key_reasons: aiReasoning.key_reasons,
-        major_risks: aiReasoning.major_risks,
+        summary_explanation: finalSummary,
+        key_reasons: finalReasons,
+        major_risks: finalRisks,
         suggested_action: aiReasoning.suggested_action,
         validation_checks: aiReasoning.validation_checks,
         quantitative_engine_check: feasibility.deterministic_recommendation,

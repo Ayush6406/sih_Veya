@@ -1,5 +1,5 @@
 import React from "react";
-import { Database, ShieldCheck, HelpCircle, ArrowRight } from "lucide-react";
+import { Database, ShieldCheck, HelpCircle, ArrowRight, RotateCcw } from "lucide-react";
 import { VeyaLogo } from "./VeyaLogo";
 
 interface NavbarProps {
@@ -7,6 +7,8 @@ interface NavbarProps {
   onOpenChat: () => void;
   onOpenWhatIf?: () => void;
   hasReport: boolean;
+  hasRunAnalysis?: boolean;
+  onResetScenario?: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
@@ -14,12 +16,16 @@ export const Navbar: React.FC<NavbarProps> = ({
   onOpenChat,
   onOpenWhatIf,
   hasReport,
+  hasRunAnalysis,
+  onResetScenario,
 }) => {
+  const isAnalysisRun = Boolean(hasRunAnalysis || hasReport);
+
   return (
     <header className="sticky top-0 z-40 bg-[#FBFBF7]/90 backdrop-blur-md border-b border-[#E2E8D8]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-6">
         {/* Brand Logo */}
-        <div className="flex items-center cursor-pointer shrink-0" onClick={onNewAssessment}>
+        <div className="flex items-center cursor-pointer shrink-0" onClick={isAnalysisRun ? (onResetScenario || onNewAssessment) : onNewAssessment}>
           <VeyaLogo size="md" />
         </div>
 
@@ -42,13 +48,24 @@ export const Navbar: React.FC<NavbarProps> = ({
             <span>Ask VEYA</span>
           </button>
 
-          <button
-            onClick={onNewAssessment}
-            className="flex items-center gap-1.5 px-3 sm:px-4 py-2 text-xs font-semibold rounded-lg text-white bg-[#1E5D38] hover:bg-[#16472A] transition-all shadow-sm"
-          >
-            <span>Start Analysis</span>
-            <ArrowRight className="w-3.5 h-3.5" />
-          </button>
+          {isAnalysisRun ? (
+            <button
+              onClick={onResetScenario || onNewAssessment}
+              className="flex items-center gap-1.5 px-3 sm:px-4 py-2 text-xs font-semibold rounded-lg text-white bg-[#1E5D38] hover:bg-[#16472A] transition-all shadow-sm"
+              title="Return to input form with your previous scenario pre-filled"
+            >
+              <RotateCcw className="w-3.5 h-3.5" />
+              <span>Reset Scenario</span>
+            </button>
+          ) : (
+            <button
+              onClick={onNewAssessment}
+              className="flex items-center gap-1.5 px-3 sm:px-4 py-2 text-xs font-semibold rounded-lg text-white bg-[#1E5D38] hover:bg-[#16472A] transition-all shadow-sm"
+            >
+              <span>Start Analysis</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </button>
+          )}
         </div>
       </div>
     </header>

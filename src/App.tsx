@@ -10,8 +10,7 @@ import {
   Printer,
   ChevronRight,
   ShieldCheck,
-  MapPin,
-  ArrowUp
+  MapPin
 } from "lucide-react";
 
 import { Navbar } from "./components/Navbar";
@@ -33,6 +32,14 @@ import { AssessmentReport, BusinessCategory, LocationData } from "./types";
 
 export default function App() {
   const [report, setReport] = useState<AssessmentReport | null>(null);
+  const [hasRunAnalysis, setHasRunAnalysis] = useState(false);
+  const [resetTrigger, setResetTrigger] = useState(0);
+  const [savedScenario, setSavedScenario] = useState<{
+    category: BusinessCategory;
+    capital: number;
+    location: LocationData;
+    description: string;
+  } | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [loadingCategory, setLoadingCategory] = useState("Dairy");
   const [loadingLocation, setLoadingLocation] = useState("Junnar, Pune");
@@ -50,6 +57,22 @@ export default function App() {
     }
   };
 
+  // Reset scenario: dismiss report, force step 1 (Location), and bring user directly to 1. Location field with saved inputs preserved
+  const handleResetScenario = () => {
+    setReport(null);
+    setResetTrigger((prev) => prev + 1);
+    setTimeout(() => {
+      const el = document.getElementById("location-step-section") || document.getElementById("assessment-wizard");
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+      const districtEl = document.getElementById("district-select");
+      if (districtEl) {
+        districtEl.focus({ preventScroll: true });
+      }
+    }, 60);
+  };
+
   // Run assessment
   const handleRunAssessment = async (data: {
     category: BusinessCategory;
@@ -57,6 +80,13 @@ export default function App() {
     location: LocationData;
     description: string;
   }) => {
+    setHasRunAnalysis(true);
+    setSavedScenario({
+      category: data.category,
+      capital: data.capital,
+      location: data.location,
+      description: data.description,
+    });
     setLoadingCategory(data.category);
     setLoadingLocation(`${data.location.block || "Junnar"}, ${data.location.district || "Pune"}`);
     setIsLoading(true);
@@ -101,7 +131,7 @@ export default function App() {
         district: "Pune",
         state: "Maharashtra",
         pincode: "410502",
-        provenance: "Census of India 2011 (ORGI_PPT_2011_36)",
+        provenance: "Maharashtra State Demographic Dataset (LGD 2024 & DES)",
       },
       description: "Fresh morning cow and buffalo milk delivery to 40 nearby families with fresh paneer for village sweets.",
     });
@@ -115,6 +145,8 @@ export default function App() {
         onOpenChat={() => setIsChatOpen(true)}
         onOpenWhatIf={report ? () => setIsWhatIfOpen(true) : undefined}
         hasReport={Boolean(report)}
+        hasRunAnalysis={hasRunAnalysis}
+        onResetScenario={handleResetScenario}
       />
 
       <main className="flex-1">
@@ -130,6 +162,8 @@ export default function App() {
             <AssessmentWizard
               onSubmit={handleRunAssessment}
               isLoading={isLoading}
+              savedScenario={savedScenario}
+              resetTrigger={resetTrigger}
             />
           </div>
         </div>
@@ -246,24 +280,12 @@ export default function App() {
                 narrativeTier={report.recommendation.narrative_tier}
               />
 
-              {/* Bottom Quick Return Bar */}
-              <div className="pt-6 border-t border-[#DFE7D8] flex flex-wrap items-center justify-between gap-4 text-xs text-[#526354]">
-                <div className="flex items-center gap-2">
-                  <ShieldCheck className="w-4 h-4 text-[#1E5D38]" />
-                  <span>
-                    Official Demographic Baseline: Census 2011 (ORGI_PPT_2011_36) • Concessional NSFDC Schemes
-                  </span>
-                </div>
-
-                <div className="flex items-center gap-3">
-                  <button
-                    onClick={scrollToWizard}
-                    className="hover:underline text-[#1E5D38] font-semibold flex items-center gap-1"
-                  >
-                    <span>Run Another Scenario</span>
-                    <ArrowUp className="w-3 h-3" />
-                  </button>
-                </div>
+              {/* Bottom Baseline Bar */}
+              <div className="pt-6 border-t border-[#DFE7D8] flex items-center gap-2 text-xs text-[#526354]">
+                <ShieldCheck className="w-4 h-4 text-[#1E5D38] shrink-0" />
+                <span>
+                  Official Demographic Baseline: Maharashtra State Demographic Dataset (LGD 2024 & DES) • Concessional NSFDC Schemes
+                </span>
               </div>
             </div>
           </section>
@@ -279,9 +301,9 @@ export default function App() {
           </div>
 
           <div className="flex items-center gap-6">
-            <span>Census 2011 Grounded</span>
+            <span>Maharashtra Demographic Grounded</span>
             <span>Deterministic Financial Engine</span>
-            <span>Gemini Qualitative Reasoning</span>
+            <span>Qualitative Strategic Intelligence</span>
           </div>
         </div>
       </footer>

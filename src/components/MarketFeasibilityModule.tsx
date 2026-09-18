@@ -32,7 +32,7 @@ export const MarketFeasibilityModule: React.FC<MarketFeasibilityModuleProps> = (
               <span>Demographic & Competition Audit</span>
             </span>
             <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-800 border border-emerald-200">
-              Verified · Census 2011 + Udyam
+              Verified · Maharashtra Dataset + Udyam
             </span>
           </div>
 

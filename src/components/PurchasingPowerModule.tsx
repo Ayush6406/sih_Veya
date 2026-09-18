@@ -1,5 +1,5 @@
 import React from "react";
-import { TrendingUp, Users, ShoppingCart, DollarSign, MapPin, AlertCircle, Sparkles } from "lucide-react";
+import { TrendingUp, Users, ShoppingCart, DollarSign, MapPin, AlertCircle, Sparkles, CheckCircle2, Bot, Calculator } from "lucide-react";
 import { ConsumerPurchasingPower } from "../types";
 
 interface PurchasingPowerModuleProps {
@@ -46,7 +46,7 @@ export const PurchasingPowerModule: React.FC<PurchasingPowerModuleProps> = ({
               <span>Hyper-Local Market Capacity</span>
             </span>
             <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md bg-blue-50 text-blue-800 border border-blue-200">
-              Modeled Estimate
+              Estimate
             </span>
           </div>
 
@@ -62,9 +62,14 @@ export const PurchasingPowerModule: React.FC<PurchasingPowerModuleProps> = ({
         {/* Score Pill */}
         <div className="flex items-center gap-3 bg-[#FAFDF9] p-2.5 rounded-2xl border border-[#D5E4D4]">
           <div className="text-right">
-            <span className="text-[10px] text-[#697E6E] uppercase font-semibold block">
-              Purchasing Index
-            </span>
+            <div className="flex items-center justify-end gap-1.5">
+              <span className="text-[10px] text-[#697E6E] uppercase font-semibold">
+                Purchasing Index
+              </span>
+              <span className="text-[9px] uppercase font-bold px-1.5 py-0.2 rounded bg-blue-50 text-blue-800 border border-blue-200">
+                Estimate
+              </span>
+            </div>
             <span className="text-lg font-bold text-[#142C1D]">{score} / 100</span>
           </div>
           <span className={`px-2.5 py-1 text-xs font-bold rounded-xl border ${bandBadgeColor}`}>
@@ -73,91 +78,235 @@ export const PurchasingPowerModule: React.FC<PurchasingPowerModuleProps> = ({
         </div>
       </div>
 
+      {/* Provenance Legend */}
+      <div className="flex flex-wrap items-center gap-2 sm:gap-4 text-[11px] text-[#556958] bg-[#F7FAF6] px-4 py-2.5 rounded-2xl border border-[#E2ECE0]">
+        <span className="font-bold text-[#203E28] uppercase tracking-wider text-[10px]">
+          Value Classifications:
+        </span>
+        <span className="inline-flex items-center gap-1.5">
+          <span className="px-1.5 py-0.5 rounded font-bold uppercase text-[9px] bg-emerald-50 text-emerald-800 border border-emerald-200 inline-flex items-center gap-1">
+            <CheckCircle2 className="w-2.5 h-2.5" />
+            Verified
+          </span>
+          <span>Official Maharashtra Dataset &amp; DES</span>
+        </span>
+        <span className="text-[#CCD7CB] hidden sm:inline">•</span>
+        <span className="inline-flex items-center gap-1.5">
+          <span className="px-1.5 py-0.5 rounded font-bold uppercase text-[9px] bg-blue-50 text-blue-800 border border-blue-200 inline-flex items-center gap-1">
+            <Calculator className="w-2.5 h-2.5" />
+            Estimate
+          </span>
+          <span>Demographic Ratios &amp; Catchment Models</span>
+        </span>
+        <span className="text-[#CCD7CB] hidden sm:inline">•</span>
+        <span className="inline-flex items-center gap-1.5">
+          <span className="px-1.5 py-0.5 rounded font-bold uppercase text-[9px] bg-purple-50 text-purple-800 border border-purple-200 inline-flex items-center gap-1">
+            <Bot className="w-2.5 h-2.5" />
+            AI
+          </span>
+          <span>Qualitative Strategy Analysis</span>
+        </span>
+      </div>
+
       {/* Grid of Key Purchasing Power Dimensions */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-xs">
-        {/* Dimension 1: Consumer Base */}
-        <div className="bg-[#FAFDF8] p-4 rounded-2xl border border-[#E0EBDD] space-y-1.5">
-          <div className="flex items-center gap-2 text-[#193B23] font-bold">
-            <Users className="w-4 h-4 text-[#1E5D38]" />
-            <span>Target Consumer Base</span>
+        {/* Dimension 1: Consumer Base (AI) */}
+        <div className="bg-[#FAFDF8] p-4 rounded-2xl border border-[#E0EBDD] space-y-2 flex flex-col justify-between">
+          <div>
+            <div className="flex items-center justify-between mb-1.5">
+              <div className="flex items-center gap-2 text-[#193B23] font-bold">
+                <Users className="w-4 h-4 text-[#1E5D38]" />
+                <span>Target Consumer Base</span>
+              </div>
+              <span className="text-[9px] uppercase font-bold px-1.5 py-0.5 rounded bg-purple-50 text-purple-800 border border-purple-200 shrink-0">
+                AI
+              </span>
+            </div>
+            <p className="text-[#3B4F3F] leading-relaxed">{consumer_base}</p>
           </div>
-          <p className="text-[#3B4F3F] leading-relaxed">{consumer_base}</p>
+          <div className="pt-2 border-t border-[#EDF3EC] flex items-center justify-between text-[10px] text-[#697E6F]">
+            <span>Segmentation</span>
+            <span className="text-purple-700 font-medium">AI Synthesized</span>
+          </div>
         </div>
 
-        {/* Dimension 2: Affordability Evidence */}
-        <div className="bg-[#FAFDF8] p-4 rounded-2xl border border-[#E0EBDD] space-y-1.5">
-          <div className="flex items-center gap-2 text-[#193B23] font-bold">
-            <DollarSign className="w-4 h-4 text-[#1E5D38]" />
-            <span>Affordability Evidence</span>
+        {/* Dimension 2: Affordability Evidence (Estimate) */}
+        <div className="bg-[#FAFDF8] p-4 rounded-2xl border border-[#E0EBDD] space-y-2 flex flex-col justify-between">
+          <div>
+            <div className="flex items-center justify-between mb-1.5">
+              <div className="flex items-center gap-2 text-[#193B23] font-bold">
+                <DollarSign className="w-4 h-4 text-[#1E5D38]" />
+                <span>Affordability Evidence</span>
+              </div>
+              <span className="text-[9px] uppercase font-bold px-1.5 py-0.5 rounded bg-blue-50 text-blue-800 border border-blue-200 shrink-0">
+                Estimate
+              </span>
+            </div>
+            <p className="text-[#3B4F3F] leading-relaxed">{affordability_evidence}</p>
           </div>
-          <p className="text-[#3B4F3F] leading-relaxed">{affordability_evidence}</p>
+          <div className="pt-2 border-t border-[#EDF3EC] flex items-center justify-between text-[10px] text-[#697E6F]">
+            <span>Wage-to-Price Ratio</span>
+            <span className="text-blue-700 font-medium">Modeled Estimate</span>
+          </div>
         </div>
 
-        {/* Dimension 3: Demand Evidence */}
-        <div className="bg-[#FAFDF8] p-4 rounded-2xl border border-[#E0EBDD] space-y-1.5">
-          <div className="flex items-center gap-2 text-[#193B23] font-bold">
-            <ShoppingCart className="w-4 h-4 text-[#1E5D38]" />
-            <span>Demand Frequency</span>
+        {/* Dimension 3: Demand Evidence (Estimate) */}
+        <div className="bg-[#FAFDF8] p-4 rounded-2xl border border-[#E0EBDD] space-y-2 flex flex-col justify-between">
+          <div>
+            <div className="flex items-center justify-between mb-1.5">
+              <div className="flex items-center gap-2 text-[#193B23] font-bold">
+                <ShoppingCart className="w-4 h-4 text-[#1E5D38]" />
+                <span>Demand Frequency</span>
+              </div>
+              <span className="text-[9px] uppercase font-bold px-1.5 py-0.5 rounded bg-blue-50 text-blue-800 border border-blue-200 shrink-0">
+                Estimate
+              </span>
+            </div>
+            <p className="text-[#3B4F3F] leading-relaxed">{demand_evidence}</p>
           </div>
-          <p className="text-[#3B4F3F] leading-relaxed">{demand_evidence}</p>
+          <div className="pt-2 border-t border-[#EDF3EC] flex items-center justify-between text-[10px] text-[#697E6F]">
+            <span>Consumption Velocity</span>
+            <span className="text-blue-700 font-medium">Modeled Estimate</span>
+          </div>
         </div>
 
-        {/* Dimension 4: Price Sensitivity */}
-        <div className="bg-[#FAFDF8] p-4 rounded-2xl border border-[#E0EBDD] space-y-1.5">
-          <div className="flex items-center gap-2 text-[#193B23] font-bold">
-            <TrendingUp className="w-4 h-4 text-[#1E5D38]" />
-            <span>Price Sensitivity</span>
+        {/* Dimension 4: Price Sensitivity (AI) */}
+        <div className="bg-[#FAFDF8] p-4 rounded-2xl border border-[#E0EBDD] space-y-2 flex flex-col justify-between">
+          <div>
+            <div className="flex items-center justify-between mb-1.5">
+              <div className="flex items-center gap-2 text-[#193B23] font-bold">
+                <TrendingUp className="w-4 h-4 text-[#1E5D38]" />
+                <span>Price Sensitivity</span>
+              </div>
+              <span className="text-[9px] uppercase font-bold px-1.5 py-0.5 rounded bg-purple-50 text-purple-800 border border-purple-200 shrink-0">
+                AI
+              </span>
+            </div>
+            <p className="text-[#3B4F3F] leading-relaxed">{price_sensitivity}</p>
           </div>
-          <p className="text-[#3B4F3F] leading-relaxed">{price_sensitivity}</p>
+          <div className="pt-2 border-t border-[#EDF3EC] flex items-center justify-between text-[10px] text-[#697E6F]">
+            <span>Elasticity Profile</span>
+            <span className="text-purple-700 font-medium">AI Inferred</span>
+          </div>
         </div>
 
-        {/* Dimension 5: Market Accessibility */}
-        <div className="bg-[#FAFDF8] p-4 rounded-2xl border border-[#E0EBDD] space-y-1.5">
-          <div className="flex items-center gap-2 text-[#193B23] font-bold">
-            <MapPin className="w-4 h-4 text-[#1E5D38]" />
-            <span>Market Accessibility</span>
+        {/* Dimension 5: Market Accessibility (Estimate) */}
+        <div className="bg-[#FAFDF8] p-4 rounded-2xl border border-[#E0EBDD] space-y-2 flex flex-col justify-between">
+          <div>
+            <div className="flex items-center justify-between mb-1.5">
+              <div className="flex items-center gap-2 text-[#193B23] font-bold">
+                <MapPin className="w-4 h-4 text-[#1E5D38]" />
+                <span>Market Accessibility</span>
+              </div>
+              <span className="text-[9px] uppercase font-bold px-1.5 py-0.5 rounded bg-blue-50 text-blue-800 border border-blue-200 shrink-0">
+                Estimate
+              </span>
+            </div>
+            <p className="text-[#3B4F3F] leading-relaxed">{market_accessibility}</p>
           </div>
-          <p className="text-[#3B4F3F] leading-relaxed">{market_accessibility}</p>
+          <div className="pt-2 border-t border-[#EDF3EC] flex items-center justify-between text-[10px] text-[#697E6F]">
+            <span>Catchment Radius</span>
+            <span className="text-blue-700 font-medium">Modeled Estimate</span>
+          </div>
         </div>
 
-        {/* Dimension 6: Category Observations */}
-        <div className="bg-[#FAFDF8] p-4 rounded-2xl border border-[#E0EBDD] space-y-1.5">
-          <div className="flex items-center gap-2 text-[#193B23] font-bold">
-            <Sparkles className="w-4 h-4 text-amber-600" />
-            <span>Key Sector Observation</span>
+        {/* Dimension 6: Category Observations (AI) */}
+        <div className="bg-[#FAFDF8] p-4 rounded-2xl border border-[#E0EBDD] space-y-2 flex flex-col justify-between">
+          <div>
+            <div className="flex items-center justify-between mb-1.5">
+              <div className="flex items-center gap-2 text-[#193B23] font-bold">
+                <Sparkles className="w-4 h-4 text-purple-600" />
+                <span>Key Sector Observation</span>
+              </div>
+              <span className="text-[9px] uppercase font-bold px-1.5 py-0.5 rounded bg-purple-50 text-purple-800 border border-purple-200 shrink-0">
+                AI
+              </span>
+            </div>
+            <p className="text-[#3B4F3F] leading-relaxed">{category_observations}</p>
           </div>
-          <p className="text-[#3B4F3F] leading-relaxed">{category_observations}</p>
+          <div className="pt-2 border-t border-[#EDF3EC] flex items-center justify-between text-[10px] text-[#697E6F]">
+            <span>Domain Analysis</span>
+            <span className="text-purple-700 font-medium">AI Qualitative</span>
+          </div>
         </div>
       </div>
 
-      {/* District Baseline Benchmark Strip */}
+      {/* District Baseline Benchmark Strip (Verified Government Records) */}
       {districtContext && (
-        <div className="bg-[#EDF5EC] rounded-2xl p-4 border border-[#CFE1CE] text-xs">
-          <div className="flex items-center justify-between pb-2 border-b border-[#D8E6D7] mb-2.5">
-            <span className="font-bold text-[#184827] uppercase tracking-wider text-[11px] flex items-center gap-1.5">
-              <span>District Economic Baseline</span>
+        <div className="bg-[#EDF5EC] rounded-2xl p-4 sm:p-5 border border-[#CFE1CE] text-xs space-y-3">
+          <div className="flex flex-wrap items-center justify-between gap-2 pb-2.5 border-b border-[#D8E6D7]">
+            <div className="flex items-center gap-2">
+              <span className="font-bold text-[#184827] uppercase tracking-wider text-[11px]">
+                District Economic Baseline
+              </span>
               <span className="text-[9px] uppercase font-bold px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-800 border border-emerald-200">
                 Verified
               </span>
+            </div>
+            <span className="text-[10px] text-[#556958] font-medium">
+              DES Maharashtra 2023-24 DDP Indicators
             </span>
-            <span className="text-[10px] text-[#556958] font-medium">DES Maharashtra 2023-24 DDP Indicators</span>
           </div>
+
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-[#2F4433]">
-            <div>
-              <span className="text-[10px] text-[#5E7262] block">Per Capita Annual Income</span>
-              <span className="font-bold text-[#142C1D]">{districtContext.district_per_capita_formatted}</span>
+            <div className="bg-white/70 p-3 rounded-xl border border-[#D5E4D4] space-y-1">
+              <div className="flex items-center justify-between">
+                <span className="text-[10px] text-[#5E7262] font-medium block">
+                  Per Capita Income
+                </span>
+                <span className="text-[8px] uppercase font-bold px-1.5 py-0.2 rounded bg-emerald-50 text-emerald-800 border border-emerald-200">
+                  Verified
+                </span>
+              </div>
+              <span className="font-bold text-[#142C1D] text-sm block">
+                {districtContext.district_per_capita_formatted}
+              </span>
+              <span className="text-[9px] text-[#768A78] block">Annual District DDP</span>
             </div>
-            <div>
-              <span className="text-[10px] text-[#5E7262] block">Daily Wage (Unskilled)</span>
-              <span className="font-bold text-[#142C1D]">{districtContext.rural_daily_wage_unskilled} / day</span>
+
+            <div className="bg-white/70 p-3 rounded-xl border border-[#D5E4D4] space-y-1">
+              <div className="flex items-center justify-between">
+                <span className="text-[10px] text-[#5E7262] font-medium block">
+                  Daily Wage (Unskilled)
+                </span>
+                <span className="text-[8px] uppercase font-bold px-1.5 py-0.2 rounded bg-emerald-50 text-emerald-800 border border-emerald-200">
+                  Verified
+                </span>
+              </div>
+              <span className="font-bold text-[#142C1D] text-sm block">
+                {districtContext.rural_daily_wage_unskilled} / day
+              </span>
+              <span className="text-[9px] text-[#768A78] block">Statutory Rural Floor</span>
             </div>
-            <div>
-              <span className="text-[10px] text-[#5E7262] block">Daily Wage (Skilled)</span>
-              <span className="font-bold text-[#142C1D]">{districtContext.rural_daily_wage_skilled} / day</span>
+
+            <div className="bg-white/70 p-3 rounded-xl border border-[#D5E4D4] space-y-1">
+              <div className="flex items-center justify-between">
+                <span className="text-[10px] text-[#5E7262] font-medium block">
+                  Daily Wage (Skilled)
+                </span>
+                <span className="text-[8px] uppercase font-bold px-1.5 py-0.2 rounded bg-emerald-50 text-emerald-800 border border-emerald-200">
+                  Verified
+                </span>
+              </div>
+              <span className="font-bold text-[#142C1D] text-sm block">
+                {districtContext.rural_daily_wage_skilled} / day
+              </span>
+              <span className="text-[9px] text-[#768A78] block">Official Wage Schedule</span>
             </div>
-            <div>
-              <span className="text-[10px] text-[#5E7262] block">Nearest APMC Mandi</span>
-              <span className="font-bold text-[#142C1D]">{districtContext.nearest_mandi_distance_km} km</span>
+
+            <div className="bg-white/70 p-3 rounded-xl border border-[#D5E4D4] space-y-1">
+              <div className="flex items-center justify-between">
+                <span className="text-[10px] text-[#5E7262] font-medium block">
+                  Nearest APMC Mandi
+                </span>
+                <span className="text-[8px] uppercase font-bold px-1.5 py-0.2 rounded bg-emerald-50 text-emerald-800 border border-emerald-200">
+                  Verified
+                </span>
+              </div>
+              <span className="font-bold text-[#142C1D] text-sm block">
+                {districtContext.nearest_mandi_distance_km} km
+              </span>
+              <span className="text-[9px] text-[#768A78] block">Geo-Referenced Mandi</span>
             </div>
           </div>
         </div>
