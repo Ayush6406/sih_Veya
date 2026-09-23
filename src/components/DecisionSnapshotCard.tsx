@@ -7,7 +7,8 @@ import {
   Layers, 
   Info, 
   ChevronDown, 
-  ChevronUp 
+  ChevronUp,
+  Sparkles
 } from "lucide-react";
 import { DecisionSnapshot } from "../types";
 
@@ -63,11 +64,12 @@ export const DecisionSnapshotCard: React.FC<DecisionSnapshotCardProps> = ({ snap
                 <span>Card 1: Business Viability</span>
               </span>
               <div className="flex items-center gap-1.5">
-                <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md bg-blue-50 text-blue-800 border border-blue-200">
-                  Modeled Estimate
+                <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md bg-emerald-50 text-[#1B4D2B] border border-emerald-200 flex items-center gap-1">
+                  <Sparkles className="w-3 h-3 text-emerald-600" />
+                  <span>Calculation + AI Verification</span>
                 </span>
                 <span className={`text-xs font-bold px-2.5 py-0.5 rounded-full border ${goNoGoBadgeClass}`}>
-                  {go_no_go.score >= 75 ? "High Feasibility" : go_no_go.score >= 60 ? "Viable with Care" : "Elevated Risk"}
+                  {go_no_go.score >= 75 ? "High Feasibility" : go_no_go.score >= 50 ? "Viable with Care" : "Critical Risk (<50)"}
                 </span>
               </div>
             </div>
@@ -115,19 +117,39 @@ export const DecisionSnapshotCard: React.FC<DecisionSnapshotCardProps> = ({ snap
 
             {showGoNoGoDetails && (
               <div className="mt-3 space-y-2.5 pt-2 text-xs">
-                {go_no_go.supported_dimensions.map((dim) => (
-                  <div key={dim.dimension} className="bg-[#FAFDF9] p-2.5 rounded-xl border border-[#E0EBDD]">
-                    <div className="flex justify-between font-bold text-[#193522]">
-                      <span>{dim.dimension}</span>
-                      <span className="text-[#1E5D38]">
-                        {dim.score} / {dim.max_score}
-                      </span>
+                {go_no_go.supported_dimensions.map((dim) => {
+                  const isAIViabilityDim = dim.dimension.includes("AI Viability Dimension");
+                  return (
+                    <div
+                      key={dim.dimension}
+                      className={`p-2.5 rounded-xl border transition-colors ${
+                        isAIViabilityDim
+                          ? "bg-[#F2FAF4] border-[#B2DEB6] shadow-2xs"
+                          : "bg-[#FAFDF9] border-[#E0EBDD]"
+                      }`}
+                    >
+                      <div className="flex justify-between items-center font-bold text-[#193522]">
+                        <div className="flex items-center gap-1.5 flex-wrap">
+                          {isAIViabilityDim && <Sparkles className="w-3.5 h-3.5 text-emerald-700 shrink-0" />}
+                          <span>{dim.dimension}</span>
+                          {isAIViabilityDim && (
+                            <span className="text-[9px] uppercase tracking-wider font-extrabold px-1.5 py-0.5 bg-emerald-100 text-emerald-800 rounded">
+                              AI Audited
+                            </span>
+                          )}
+                        </div>
+                        <span className={`shrink-0 ml-2 ${isAIViabilityDim ? "text-emerald-800 font-extrabold" : "text-[#1E5D38]"}`}>
+                          {dim.score} / {dim.max_score}
+                        </span>
+                      </div>
+                      {dim.assessment && (
+                        <p className={`text-[11px] mt-1 leading-snug ${isAIViabilityDim ? "text-[#244C2D] font-medium" : "text-[#556958]"}`}>
+                          {dim.assessment}
+                        </p>
+                      )}
                     </div>
-                    {dim.assessment && (
-                      <p className="text-[11px] text-[#556958] mt-0.5">{dim.assessment}</p>
-                    )}
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             )}
           </div>

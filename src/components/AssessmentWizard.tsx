@@ -722,9 +722,15 @@ export const AssessmentWizard: React.FC<AssessmentWizardProps> = ({
 
             {/* Optional Specific Description */}
             <div>
-              <label className="block text-xs font-bold text-[#1C3623] mb-1.5">
-                Describe your specific business idea or special advantage (Optional)
-              </label>
+              <div className="flex items-center justify-between mb-1.5">
+                <label className="text-xs font-bold text-[#1C3623]">
+                  Describe your specific business idea or special advantage (Optional)
+                </label>
+                <span className="text-[10px] text-emerald-800 bg-[#EAF5EC] border border-[#C5E3CA] px-2 py-0.5 rounded-full font-bold flex items-center gap-1">
+                  <Sparkles className="w-3 h-3 text-emerald-700" />
+                  <span>Viability Dimension</span>
+                </span>
+              </div>
               <textarea
                 rows={2}
                 value={description}
@@ -732,8 +738,8 @@ export const AssessmentWizard: React.FC<AssessmentWizardProps> = ({
                 placeholder="e.g., We have access to 4 milking cows, refrigerated storage, and tie-ups with 2 sweet shops in the weekly market..."
                 className="w-full px-3 py-2.5 text-xs sm:text-sm rounded-xl border border-[#CCD8C8] focus:outline-none focus:border-[#1E5D38] bg-[#FAFBF8] text-[#142C1D]"
               />
-              <p className="text-[10px] text-[#637667] mt-1">
-                Providing specific details helps VEYA refine local opportunities and operational threat mitigations.
+              <p className="text-[10px] text-[#637667] mt-1 leading-relaxed">
+                <strong>Calculation + AI Research & Verification:</strong> The AI engine critically analyzes this description against rural purchasing power and operational reality. Sound advantages raise the Viability Dimension score; impossible pricing or scale will drastically reduce the Final Go/No-Go score.
               </p>
             </div>
           </div>

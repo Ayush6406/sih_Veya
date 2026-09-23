@@ -47,11 +47,12 @@ const ai = apiKey
     })
   : null;
 
-// Model cascade: gemini-2.5-flash -> gemini-3.1-flash-lite -> gemini-2.5-flash-lite
+// Model cascade: gemini-2.5-flash -> gemini-3.8-flash -> gemini-2.5-flash-lite -> gemini-3.1-flash-lite
 const CANDIDATE_MODELS = [
   "gemini-2.5-flash",
-  "gemini-3.1-flash-lite",
+  "gemini-3.8-flash",
   "gemini-2.5-flash-lite",
+  "gemini-3.1-flash-lite",
 ];
 
 async function callGeminiSafe(params: {
@@ -546,14 +547,15 @@ export function evaluateBusinessDescription(
       /\b(real\s*estate|land\s*flipping|plot\s*brokerage)\b/i,
       /\b(coaching\s*class|tuition\s*center|beauty\s*parlor|salon)\b/i,
       /\b(cement\s*factory|brick\s*kiln|welding\s*workshop)\b/i,
+      /\b(garments?|clothing|tailoring|dressmaking|boutique)\b/i,
     ],
-    Tailoring: [
+    Textile: [
       /\b(crypto|bitcoin|forex|trading|stocks)\b/i,
       /\b(milk\s*collection|dairy|cattle|cows?|buffalo)\b/i,
       /\b(brick\s*making|welding|heavy\s*fabrication|mining)\b/i,
       /\b(fertilizer\s*shop|pesticide\s*trading)\b/i,
     ],
-    Grocery: [
+    "Grocery Retail": [
       /\b(crypto|bitcoin|forex|stock\s*market)\b/i,
       /\b(cattle\s*breeding|livestock\s*rearing)\b/i,
       /\b(aeroplane|car\s*showroom|luxury\s*cars|yacht)\b/i,
@@ -564,14 +566,21 @@ export function evaluateBusinessDescription(
       /\b(mobile\s*phones|laptops|electronic\s*gadgets)\b/i,
       /\b(cement|steel|heavy\s*engineering)\b/i,
     ],
-    "Rural Manufacturing": [
+    "Small Manufacturing": [
       /\b(crypto|bitcoin|forex|trading)\b/i,
       /\b(dairy\s*farming|cow\s*shed)\b/i,
       /\b(beauty\s*salon|haircut)\b/i,
     ],
   };
 
-  const mismatchList = categoryMismatchRules[category] || [];
+  const normalizedCat = 
+    category.includes("Dairy") ? "Dairy" :
+    category.includes("Textile") || category.includes("Tailor") ? "Textile" :
+    category.includes("Grocery") ? "Grocery Retail" :
+    category.includes("Food") ? "Food Processing" :
+    category.includes("Manufacturing") ? "Small Manufacturing" : category;
+
+  const mismatchList = categoryMismatchRules[normalizedCat] || [];
   for (const rx of mismatchList) {
     if (rx.test(text)) {
       return {
@@ -583,9 +592,9 @@ export function evaluateBusinessDescription(
         concept_score: 3,
         concept_assessment: `MISMATCH: Description does not align with ${category} equipment, supply chain, or lending norms.`,
         dimension_adjustments: {
-          market_fit_adjustment: -5,
-          purchasing_fit_adjustment: -4,
-          financial_fit_adjustment: -5,
+          market_fit_adjustment: -6,
+          purchasing_fit_adjustment: -5,
+          financial_fit_adjustment: -7,
         },
       };
     }
@@ -593,16 +602,51 @@ export function evaluateBusinessDescription(
 
   // 4. Practically Impossible Unit Economics, Scale, or Pricing
   const impossibleClaims: { rx: RegExp; reason: string; penalty: number }[] = [
-    // Impossible milk pricing (> ₹100/L in rural village)
+    // Impossible milk pricing (> ₹75/L or ₹100/L in rural village where benchmark is ₹45-₹60/L)
     {
-      rx: /(?:rs\.?|inr|₹)\s*(?:[1-9]\d{2,}|[1-9][0-9])\s*(?:\/|\s*per\s*)(?:l|ltr|liter|litre)/i,
+      rx: /(?:rs\.?|inr|₹)?\s*(?:[7-9]\d|[1-9]\d{2,})\s*(?:\/|\s*per\s*)(?:l|ltr|liter|litre)/i,
       reason: "Proposed retail price per liter far exceeds rural household purchasing power (modal AGMARKNET benchmark is ₹45-₹60/L). Off-take will collapse to zero.",
-      penalty: 45,
+      penalty: 48,
+    },
+    {
+      rx: /(?:sell|charge|price|rate)\s*(?:at|is|of)?\s*(?:rs\.?|inr|₹)?\s*(?:[7-9]\d|[1-9]\d{2,})\s*(?:per|\/)?\s*(?:l|ltr|liter|litre)/i,
+      reason: "Proposed milk selling price (₹70+/L) is unaffordable for rural daily wage households; customers will reject purchase.",
+      penalty: 48,
     },
     // Impossible volume scale for micro unit (e.g. 10000+ L daily with 1-2L capital)
     {
       rx: /\b(?:10[0-9]{3,}|[2-9][0-9]{4,})\s*(?:liters?|ltrs?|units?|packets?)\s*(?:daily|per\s*day)\b/i,
       reason: "Claimed production volume (10,000+ units/day) is industrially impossible at micro-enterprise promoter equity.",
+      penalty: 45,
+    },
+    // Absurd animal counts vs micro capital
+    {
+      rx: /\b(?:buy|purchase|own|have|keep|get)\s*(?:[5-9]|[1-9]\d{1,})\s*(?:cows?|buffaloes?|cattle|animals?)\b/i,
+      reason: "Purchasing 5+ milch cattle requires ₹3-₹6 Lakhs in livestock capital; far exceeds available promoter margin money and micro-loan limits.",
+      penalty: 45,
+    },
+    // Hiring 3+ salaried staff on micro-loan
+    {
+      rx: /\b(?:hire|employ|staff)\s*(?:[3-9]|[1-9]\d{1,})\s*(?:people|workers?|employees?|labour|staff)\b/i,
+      reason: "Hiring 3+ permanent salaried staff exceeds the entire gross cash flow of a rural micro-enterprise, leading to immediate insolvency.",
+      penalty: 42,
+    },
+    // Biologically impossible yields
+    {
+      rx: /\b(?:[3-9]\d|[1-9]\d{2,})\s*(?:liters?|ltrs?)\s*(?:per\s*cow|per\s*buffalo|each\s*cow|per\s*animal)\b/i,
+      reason: "Per-cow milk yield claims exceeding 30L/day are biologically unrealistic for non-industrial rural Indian herds.",
+      penalty: 42,
+    },
+    // Drones or aircraft in rural village delivery
+    {
+      rx: /\b(?:drone|helicopter|aeroplane|flight)\s*(?:delivery|transport)\b/i,
+      reason: "Aviation/drone delivery is commercially and legally non-viable for village micro-enterprises under DGCA rules.",
+      penalty: 46,
+    },
+    // Luxury items in low-income villages
+    {
+      rx: /\b(?:designer\s*(?:clothes?|dresses?)|luxury\s*(?:cars?|watches?)|yacht|sushi|caviar|5\s*star)\b/i,
+      reason: "Ultra-luxury offerings completely mismatch rural agrarian daily wage demographics and purchasing power.",
       penalty: 45,
     },
     // Exporting raw perishable goods to Western countries
@@ -630,15 +674,15 @@ export function evaluateBusinessDescription(
     },
     // Walking absurd distances for perishable morning delivery
     {
-      rx: /\bwalk(?:ing)?\s*(?:[4-9]\d|[1-9]\d{2,})\s*km\b/i,
-      reason: "Walking 40+ km daily for rural distribution is physically impossible for perishable goods.",
-      penalty: 35,
+      rx: /\bwalk(?:ing)?\s*(?:[2-9]\d|[1-9]\d{2,})\s*km\b/i,
+      reason: "Walking 20+ km daily for rural distribution is physically impossible for perishable goods.",
+      penalty: 38,
     },
-    // 100% unlimited customer credit
+    // 100% unlimited customer credit or free giveaway
     {
-      rx: /\b(?:unlimited\s*credit|free\s*for\s*(?:everyone|all)|no\s*payment\s*needed)\b/i,
+      rx: /\b(?:unlimited\s*credit|free\s*for\s*(?:everyone|all)|no\s*payment\s*needed|give\s*away\s*free|100%\s*free)\b/i,
       reason: "Providing free products or unlimited credit with zero working capital collections guarantees debt default in month 1.",
-      penalty: 45,
+      penalty: 48,
     },
   ];
 
@@ -650,12 +694,12 @@ export function evaluateBusinessDescription(
         penalty_points: item.penalty,
         flaw_type: "UNREALISTIC_OPERATIONAL_CLAIM",
         flaw_detail: item.reason,
-        concept_score: 3,
+        concept_score: 2,
         concept_assessment: `FATAL FLAW: ${item.reason}`,
         dimension_adjustments: {
-          market_fit_adjustment: -4,
-          purchasing_fit_adjustment: -5,
-          financial_fit_adjustment: -5,
+          market_fit_adjustment: -6,
+          purchasing_fit_adjustment: -6,
+          financial_fit_adjustment: -7,
         },
       };
     }
@@ -1061,19 +1105,49 @@ async function generateAIReasoning(
   const cred = feasibility.scores.credibility.score;
   const pp = feasibility.consumer_purchasing_power;
   const loc = feasibility.location_context;
+  const descEval = feasibility.deterministic_scores_raw?.descEval || evaluateBusinessDescription(userDescription, category, financials.margin_capital.value, loc);
 
   const fallbackResult = {
     status: detRec.status,
+    ai_viability: {
+      is_realistic: !descEval.has_critical_flaw,
+      concept_score: descEval.concept_score,
+      concept_assessment: descEval.concept_assessment,
+      has_critical_flaw: descEval.has_critical_flaw,
+      flaw_detail: descEval.flaw_detail || "",
+      dimension_adjustments: {
+        market_fit_adjustment: descEval.dimension_adjustments.market_fit_adjustment,
+        purchasing_fit_adjustment: descEval.dimension_adjustments.purchasing_fit_adjustment,
+        financial_fit_adjustment: descEval.dimension_adjustments.financial_fit_adjustment,
+        resource_fit_adjustment: descEval.has_critical_flaw ? -5 : 0,
+      },
+      flaw_penalty: descEval.penalty_points,
+    },
     summary_explanation:
-      detRec.status === "RECOMMENDED"
+      descEval.has_critical_flaw
+        ? `CRITICAL NON-VIABILITY: The submitted operational plan contains a fatal flaw (${descEval.flaw_detail}). Under rural market conditions in ${loc.block}, addressable demand collapses and debt default is guaranteed.`
+        : detRec.status === "RECOMMENDED"
         ? `Strong local feasibility in ${loc.block} with manageable competition and comfortable debt coverage under ${financials.scheme.scheme_name}.`
         : detRec.status === "RECOMMENDED WITH MODIFICATIONS"
         ? `Commercially viable in ${loc.block}, but requires distinct service differentiation and strict working capital management.`
         : "Elevated commercial risk due to high enterprise density or insufficient starting capital.",
-    key_reasons: detRec.key_factors,
-    major_risks: detRec.major_risks,
+    key_reasons: descEval.has_critical_flaw
+      ? [
+          descEval.flaw_detail,
+          "Pricing or operational scale incompatible with local rural purchasing power and capital limits.",
+          "Scheme refinancing and micro-credit approval will be rejected on these operational terms.",
+        ]
+      : detRec.key_factors,
+    major_risks: descEval.has_critical_flaw
+      ? [
+          "Fatal operational plan prevents commercial break-even.",
+          "100% loss of promoter equity within month 1 if launched with this model.",
+        ]
+      : detRec.major_risks,
     suggested_action:
-      detRec.status === "RECOMMENDED"
+      descEval.has_critical_flaw
+        ? "Re-specify your operational business plan with realistic pricing (AGMARKNET modal rates) and standard rural scale."
+        : detRec.status === "RECOMMENDED"
         ? `Apply for ${financials.scheme.scheme_name} at your nearest ${loc.banking.lead_bank} branch or Common Service Centre (CSC).`
         : "Conduct 15 customer validation interviews and secure pre-orders before deploying capital.",
     validation_checks: [
@@ -1120,22 +1194,48 @@ async function generateAIReasoning(
     mode: "FALLBACK",
   };
 
-  const systemInstruction = `You are VEYA, an empathetic, highly rigorous, and practical rural business feasibility advisor in India.
-You provide objective, evidence-grounded analysis for micro-entrepreneurs.
-You are given an assessment backed by official government datasets (Maharashtra State Demographic Dataset, DES Maharashtra 2023-24, Udyam MSME, AGMARKNET, RBI DBIE).
-RULES:
-1. Ground your answer in the user's exact village (${loc.village}), block (${loc.block}), and district (${loc.district}).
-2. The Go/No-Go Model Score (${goNoGo}/100) and Credibility Score (${cred}/100) are strictly independent.
-3. Do not invent fake statistics or contradict the deterministic financial and feasibility outputs.
-4. HIGH SENSITIVITY TO USER INPUT: Scrutinize the user's business description ('User Notes') strictly against rural practical reality. If the user provided intentional or unintentional wrong/impossible stuff (e.g. impossible pricing like milk at ₹500/L, impossible volume like 10,000L/day for a micro-unit, zero feed cost, animals eating garbage/plastic, crypto/gadgets inside a dairy category, walking 80km daily, free items for everyone, or keyboard mash/spam):
-   - You MUST classify the status as 'HIGH RISK / RECONSIDER'.
-   - You MUST explicitly explain the exact operational or economic impossibility in 'summary_explanation' and 'major_risks'.
-   - NEVER provide a positive or flattering recommendation when the user input contains fundamental impossibilities.
-5. Output valid JSON matching the exact schema requested.`;
+  const systemInstruction = `You are VEYA's Lead Rural Enterprise Viability Auditor and AI Research & Verification Engine for Maharashtra, India.
+Your mission is to perform deep, critical evaluation of the user's business description and operational claims ('User Notes') against real-world rural economics, AGMARKNET mandi rates, and local purchasing power.
+You operate on the "Calculation + AI Research & Verification" model.
+
+CRITICAL AUDIT INSTRUCTIONS FOR "AI VIABILITY DIMENSION: CONCEPT & EXECUTION" (0 to 20 points):
+1. If 'User Notes' is empty or "N/A":
+   - Assign concept_score: 14 out of 20 (Standard sector baseline).
+   - Set concept_assessment: "Standard sector baseline assumed (no custom operational notes submitted)."
+   - Set is_realistic: true, has_critical_flaw: false, flaw_penalty: 0, dimension adjustments all 0.
+2. If 'User Notes' is provided:
+   CRITICALLY EXAMINE the description for:
+   - Practical feasibility in a rural Indian village/tehsil (${loc.village}, ${loc.block}, ${loc.district}).
+   - Realistic pricing vs rural purchasing power (₹${loc.economic.rural_daily_wage_unskilled_inr}/day wages; AGMARKNET benchmarks). Milk priced above ₹65/L or ₹70/L in a rural village is unaffordable for local households and will cause demand to collapse to near-zero.
+   - Realistic scale vs capital: Can the stated margin capital (${financials.margin_capital.formatted}) and project cost (${financials.project_cost.formatted}) realistically fund the claimed equipment, cattle count, or workforce? (e.g. ₹50,000 cannot buy 10 cows).
+   - Physical & biological reality: Per-cow milk yields (normal is 8-14L/day, high-yield is 18-22L/day; claims >30L/day are impossible), zero-cost feed myths, walking 20+ km daily, luxury items (designer clothing, caviar), or drone delivery.
+   - Category integrity: Prohibit crypto, forex, mobile repairs, real estate, software dev, luxury goods, or illicit activities under rural dairy/textile/grocery.
+
+CRITICAL IMPACT RULES:
+- If a critical or fatal flaw is detected:
+  - is_realistic: false
+  - has_critical_flaw: true
+  - concept_score: 1 to 3 out of 20
+  - flaw_penalty: 45 to 55 (this intentionally drives the Final Go/No-Go score down below half, to 15-35/100)
+  - dimension_adjustments:
+    - market_fit_adjustment: -6 to -10 (unviable model or pricing collapses addressable demand)
+    - purchasing_fit_adjustment: -6 to -10 (unaffordable for rural daily-wage families)
+    - financial_fit_adjustment: -7 to -12 (capital grossly inadequate for claimed scale)
+    - resource_fit_adjustment: -5 to -8
+  - status: "HIGH RISK / RECONSIDER"
+  - summary_explanation, key_reasons, and major_risks MUST explicitly cite the exact words and fatal flaw from the User Notes.
+- If sound, realistic, and practical:
+  - is_realistic: true
+  - has_critical_flaw: false
+  - concept_score: 16 to 20 out of 20
+  - flaw_penalty: 0
+  - dimension_adjustments: 0 to +2
+  - Tailor all opportunities, swot, and risks to their specific operational method.
+- Return ONLY valid JSON.`;
 
   const prompt = `Enterprise Category: ${category}
 Location: ${loc.village}, ${loc.block}, ${loc.district}, Maharashtra (LGD: ${loc.sub_district_lgd_code})
-User Notes: "${userDescription || "N/A"}"
+User Notes to Critically Audit: "${userDescription || "N/A"}"
 Financials:
 - Margin Capital (10%): ${financials.margin_capital.formatted}
 - Total Project Cost: ${financials.project_cost.formatted}
@@ -1151,16 +1251,28 @@ Demographics & Market Evidence:
 - Competition Level: ${feasibility.competitor_mapping.competition_level.value} (${feasibility.competitor_mapping.density_per_1k_households.formatted} from Udyam)
 - Purchasing Power Band: ${pp.band} (DDP Per Capita: ${formatINR(loc.economic.per_capita_income_inr)})
 - Nearest APMC Mandi: ${loc.economic.nearest_apmc_mandi_distance_km} km
-- Final Go/No-Go Model Score: ${goNoGo}/100
-- Credibility Score: ${cred}/100
-- Deterministic Status: ${detRec.status}
+- Deterministic Status Baseline: ${detRec.status}
 
 Return ONLY valid JSON matching this exact structure:
 {
-  "status": "${detRec.status}",
-  "summary_explanation": "1-2 sentences explaining why the plan received this recommendation based on evidence",
-  "key_reasons": ["Reason 1", "Reason 2", "Reason 3"],
-  "major_risks": ["Risk 1", "Risk 2"],
+  "status": "${detRec.status === "HIGH RISK / RECONSIDER" ? "HIGH RISK / RECONSIDER" : "RECOMMENDED"}",
+  "ai_viability": {
+    "is_realistic": true,
+    "concept_score": 14,
+    "concept_assessment": "1-2 sentences of critical AI research verdict on the operational plan and advantage",
+    "has_critical_flaw": false,
+    "flaw_detail": "Specific flaw description if any, otherwise empty string",
+    "dimension_adjustments": {
+      "market_fit_adjustment": 0,
+      "purchasing_fit_adjustment": 0,
+      "financial_fit_adjustment": 0,
+      "resource_fit_adjustment": 0
+    },
+    "flaw_penalty": 0
+  },
+  "summary_explanation": "1-2 sentences critically evaluating the proposal against rural market evidence",
+  "key_reasons": ["Reason 1 directly addressing user plan vs local reality", "Reason 2", "Reason 3"],
+  "major_risks": ["Risk 1 directly addressing user operational claims", "Risk 2"],
   "suggested_action": "1 concrete immediate action for this rural entrepreneur",
   "validation_checks": ["Check 1 to validate before investing", "Check 2 to validate before investing", "Check 3 to validate before investing"],
   "opportunity": {
@@ -1191,11 +1303,34 @@ Return ONLY valid JSON matching this exact structure:
   if (result?.text) {
     try {
       const parsed = JSON.parse(result.text);
+
+      // Validate and safeguard ai_viability
+      let aiViability = parsed.ai_viability || fallbackResult.ai_viability;
+      if (descEval.has_critical_flaw) {
+        // Enforce deterministic fatal rejection if detected by pattern engine
+        aiViability = {
+          ...aiViability,
+          is_realistic: false,
+          has_critical_flaw: true,
+          concept_score: Math.min(aiViability.concept_score ?? 2, 3),
+          concept_assessment: `FATAL FLAW: ${descEval.flaw_detail}`,
+          flaw_detail: descEval.flaw_detail,
+          flaw_penalty: Math.max(45, descEval.penalty_points),
+        };
+      } else if (aiViability.has_critical_flaw || (typeof aiViability.concept_score === "number" && aiViability.concept_score <= 5)) {
+        aiViability.has_critical_flaw = true;
+        aiViability.is_realistic = false;
+        aiViability.flaw_penalty = Math.max(40, aiViability.flaw_penalty || 45);
+      }
+
+      const finalStatus = aiViability.has_critical_flaw ? "HIGH RISK / RECONSIDER" : (parsed.status || detRec.status);
+
       return {
         ...fallbackResult,
         ...parsed,
-        status: parsed.status || detRec.status,
-        tier: `AI REASONING · ${result.modelUsed}`,
+        status: finalStatus,
+        ai_viability: aiViability,
+        tier: `AI RESEARCH & VERIFICATION · ${result.modelUsed}`,
         mode: "LIVE",
       };
     } catch {
@@ -1282,24 +1417,138 @@ app.post("/api/assessment", async (req: Request, res: Response) => {
     // 2. Calculate deterministic feasibility and dual scores based on resolved location
     const feasibility = computeFeasibility(catKey, financials, { ...location, description });
 
-    // 3. Generate Gemini qualitative reasoning
+    // 3. Generate Gemini qualitative reasoning + AI critical research & verification
     const aiReasoning = await generateAIReasoning(catKey, location, financials, feasibility, description);
 
     const locContext = feasibility.location_context;
+    const aiViability = aiReasoning.ai_viability || {
+      is_realistic: !feasibility.deterministic_scores_raw?.has_critical_flaw,
+      concept_score: feasibility.deterministic_scores_raw?.conceptFit ?? 14,
+      concept_assessment: feasibility.deterministic_scores_raw?.descEval?.concept_assessment || "Standard sector baseline assumed.",
+      has_critical_flaw: Boolean(feasibility.deterministic_scores_raw?.has_critical_flaw),
+      flaw_detail: feasibility.deterministic_scores_raw?.flaw_detail || "",
+      dimension_adjustments: feasibility.deterministic_scores_raw?.descEval?.dimension_adjustments || {
+        market_fit_adjustment: 0,
+        purchasing_fit_adjustment: 0,
+        financial_fit_adjustment: 0,
+        resource_fit_adjustment: 0,
+      },
+      flaw_penalty: feasibility.deterministic_scores_raw?.deterministicPenalty || 0,
+    };
 
-    const hasFatalInputFlaw = feasibility.deterministic_recommendation.status === "HIGH RISK / RECONSIDER";
+    // Determine if either deterministic model or AI critical audit flagged fatal non-viability
+    const hasFatalInputFlaw = Boolean(
+      aiViability.has_critical_flaw ||
+      feasibility.deterministic_scores_raw?.has_critical_flaw ||
+      (aiReasoning.status === "HIGH RISK / RECONSIDER" && (aiViability.concept_score ?? 14) <= 7)
+    );
+
+    // Raw deterministic scores
+    const rawScores = feasibility.deterministic_scores_raw || {
+      marketFit: 12,
+      purchasingFit: 10,
+      compFit: 12,
+      finFit: 15,
+      resourceFit: 12,
+      conceptFit: 14,
+    };
+
+    let marketFit = rawScores.marketFit + (aiViability.dimension_adjustments?.market_fit_adjustment || 0);
+    let purchasingFit = rawScores.purchasingFit + (aiViability.dimension_adjustments?.purchasing_fit_adjustment || 0);
+    let compFit = rawScores.compFit;
+    let finFit = rawScores.finFit + (aiViability.dimension_adjustments?.financial_fit_adjustment || 0);
+    let resourceFit = rawScores.resourceFit + (aiViability.dimension_adjustments?.resource_fit_adjustment || 0);
+    let conceptFit = typeof aiViability.concept_score === "number" ? aiViability.concept_score : rawScores.conceptFit;
+
+    // Clamp dimension scores to valid ranges
+    marketFit = Math.max(1, Math.min(15, marketFit));
+    purchasingFit = Math.max(1, Math.min(15, purchasingFit));
+    compFit = Math.max(1, Math.min(15, compFit));
+    finFit = Math.max(1, Math.min(20, finFit));
+    resourceFit = Math.max(1, Math.min(15, resourceFit));
+    conceptFit = Math.max(0, Math.min(20, conceptFit));
+
+    let finalGoNoGoScore: number;
+    if (hasFatalInputFlaw) {
+      // Drastically lower score below half (15 - 38 out of 100)
+      marketFit = Math.min(marketFit, 4);
+      purchasingFit = Math.min(purchasingFit, 4);
+      finFit = Math.min(finFit, 4);
+      conceptFit = Math.min(conceptFit, 3);
+      const penalty = Math.max(42, aiViability.flaw_penalty || 45);
+      const rawSum = marketFit + purchasingFit + compFit + finFit + resourceFit + conceptFit;
+      finalGoNoGoScore = Math.max(12, Math.min(38, rawSum - penalty));
+    } else {
+      finalGoNoGoScore = Math.min(100, Math.max(12, marketFit + purchasingFit + compFit + finFit + resourceFit + conceptFit));
+    }
+
+    const updatedGoNoGoDimensions = [
+      {
+        dimension: "Market / Demand Fit",
+        score: marketFit,
+        max_score: 15,
+        assessment: hasFatalInputFlaw && (aiViability.dimension_adjustments?.market_fit_adjustment || 0) < 0
+          ? "Demand severely impaired: proposed operational model or pricing limits addressable village customers."
+          : `~${feasibility.market_reach.reachable_customers.formatted} addressable households in cluster`,
+      },
+      {
+        dimension: "Local Purchasing Power Fit",
+        score: purchasingFit,
+        max_score: 15,
+        assessment: hasFatalInputFlaw && (aiViability.dimension_adjustments?.purchasing_fit_adjustment || 0) < 0
+          ? "Purchasing mismatch: proposed pricing or product scale is unaffordable for rural daily-wage households."
+          : `${feasibility.consumer_purchasing_power.band} household expenditure capacity (${formatINR(locContext.economic.per_capita_income_inr)}/yr)`,
+      },
+      {
+        dimension: "Competition Position",
+        score: compFit,
+        max_score: 15,
+        assessment: `${feasibility.competitor_mapping.competition_level.value} saturation (${feasibility.competitor_mapping.density_per_1k_households.formatted} formal units / 1k HH)`,
+      },
+      {
+        dimension: "Financial Feasibility",
+        score: finFit,
+        max_score: 20,
+        assessment: hasFatalInputFlaw && (aiViability.dimension_adjustments?.financial_fit_adjustment || 0) < 0
+          ? "Financial deficit: proposed capital is inadequate for the claimed operational scale or equipment."
+          : `Matched with ${financials.scheme.scheme_name} (${financials.scheme.interest_rate_percent}% p.a.)`,
+      },
+      {
+        dimension: "Resource Readiness",
+        score: resourceFit,
+        max_score: 15,
+        assessment: `${financials.margin_capital.formatted} promoter equity committed`,
+      },
+      {
+        dimension: "AI Viability Dimension: Concept & Execution",
+        score: conceptFit,
+        max_score: 20,
+        assessment:
+          aiViability.concept_assessment ||
+          (description.trim() ? "AI Research & Verification completed." : "Standard sector baseline assumed (no custom operational notes submitted)."),
+      },
+    ];
+
     const finalStatus = hasFatalInputFlaw ? "HIGH RISK / RECONSIDER" : aiReasoning.status;
     const finalReasons = hasFatalInputFlaw
-      ? [...feasibility.deterministic_recommendation.key_factors, ...(aiReasoning.key_reasons || []).slice(0, 3)]
+      ? [
+          aiViability.flaw_detail || feasibility.deterministic_recommendation.key_factors[0] || "Fatal economic or operational flaw detected in submitted description.",
+          ...(aiReasoning.key_reasons || []).slice(0, 2),
+        ]
       : aiReasoning.key_reasons;
+
     const finalRisks = hasFatalInputFlaw
-      ? [...feasibility.deterministic_recommendation.major_risks, ...(aiReasoning.major_risks || []).slice(0, 3)]
+      ? [
+          "Operational concept fundamentally conflicts with rural purchasing power or physical logistics.",
+          ...(aiReasoning.major_risks || []).slice(0, 2),
+        ]
       : aiReasoning.major_risks;
-    const finalSummary = hasFatalInputFlaw && aiReasoning.status !== "HIGH RISK / RECONSIDER"
-      ? `CRITICAL NOTICE: Operational discrepancy detected in submitted plan (${feasibility.deterministic_recommendation.key_factors[0]}). The Final Go/No-Go Model Score has dropped drastically to reflect practical rural non-feasibility.`
+
+    const finalSummary = hasFatalInputFlaw
+      ? `CRITICAL NON-VIABILITY: The submitted operational plan contains a fatal flaw (${aiViability.flaw_detail || "unrealistic pricing, capital mismatch, or impossible operational claims"}). Through Calculation + AI Research & Verification, the Final Go/No-Go Model Score has dropped drastically to ${finalGoNoGoScore}/100.`
       : aiReasoning.summary_explanation;
 
-    // Assemble final report
+    // Assemble final report with verified calculation + AI verification synthesis
     const finalReport = {
       project: "VEYA",
       version: "2026.2.0",
@@ -1322,7 +1571,16 @@ app.post("/api/assessment", async (req: Request, res: Response) => {
         user_confidence: confidence,
       },
       decision_snapshot: {
-        go_no_go: feasibility.scores.go_no_go,
+        go_no_go: {
+          score: finalGoNoGoScore,
+          name: "FINAL GO / NO-GO MODEL SCORE",
+          meaning: hasFatalInputFlaw
+            ? "CRITICAL RISK: Operational concept contains fatal economic, pricing, or logistical flaws. Final score dropped below half."
+            : "Synthesizes deterministic mathematical modeling with AI critical verification of your operational concept, unit economics, and viability.",
+          supported_dimensions: updatedGoNoGoDimensions,
+          data_classification: "CALCULATION + AI RESEARCH & VERIFICATION",
+          concept_audit: aiViability,
+        },
         credibility: feasibility.scores.credibility,
         note: "These scores measure different things and should not be combined.",
       },
